@@ -5,8 +5,16 @@ import { DashboardStats } from "./_components/dashboard-stats";
 import { RecentEvents } from "./_components/recent-events";
 import { TopAttractions } from "./_components/top-attractions";
 import { MunicipalityList } from "./_components/municipality-list";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+  if (!session) {
+    redirect("/login");
+  }
   const [municipalities, events, attractions, guides] = await Promise.all([
     prisma.municipality.findMany({
       include: {
