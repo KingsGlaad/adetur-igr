@@ -1,0 +1,137 @@
+// schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../prisma/generated"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id             String        @id @default(cuid())
+  name           String?
+  email          String        @unique
+  emailVerified  DateTime?
+  password       String?
+  image          String?       @default("/images/default-profile.png")
+  role           Role          @default(MUNICIPAL)
+  accounts       Account[]
+  sessions       Session[]
+  municipality   Municipality? @relation(fields: [municipalityId], references: [id])
+  municipalityId String?
+  posts          Post[]
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+  user              User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+enum Role {
+  ADMIN
+  MUNICIPAL
+}
+
+model Municipality {
+  id          String       @id @default(cuid())
+  name        String
+  description String?
+  coatOfArms  String?
+  users       User[]
+  highlights  Highlight[]
+  attractions Attraction[]
+  events      Event[]
+  guides      Guide[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Highlight {
+  id             String       @id @default(cuid())
+  title          String
+  municipalityId String
+  municipality   Municipality @relation(fields: [municipalityId], references: [id])
+
+  createdAt DateTime @default(now())
+}
+
+model Attraction {
+  id             String       @id @default(cuid())
+  name           String
+  description    String
+  image          String?
+  municipality   Municipality @relation(fields: [municipalityId], references: [id])
+  municipalityId String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Event {
+  id             String       @id @default(cuid())
+  title          String
+  description    String
+  date           DateTime
+  image          String?
+  municipality   Municipality @relation(fields: [municipalityId], references: [id])
+  municipalityId String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Guide {
+  id             String       @id @default(cuid())
+  name           String
+  phone          String
+  languages      String[]
+  municipality   Municipality @relation(fields: [municipalityId], references: [id])
+  municipalityId String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+}
+
+model Post {
+  id         String   @id @default(cuid())
+  title      String
+  content    String
+  coverImage String?
+  author     User     @relation(fields: [authorId], references: [id])
+  authorId   String
+  published  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}

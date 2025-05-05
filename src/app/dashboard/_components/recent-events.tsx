@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
+import Image from "next/image";
 
 interface RecentEventsProps {
   events: {
@@ -23,10 +24,12 @@ export function RecentEvents({ events }: RecentEventsProps) {
           {events.map((event) => (
             <div key={event.id} className="flex items-center gap-4">
               {event.image && (
-                <img
+                <Image
                   src={event.image}
                   alt={event.title}
-                  className="h-12 w-12 rounded-lg object-cover"
+                  width={48} // 12 * 4 (tailwind h-12)
+                  height={48} // 12 * 4
+                  className="rounded-lg object-cover"
                 />
               )}
               <div className="flex-1">

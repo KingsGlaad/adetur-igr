@@ -1,4 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Image from "next/image";
 
 interface TopAttractionsProps {
   attractions: {
@@ -20,10 +21,11 @@ export function TopAttractions({ attractions }: TopAttractionsProps) {
           {attractions.map((attraction) => (
             <div key={attraction.id} className="flex items-center gap-4">
               {attraction.image && (
-                <img
+                <Image
                   src={attraction.image}
                   alt={attraction.name}
                   className="h-12 w-12 rounded-lg object-cover"
+                  fill
                 />
               )}
               <div className="flex-1">

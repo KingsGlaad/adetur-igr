@@ -1,10 +1,3 @@
-"use client";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselApi,
-} from "@/components/ui/carousel";
 import {
   MapPin,
   Users,
@@ -17,94 +10,33 @@ import {
   Trees,
   Globe,
 } from "lucide-react";
-import {
-  heroImages,
-  features,
-  stats,
-  municipalities,
-  tourismSegments,
-  odsGoals,
-} from "@/data/site-data";
+import { features, stats, tourismSegments, odsGoals } from "@/data/site-data";
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import Autoplay from "embla-carousel-autoplay";
+
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { MunicipalitiesCard } from "./_components/MunicipalitiesCard";
+import { HeroImage } from "./_components/Hero-Image";
+import { prisma } from "@/lib/prisma";
 
-export default function HomePage() {
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
-
-  useEffect(() => {
-    if (!api) {
-      return;
-    }
-
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+export default async function HomePage() {
+  const [municipalities] = await Promise.all([
+    prisma.municipality.findMany({
+      include: {
+        highlights: true,
+      },
+    }),
+  ]);
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full">
-        <Carousel
-          setApi={setApi}
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-            }),
-          ]}
-          className="w-full"
-        >
-          <CarouselContent>
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="relative">
-                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full">
-                  <Image
-                    src={image.src}
-                    alt={image.alt}
-                    width={image.width}
-                    height={image.height}
-                    className="object-cover"
-                    priority={index === 0}
-                  />
-                  <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
-                    <div className="text-center px-4">
-                      <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
-                        {image.title}
-                      </h1>
-                      <p className="text-lg sm:text-xl md:text-2xl">
-                        {image.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
-            {heroImages.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => api?.scrollTo(index)}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  current === index ? "bg-white" : "bg-white/50"
-                }`}
-                aria-label={`Ir para o slide ${index + 1}`}
-              />
-            ))}
-          </div>
-        </Carousel>
+        <HeroImage />
       </section>
 
       {/* Stats Section */}
@@ -162,48 +94,15 @@ export default function HomePage() {
       {/* Municipalities Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 ">
+          <h2 className="text-3xl font-bold text-center mb-8">
             Municípios Integrados
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
-            {municipalities.map((municipality, index) => (
-              <div
-                key={index}
-                className="rounded-lg shadow-md overflow-hidden bg-neutral-800"
-              >
-                <div className="relative h-48">
-                  <Image
-                    src={municipality.image.src}
-                    alt={municipality.name}
-                    width={municipality.image.width}
-                    height={municipality.image.height}
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold mb-2 ">
-                    {municipality.name}
-                  </h3>
-                  <p className="text-gray-400 mb-4">
-                    {municipality.description}
-                  </p>
-                  <div className="text-sm font-medium">
-                    {municipality.highlight.slice(0, 2).map((item, index) => (
-                      <span
-                        key={index}
-                        className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                    {municipality.highlight.length > 2 && (
-                      <span className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs">
-                        +{municipality.highlight.length - 2} mais
-                      </span>
-                    )}
-                  </div>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {municipalities.map((municipality) => (
+              <MunicipalitiesCard
+                key={municipality.id}
+                municipalities={municipality}
+              />
             ))}
           </div>
         </div>

@@ -39,6 +39,7 @@ export const authOptions: NextAuthOptions = {
           email: user.email,
           name: user.name,
           role: user.role,
+          image: user.image,
         };
       },
     }),
@@ -48,7 +49,7 @@ export const authOptions: NextAuthOptions = {
   },
   pages: {
     signIn: "/login",
-    error: "/login", // Opcional: redireciona erros para login
+    error: "/login",
   },
   callbacks: {
     async jwt({ token, user }) {
@@ -56,6 +57,7 @@ export const authOptions: NextAuthOptions = {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         token.role = (user as any).role;
         token.id = user.id;
+        token.image = user.image;
       }
       return token;
     },
@@ -63,6 +65,7 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         session.user.role = token.role;
         session.user.id = token.id;
+        session.user.image = token.image as string;
       }
       return session;
     },

@@ -81,6 +81,7 @@ export const stats = [
 
 export const municipalities = [
   {
+    id: "cm9yonp3g0004jpdcqqjcy3xy",
     name: "São Simão",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -96,6 +97,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yonp3h000cjpdc4uegzi6k",
     name: "Altinópolis",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -111,6 +113,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yono8w0000jpdcsnkdxovd",
     name: "Santo Antônio da Alegria",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -126,6 +129,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yonp3g000ajpdcc1m85bjh",
     name: "Luís Antônio",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -141,6 +145,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yonp3h000fjpdc3gibo3ay",
     name: "Cajuru",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -156,6 +161,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yonp3g0009jpdcxsxh1y68",
     name: "Cássia dos Coqueiros",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",
@@ -171,6 +177,7 @@ export const municipalities = [
     ],
   },
   {
+    id: "cm9yonp3d0002jpdcdiiphkd5",
     name: "Santa Rosa de Viterbo",
     image: {
       src: "https://images.unsplash.com/photo-1519046904884-53103b34b206?q=80&w=2070&auto=format&fit=crop",

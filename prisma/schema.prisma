@@ -2,6 +2,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../prisma/generated"
 }
 
 datasource db {
@@ -72,11 +73,21 @@ model Municipality {
   description String?
   coatOfArms  String?
   users       User[]
+  highlights  Highlight[]
   attractions Attraction[]
   events      Event[]
   guides      Guide[]
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
+}
+
+model Highlight {
+  id             String       @id @default(cuid())
+  title          String
+  municipalityId String
+  municipality   Municipality @relation(fields: [municipalityId], references: [id])
+
+  createdAt DateTime @default(now())
 }
 
 model Attraction {
