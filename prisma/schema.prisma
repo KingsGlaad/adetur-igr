@@ -16,7 +16,7 @@ model User {
   email          String        @unique
   emailVerified  DateTime?
   password       String?
-  image          String?
+  image          String?       @default("/images/default-profile.png")
   role           Role          @default(MUNICIPAL)
   accounts       Account[]
   sessions       Session[]
