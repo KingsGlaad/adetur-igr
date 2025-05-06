@@ -31,7 +31,12 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["**/node_modules/**/*", "**/prisma/**/*", "**/.next/**/*"],
+      files: [
+        "**/node_modules/**/*",
+        "**/prisma/**/*",
+        "**/.next/**/*",
+        "src/generated/**/*.{ts,js,tsx,jsx}",
+      ],
       rules: {
         // Desativa regras para arquivos gerados automaticamente:
         "@typescript-eslint/no-unsafe-assignment": "off",
@@ -47,5 +52,6 @@ module.exports = {
     ".next/",
     "prisma/", // garante que o prisma não seja verificado
     "dist/",
+    "src/generated/",
   ],
 };
