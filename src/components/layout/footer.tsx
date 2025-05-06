@@ -176,7 +176,7 @@ export function Footer() {
               />
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-primary text-secondary-foreground rounded-md hover:bg-primary/90"
+                className="w-full px-4 py-2 bg-blue-700 text-secondary-foreground rounded-md hover:bg-blue-400 transition-colors"
               >
                 Inscrever
               </button>

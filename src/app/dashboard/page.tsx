@@ -11,7 +11,6 @@ import { redirect } from "next/navigation";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
-  console.log(session);
   if (!session) {
     redirect("/login");
   }
@@ -119,7 +118,7 @@ export default async function DashboardPage() {
           </Tabs>
         </div>
 
-        <div className="col-span-3">
+        <div className="col-span-3 mt-12">
           <RecentEvents events={events} />
         </div>
       </div>

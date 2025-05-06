@@ -19,7 +19,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { MunicipalitiesCard } from "./_components/MunicipalitiesCard";
+import { MunicipalitiesCard } from "@/components/cards/MunicipalitiesCard";
 import { HeroImage } from "./_components/Hero-Image";
 import { prisma } from "@/lib/prisma";
 

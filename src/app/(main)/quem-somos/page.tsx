@@ -1,12 +1,5 @@
-"use client";
-
-import { Target, ArrowRight } from "lucide-react";
-import {
-  municipalities,
-  governanceStructure,
-  odsGoals,
-} from "@/data/site-data";
-import Link from "next/link";
+import { Target } from "lucide-react";
+import { governanceStructure, odsGoals } from "@/data/site-data";
 import Image from "next/image";
 import {
   Tooltip,
@@ -14,18 +7,41 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { MunicipalitiesCard } from "@/components/cards/MunicipalitiesCard";
+import { prisma } from "@/lib/prisma";
 
-export default function Page() {
+export default async function Page() {
+  const [municipalities] = await Promise.all([
+    prisma.municipality.findMany({
+      include: {
+        highlights: true,
+      },
+    }),
+  ]);
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Hero Section */}
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold mb-4">Quem Somos</h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          Conheça a história e a estrutura da ADETUR - Associação de
-          Desenvolvimento do Turismo
-        </p>
-      </div>
+      <section className="mb-16">
+        <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full">
+          <Image
+            src={"/capa-adetur.png"}
+            alt="Capa da ADETUR"
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+            <div className="text-center px-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                Quem Somos
+              </h1>
+              <p className="text-lg sm:text-xl md:text-2xl">
+                Conheça a história e a estrutura da ADETUR - Associação de
+                Desenvolvimento do Turismo
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Timeline Section */}
       <section className="mb-16">
@@ -69,27 +85,12 @@ export default function Page() {
       {/* Municipalities Section */}
       <section className="mb-16">
         <h2 className="text-2xl font-bold mb-8">Municípios Integrados</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {municipalities.map((municipality) => (
-            <div
-              key={municipality.name}
-              className="bg-card p-6 rounded-lg shadow-sm"
-            >
-              <h3 className="text-xl font-semibold mb-2">
-                {municipality.name}
-              </h3>
-              <p className="text-muted-foreground mb-4">
-                {municipality.description}
-              </p>
-              <Link
-                href={`/municipios/${municipality.name
-                  .toLowerCase()
-                  .replace(/\s+/g, "-")}`}
-                className="text-primary hover:underline inline-flex items-center gap-2"
-              >
-                Conhecer mais <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+            <MunicipalitiesCard
+              key={municipality.id}
+              municipalities={municipality}
+            />
           ))}
         </div>
       </section>

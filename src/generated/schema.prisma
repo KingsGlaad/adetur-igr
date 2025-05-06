@@ -2,7 +2,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../prisma/generated"
+  output   = "../src/generated"
 }
 
 datasource db {
@@ -72,6 +72,9 @@ model Municipality {
   name        String
   description String?
   coatOfArms  String?
+  latitude    Float?
+  longitude   Float?
+  about       String?      @db.Text
   users       User[]
   highlights  Highlight[]
   attractions Attraction[]

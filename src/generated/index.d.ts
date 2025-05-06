@@ -6251,8 +6251,20 @@ export namespace Prisma {
 
   export type AggregateMunicipality = {
     _count: MunicipalityCountAggregateOutputType | null
+    _avg: MunicipalityAvgAggregateOutputType | null
+    _sum: MunicipalitySumAggregateOutputType | null
     _min: MunicipalityMinAggregateOutputType | null
     _max: MunicipalityMaxAggregateOutputType | null
+  }
+
+  export type MunicipalityAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type MunicipalitySumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
   }
 
   export type MunicipalityMinAggregateOutputType = {
@@ -6260,6 +6272,9 @@ export namespace Prisma {
     name: string | null
     description: string | null
     coatOfArms: string | null
+    latitude: number | null
+    longitude: number | null
+    about: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6269,6 +6284,9 @@ export namespace Prisma {
     name: string | null
     description: string | null
     coatOfArms: string | null
+    latitude: number | null
+    longitude: number | null
+    about: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -6278,17 +6296,33 @@ export namespace Prisma {
     name: number
     description: number
     coatOfArms: number
+    latitude: number
+    longitude: number
+    about: number
     createdAt: number
     updatedAt: number
     _all: number
   }
 
 
+  export type MunicipalityAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type MunicipalitySumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
   export type MunicipalityMinAggregateInputType = {
     id?: true
     name?: true
     description?: true
     coatOfArms?: true
+    latitude?: true
+    longitude?: true
+    about?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6298,6 +6332,9 @@ export namespace Prisma {
     name?: true
     description?: true
     coatOfArms?: true
+    latitude?: true
+    longitude?: true
+    about?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -6307,6 +6344,9 @@ export namespace Prisma {
     name?: true
     description?: true
     coatOfArms?: true
+    latitude?: true
+    longitude?: true
+    about?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -6350,6 +6390,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: MunicipalityAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MunicipalitySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: MunicipalityMinAggregateInputType
@@ -6380,6 +6432,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: MunicipalityCountAggregateInputType | true
+    _avg?: MunicipalityAvgAggregateInputType
+    _sum?: MunicipalitySumAggregateInputType
     _min?: MunicipalityMinAggregateInputType
     _max?: MunicipalityMaxAggregateInputType
   }
@@ -6389,9 +6443,14 @@ export namespace Prisma {
     name: string
     description: string | null
     coatOfArms: string | null
+    latitude: number | null
+    longitude: number | null
+    about: string | null
     createdAt: Date
     updatedAt: Date
     _count: MunicipalityCountAggregateOutputType | null
+    _avg: MunicipalityAvgAggregateOutputType | null
+    _sum: MunicipalitySumAggregateOutputType | null
     _min: MunicipalityMinAggregateOutputType | null
     _max: MunicipalityMaxAggregateOutputType | null
   }
@@ -6415,6 +6474,9 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     coatOfArms?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    about?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     users?: boolean | Municipality$usersArgs<ExtArgs>
@@ -6430,6 +6492,9 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     coatOfArms?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    about?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["municipality"]>
@@ -6439,6 +6504,9 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     coatOfArms?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    about?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["municipality"]>
@@ -6448,11 +6516,14 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     coatOfArms?: boolean
+    latitude?: boolean
+    longitude?: boolean
+    about?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MunicipalityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "coatOfArms" | "createdAt" | "updatedAt", ExtArgs["result"]["municipality"]>
+  export type MunicipalityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "coatOfArms" | "latitude" | "longitude" | "about" | "createdAt" | "updatedAt", ExtArgs["result"]["municipality"]>
   export type MunicipalityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Municipality$usersArgs<ExtArgs>
     highlights?: boolean | Municipality$highlightsArgs<ExtArgs>
@@ -6478,6 +6549,9 @@ export namespace Prisma {
       name: string
       description: string | null
       coatOfArms: string | null
+      latitude: number | null
+      longitude: number | null
+      about: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["municipality"]>
@@ -6912,6 +6986,9 @@ export namespace Prisma {
     readonly name: FieldRef<"Municipality", 'String'>
     readonly description: FieldRef<"Municipality", 'String'>
     readonly coatOfArms: FieldRef<"Municipality", 'String'>
+    readonly latitude: FieldRef<"Municipality", 'Float'>
+    readonly longitude: FieldRef<"Municipality", 'Float'>
+    readonly about: FieldRef<"Municipality", 'String'>
     readonly createdAt: FieldRef<"Municipality", 'DateTime'>
     readonly updatedAt: FieldRef<"Municipality", 'DateTime'>
   }
@@ -12915,6 +12992,9 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     coatOfArms: 'coatOfArms',
+    latitude: 'latitude',
+    longitude: 'longitude',
+    about: 'about',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -13072,13 +13152,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
-   */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -13089,6 +13162,13 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
   /**
    * Deep Input Types
@@ -13378,6 +13458,9 @@ export namespace Prisma {
     name?: StringFilter<"Municipality"> | string
     description?: StringNullableFilter<"Municipality"> | string | null
     coatOfArms?: StringNullableFilter<"Municipality"> | string | null
+    latitude?: FloatNullableFilter<"Municipality"> | number | null
+    longitude?: FloatNullableFilter<"Municipality"> | number | null
+    about?: StringNullableFilter<"Municipality"> | string | null
     createdAt?: DateTimeFilter<"Municipality"> | Date | string
     updatedAt?: DateTimeFilter<"Municipality"> | Date | string
     users?: UserListRelationFilter
@@ -13392,6 +13475,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     coatOfArms?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    about?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     users?: UserOrderByRelationAggregateInput
@@ -13409,6 +13495,9 @@ export namespace Prisma {
     name?: StringFilter<"Municipality"> | string
     description?: StringNullableFilter<"Municipality"> | string | null
     coatOfArms?: StringNullableFilter<"Municipality"> | string | null
+    latitude?: FloatNullableFilter<"Municipality"> | number | null
+    longitude?: FloatNullableFilter<"Municipality"> | number | null
+    about?: StringNullableFilter<"Municipality"> | string | null
     createdAt?: DateTimeFilter<"Municipality"> | Date | string
     updatedAt?: DateTimeFilter<"Municipality"> | Date | string
     users?: UserListRelationFilter
@@ -13423,11 +13512,16 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrderInput | SortOrder
     coatOfArms?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
+    about?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: MunicipalityCountOrderByAggregateInput
+    _avg?: MunicipalityAvgOrderByAggregateInput
     _max?: MunicipalityMaxOrderByAggregateInput
     _min?: MunicipalityMinOrderByAggregateInput
+    _sum?: MunicipalitySumOrderByAggregateInput
   }
 
   export type MunicipalityScalarWhereWithAggregatesInput = {
@@ -13438,6 +13532,9 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Municipality"> | string
     description?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
     coatOfArms?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"Municipality"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Municipality"> | number | null
+    about?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Municipality"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Municipality"> | Date | string
   }
@@ -14063,6 +14160,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -14077,6 +14177,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -14091,6 +14194,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -14105,6 +14211,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -14119,6 +14228,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -14128,6 +14240,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14137,6 +14252,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -14825,6 +14943,17 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type UserListRelationFilter = {
     every?: UserWhereInput
     some?: UserWhereInput
@@ -14880,8 +15009,16 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     coatOfArms?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    about?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type MunicipalityAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type MunicipalityMaxOrderByAggregateInput = {
@@ -14889,6 +15026,9 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     coatOfArms?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    about?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -14898,8 +15038,32 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     coatOfArms?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
+    about?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type MunicipalitySumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type MunicipalityScalarRelationFilter = {
@@ -15341,6 +15505,14 @@ export namespace Prisma {
     connect?: GuideWhereUniqueInput | GuideWhereUniqueInput[]
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserUpdateManyWithoutMunicipalityNestedInput = {
     create?: XOR<UserCreateWithoutMunicipalityInput, UserUncheckedCreateWithoutMunicipalityInput> | UserCreateWithoutMunicipalityInput[] | UserUncheckedCreateWithoutMunicipalityInput[]
     connectOrCreate?: UserCreateOrConnectWithoutMunicipalityInput | UserCreateOrConnectWithoutMunicipalityInput[]
@@ -15742,6 +15914,22 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
@@ -15820,6 +16008,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
@@ -15833,6 +16024,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -15952,6 +16146,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
@@ -15965,6 +16162,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -16454,6 +16654,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -16467,6 +16670,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -16496,6 +16702,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -16509,6 +16718,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -16522,6 +16734,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -16535,6 +16750,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -16564,6 +16782,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -16577,6 +16798,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -16590,6 +16814,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -16603,6 +16830,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -16632,6 +16862,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -16645,6 +16878,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -16658,6 +16894,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -16671,6 +16910,9 @@ export namespace Prisma {
     name: string
     description?: string | null
     coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -16700,6 +16942,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -16713,6 +16958,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
