@@ -29,6 +29,9 @@ export default async function HomePage() {
       include: {
         highlights: true,
       },
+      orderBy: {
+        name: "asc",
+      },
     }),
   ]);
 
