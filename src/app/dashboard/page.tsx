@@ -22,6 +22,9 @@ export default async function DashboardPage() {
         events: true,
         guides: true,
       },
+      orderBy: {
+        createdAt: "desc",
+      },
     }),
     prisma.event.findMany({
       orderBy: {
