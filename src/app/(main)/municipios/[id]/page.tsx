@@ -3,13 +3,11 @@ import { MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import MunicipioMap from "./_components/MunicipioMap";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export default async function MunicipioPage({ params }: PageProps) {
+export default async function MunicipioPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const { id } = await params;
   const municipality = await prisma.municipality.findUnique({
     where: {
@@ -19,9 +17,11 @@ export default async function MunicipioPage({ params }: PageProps) {
       highlights: true,
     },
   });
+
   if (!municipality) {
     return <div className="text-white">Município não encontrado</div>;
   }
+
   return (
     <div className="max-w-6xl mx-auto py-10 px-4">
       {/* GALERIA */}
@@ -34,15 +34,10 @@ export default async function MunicipioPage({ params }: PageProps) {
             className="object-cover"
           />
         </div>
-        {/* Exemplo: mais imagens se quiser expandir a galeria no futuro */}
-        {/* <div className="relative h-48">
-      <Image src="/some-other.jpg" alt="..." fill className="object-cover" />
-    </div> */}
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* COLUNA PRINCIPAL */}
         <div className="lg:col-span-2">
           <h1 className="text-3xl font-bold text-white mb-2 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-primary" />
@@ -57,7 +52,6 @@ export default async function MunicipioPage({ params }: PageProps) {
             </p>
           )}
 
-          {/* Destaques */}
           {municipality.highlights.length > 0 && (
             <div className="mb-8">
               <h2 className="text-2xl font-semibold text-white mb-4">
@@ -72,16 +66,12 @@ export default async function MunicipioPage({ params }: PageProps) {
                     <h3 className="text-lg font-semibold text-white mb-2">
                       {highlight.title}
                     </h3>
-                    <p className="text-sm text-neutral-400">
-                      {highlight.description}
-                    </p>
                   </div>
                 ))}
               </div>
             </div>
           )}
 
-          {/* Mapa */}
           <div>
             <h2 className="text-2xl font-semibold text-white mb-4">
               Localização
@@ -92,13 +82,11 @@ export default async function MunicipioPage({ params }: PageProps) {
           </div>
         </div>
 
-        {/* COLUNA SECUNDÁRIA (EX: pode usar para algo útil no futuro) */}
         <div className="lg:col-span-1">
           <div className="sticky top-24 bg-neutral-900 border border-neutral-700 rounded-lg p-6 shadow">
             <h3 className="text-xl font-semibold text-white mb-4">
               Informações rápidas
             </h3>
-            {/* Aqui você pode colocar mais conteúdo, ou deixar vazio por enquanto */}
             <p className="text-neutral-400 text-sm">
               Aqui pode entrar um resumo, links úteis ou outras informações!
             </p>
