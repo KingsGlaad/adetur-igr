@@ -26,6 +26,42 @@ model User {
   posts          Post[]
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
+  settings       Settings?
+}
+
+model Settings {
+  id     String @id @default(cuid())
+  user   User   @relation(fields: [userId], references: [id])
+  userId String @unique
+
+  avatar     String
+  fullName   String
+  phone      String
+  timezone   String
+  language   String
+  currency   String
+  dateFormat String
+  fontSize   Int
+  theme      Theme
+  layout     Layout
+
+  notifications Json
+  privacy       Json
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Theme {
+  light
+  dark
+  system
+}
+
+enum Layout {
+  default
+  compact
+  expanded
 }
 
 model Account {
