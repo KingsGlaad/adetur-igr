@@ -36,7 +36,8 @@ export function Sidebar() {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
 
-  const NavItem = ({ item, isBottom = false }) => (
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+  const NavItem = ({ item = false, ...props }: any) => (
     <Tooltip delayDuration={0}>
       <TooltipTrigger asChild>
         <Link
