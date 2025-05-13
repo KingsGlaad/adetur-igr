@@ -111,6 +111,7 @@ model Municipality {
   latitude    Float?
   longitude   Float?
   about       String?      @db.Text
+  slug        String?      @unique
   users       User[]
   highlights  Highlight[]
   attractions Attraction[]

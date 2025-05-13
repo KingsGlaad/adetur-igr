@@ -188,6 +188,7 @@ exports.Prisma.MunicipalityScalarFieldEnum = {
   latitude: 'latitude',
   longitude: 'longitude',
   about: 'about',
+  slug: 'slug',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

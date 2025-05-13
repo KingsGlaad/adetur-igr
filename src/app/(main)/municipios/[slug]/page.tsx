@@ -6,12 +6,12 @@ import MunicipioMap from "./_components/MunicipioMap";
 export default async function MunicipioPage({
   params,
 }: {
-  params: Promise<{ id: string }>;
+  params: Promise<{ slug: string }>;
 }) {
-  const { id } = await params;
+  const { slug } = await params;
   const municipality = await prisma.municipality.findUnique({
     where: {
-      id: id,
+      slug,
     },
     include: {
       highlights: true,
@@ -47,9 +47,9 @@ export default async function MunicipioPage({
             {municipality.description}
           </p>
           {municipality.about && (
-            <p className="text-neutral-400 text-sm mb-6">
-              {municipality.about}
-            </p>
+            <div className="prose prose-invert text-neutral-400 text-sm mb-6 max-w-none">
+              <div dangerouslySetInnerHTML={{ __html: municipality.about }} />
+            </div>
           )}
 
           {municipality.highlights.length > 0 && (

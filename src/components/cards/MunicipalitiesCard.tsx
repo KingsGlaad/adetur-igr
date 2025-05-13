@@ -11,6 +11,7 @@ interface MunicipalitiesCardProps {
   municipalities: {
     id: string;
     name: string;
+    slug: string | null;
     coatOfArms: string | null;
     description: string | null;
     highlights: {
@@ -34,7 +35,7 @@ export function MunicipalitiesCard({
         />
       </div>
       <div className="p-6">
-        <Link href={`/municipios/${municipalities.id}`}>
+        <Link href={`/municipios/${municipalities.slug}`}>
           <h3 className="text-xl font-semibold mb-2">{municipalities.name}</h3>
         </Link>
         <p className="text-gray-400 mb-4">{municipalities.description}</p>
