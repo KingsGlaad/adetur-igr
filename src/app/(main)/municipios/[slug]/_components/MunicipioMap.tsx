@@ -2,11 +2,11 @@
 
 import { TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { Municipality } from "@/types/municipality";
 import dynamic from "next/dynamic";
 import { renderToStaticMarkup } from "react-dom/server";
 import { divIcon } from "leaflet";
 import { MapPin } from "lucide-react";
+import { MunicipalityRefined } from "@/types/municipality";
 
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -26,7 +26,7 @@ const customIcon = divIcon({
 export default function MunicipioMap({
   municipality,
 }: {
-  municipality: Municipality;
+  municipality: MunicipalityRefined;
 }) {
   if (
     typeof municipality.latitude !== "number" ||
