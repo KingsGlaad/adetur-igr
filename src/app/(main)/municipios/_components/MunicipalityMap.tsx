@@ -3,7 +3,7 @@
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import { LatLngTuple, divIcon } from "leaflet";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Municipality } from "@/types/municipality";
+import { MunicipalityRefined } from "@/types/municipality";
 import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import { MapPin } from "lucide-react";
@@ -28,8 +28,8 @@ function ChangeView({ center, zoom }: { center: LatLngTuple; zoom: number }) {
 
 type MunicipalityMapProps = {
   mapCenter: LatLngTuple;
-  municipalities: Municipality[];
-  selectedMunicipality: Municipality | null;
+  municipalities: MunicipalityRefined[];
+  selectedMunicipality: MunicipalityRefined | null;
 };
 
 export default function MunicipalityMap({
