@@ -36,7 +36,7 @@ export default async function HomePage() {
   ]);
 
   return (
-    <div className="flex flex-col min-h-screen bg-white">
+    <div className="flex flex-col min-h-screen ">
       {/* Hero Section */}
       <section className="relative w-full ">
         <HeroImage />
@@ -51,7 +51,9 @@ export default async function HomePage() {
                 <div className="text-3xl font-bold text-white mb-2">
                   {stat.value}
                 </div>
-                <div className="text-lg font-semibold ">{stat.title}</div>
+                <div className="text-lg font-semibold text-white">
+                  {stat.title}
+                </div>
                 <div className="text-sm text-gray-400">{stat.description}</div>
               </div>
             ))}
@@ -60,9 +62,9 @@ export default async function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
+          <h2 className="text-3xl font-bold text-center mb-8 ">
             Nossos Diferenciais
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -83,7 +85,7 @@ export default async function HomePage() {
                   <div className="flex justify-center mb-4">
                     <Icon className="w-12 h-12 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">
+                  <h3 className="text-xl font-semibold mb-2 text-white">
                     {feature.title}
                   </h3>
                   <p className="text-gray-400">{feature.description}</p>
@@ -95,9 +97,9 @@ export default async function HomePage() {
       </section>
 
       {/* Municipalities Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
+          <h2 className="text-3xl font-bold text-center mb-8 ">
             Municípios Integrados
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -112,9 +114,9 @@ export default async function HomePage() {
       </section>
 
       {/* Tourism Segments Section */}
-      <section className="py-12 bg-white">
+      <section className="py-12 ">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
+          <h2 className="text-3xl font-bold text-center mb-8 ">
             Segmentos Turísticos Atendidos
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
@@ -141,7 +143,9 @@ export default async function HomePage() {
                   <div className="flex justify-center mb-4">
                     <Icon className="w-12 h-12 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{segment.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-white">
+                    {segment.name}
+                  </h3>
                   <p className="text-gray-300">{segment.description}</p>
                 </div>
               );
@@ -153,7 +157,7 @@ export default async function HomePage() {
       {/* ODS Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
+          <h2 className="text-3xl font-bold text-center mb-8 ">
             Objetivos de Desenvolvimento Sustentável (ODS)
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">

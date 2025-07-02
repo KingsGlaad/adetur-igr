@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="bg-blue-900 border-t mt-auto">
+    <footer className="bg-blue-900 border-t mt-auto text-white">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo e Descrição */}
@@ -19,18 +19,18 @@ export function Footer() {
               />
               <span className="text-xl font-bold">ADETUR</span>
             </div>
-            <p className="text-muted-foreground">
+            <p className="text-neutral-400">
               Agência de Desenvolvimento Turístico - Alta Mogiana
             </p>
             <div className="flex gap-4">
               <a
                 href="https://www.facebook.com/circuitoturisticoaltamogiana"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-neutral-400 hover:text-foreground transition-colors"
                 aria-label="Facebook"
               >
                 <svg
                   className="w-5 h-5 text-primary"
-                  fill="currentColor"
+                  fill="white"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -43,12 +43,12 @@ export function Footer() {
               </a>
               <a
                 href="https://www.instagram.com/adeturturismoaltamogiana/"
-                className="text-muted-foreground hover:text-foreground transition-colors"
+                className="text-neutral-400 hover:text-foreground transition-colors"
                 aria-label="Instagram"
               >
                 <svg
                   className="w-5 h-5 text-primary"
-                  fill="currentColor"
+                  fill="white"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
@@ -69,7 +69,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-neutral-400 hover:text-foreground transition-colors"
                 >
                   Início
                 </Link>
@@ -77,7 +77,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/quem-somos"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-neutral-400 hover:text-foreground transition-colors"
                 >
                   Quem Somos
                 </Link>
@@ -85,7 +85,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/municipios"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-neutral-400 hover:text-foreground transition-colors"
                 >
                   Municípios
                 </Link>
@@ -93,7 +93,7 @@ export function Footer() {
               <li>
                 <Link
                   href="/contato"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-neutral-400 hover:text-foreground transition-colors"
                 >
                   Contato
                 </Link>
@@ -104,12 +104,12 @@ export function Footer() {
           {/* Contato */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
-            <ul className="space-y-2 text-muted-foreground">
+            <ul className="space-y-2 text-neutral-400">
               <li className="flex items-center gap-2">
                 <svg
                   className="w-5 h-5 text-primary"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="white"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -125,7 +125,7 @@ export function Footer() {
                 <svg
                   className="w-5 h-5 text-primary"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="white"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -141,7 +141,7 @@ export function Footer() {
                 <svg
                   className="w-5 h-5 text-primary"
                   fill="none"
-                  stroke="currentColor"
+                  stroke="white"
                   viewBox="0 0 24 24"
                 >
                   <path
@@ -165,18 +165,18 @@ export function Footer() {
           {/* Newsletter */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
-            <p className="text-muted-foreground mb-4">
+            <p className="text-neutral-400 mb-4">
               Inscreva-se para receber novidades e atualizações
             </p>
             <form className="space-y-2">
               <input
                 type="email"
                 placeholder="Seu e-mail"
-                className="w-full px-4 py-2 rounded-md border border-input bg-background"
+                className="w-full px-4 py-2 rounded-md border border-input bg-background text-neutral-900"
               />
               <button
                 type="submit"
-                className="w-full px-4 py-2 bg-blue-700 text-secondary-foreground rounded-md hover:bg-blue-400 transition-colors"
+                className="w-full px-4 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-400 transition-colors"
               >
                 Inscrever
               </button>
@@ -185,7 +185,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="mt-12 pt-8 border-t text-center text-primary/50">
+        <div className="mt-12 pt-8 border-t text-center text-white/50">
           <p>
             &copy; {new Date().getFullYear()} ADETUR. Todos os direitos
             reservados.

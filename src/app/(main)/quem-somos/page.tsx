@@ -31,10 +31,10 @@ export default async function Page() {
           />
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <div className="text-center px-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-ne">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
                 Quem Somos
               </h1>
-              <p className="text-lg sm:text-xl md:text-2xl">
+              <p className="text-lg sm:text-xl md:text-2xl text-neutral-400">
                 Conheça a história e a estrutura da ADETUR - Associação de
                 Desenvolvimento do Turismo
               </p>
@@ -116,10 +116,12 @@ export default async function Page() {
           <div className="space-y-6">
             {governanceStructure.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
-                <Target className="w-6 h-6 text-primary mt-1" />
+                <Target className="w-6 h-6 text-white mt-1 " />
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.description}</p>
+                  <h3 className="text-lg font-semibold mb-2 text-secondary  ">
+                    {item.title}
+                  </h3>
+                  <p className="text-neutral-400">{item.description}</p>
                 </div>
               </div>
             ))}

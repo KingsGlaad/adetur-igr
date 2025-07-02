@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { MobileMenu } from "./mobile-menu";
+import { ThemeToggle } from "@/app/dashboard/_components/theme-toggle";
 
 export function Header() {
   const pathname = usePathname();
@@ -16,7 +17,7 @@ export function Header() {
         <div className="flex h-16 items-center justify-between px-6">
           <Link href="/" className="flex items-center space-x-2">
             <Image src={"/logo.png"} alt="Logo ADETUR" width={32} height={32} />
-            <span className="text-xl font-bold text-amber-50">ADETUR</span>
+            <span className="text-xl font-bold">ADETUR</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -26,8 +27,8 @@ export function Header() {
               className={cn(
                 "transition-colors",
                 isActive("/")
-                  ? "text-white font-medium"
-                  : "text-neutral-200 hover:text-white"
+                  ? "text-neutral-900 dark:text-white font-medium"
+                  : "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
               )}
             >
               Início
@@ -37,8 +38,8 @@ export function Header() {
               className={cn(
                 "transition-colors",
                 isActive("/quem-somos")
-                  ? "text-white font-medium"
-                  : "text-neutral-200 hover:text-white"
+                  ? "text-neutral-900 font-medium dark:text-white"
+                  : "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
               )}
             >
               Quem Somos
@@ -48,8 +49,8 @@ export function Header() {
               className={cn(
                 "transition-colors",
                 isActive("/municipios")
-                  ? "text-white font-medium"
-                  : "text-neutral-200 hover:text-white"
+                  ? "text-neutral-900 font-medium dark:text-white"
+                  : "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
               )}
             >
               Municípios
@@ -59,16 +60,20 @@ export function Header() {
               className={cn(
                 "transition-colors",
                 isActive("/login")
-                  ? "text-white font-medium"
-                  : "text-neutral-200 hover:text-white"
+                  ? "text-neutral-900 dark:text-white font-medium"
+                  : "text-neutral-700 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white"
               )}
             >
               Entrar
             </Link>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Navigation */}
-          <MobileMenu />
+          <div className="flex items-center space-x-4 md:hidden">
+            <MobileMenu />
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </header>

@@ -24,10 +24,10 @@ export default async function MunicipioPage({
   }
 
   return (
-    <div className="max-w-6xl mx-auto py-10 px-4 bg-white text-neutral-900">
+    <div className="max-w-6xl mx-auto py-10 px-4 text-neutral-900">
       {/* GALERIA */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-[400px] md:h-[500px] rounded-lg overflow-hidden mb-8 bg-white shadow-lg">
-        <div className="relative col-span-1 md:col-span-2 h-full bg-white">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-[400px] md:h-[500px] rounded-lg overflow-hidden mb-8  shadow-lg">
+        <div className="relative col-span-1 md:col-span-2 h-full ">
           <Image
             src={municipality.coatOfArms || "/placeholder.jpg"}
             alt={municipality.name}
@@ -38,7 +38,7 @@ export default async function MunicipioPage({
       </div>
 
       {/* CONTEÚDO PRINCIPAL */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-white">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 ">
         <div className="lg:col-span-2">
           <h1 className="text-3xl font-bold mb-2 flex items-center gap-2">
             <MapPin className="w-5 h-5 text-blue-900" />
@@ -60,7 +60,7 @@ export default async function MunicipioPage({
                 {municipality.highlights.map((highlight, idx) => (
                   <div
                     key={idx}
-                    className="bg-blue-900 border border-neutral-700 rounded-lg p-5 hover:border-neutral-500 transition-colors shadow hover:shadow-lg"
+                    className="bg-blue-900 border border-blue-700/35 rounded-lg p-5 hover:border-neutral-500 transition-colors shadow hover:shadow-lg"
                   >
                     <h3 className="text-lg font-semibold text-white mb-2">
                       {highlight.title}
@@ -82,7 +82,7 @@ export default async function MunicipioPage({
         </div>
 
         <div className="lg:col-span-1">
-          <div className="sticky top-24 bg-blue-900 border border-neutral-700 rounded-lg p-6 shadow">
+          <div className="sticky top-24 bg-blue-900 border border-blue-700/35 rounded-lg p-6 shadow">
             <h3 className="text-xl font-semibold text-white mb-4">
               Informações rápidas
             </h3>

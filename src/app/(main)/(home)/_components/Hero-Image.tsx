@@ -52,10 +52,10 @@ export function HeroImage() {
                 />
                 <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
                   <div className="text-center px-4">
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-white">
                       {image.title}
                     </h1>
-                    <p className="text-lg sm:text-xl md:text-2xl">
+                    <p className="text-lg sm:text-xl md:text-2xl text-neutral-400">
                       {image.description}
                     </p>
                   </div>
