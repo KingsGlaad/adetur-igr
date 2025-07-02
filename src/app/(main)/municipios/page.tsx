@@ -34,35 +34,35 @@ export default function MunicipiosPage() {
   const isLoading = !municipalitiesData || municipalitiesData.length === 0;
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)]">
+    <div className="flex flex-col lg:flex-row min-h-[calc(100vh-4rem)] bg-white text-neutral-900">
       {/* Lista */}
-      <div className="w-full lg:w-2/5 bg-neutral-900">
+      <div className="w-full lg:w-2/5 ">
         <div className="container mx-auto px-8 py-8 max-w-xl">
-          <h1 className="text-3xl font-bold text-white mb-8">Municípios</h1>
+          <h1 className="text-3xl font-bold mb-8">Municípios</h1>
           <div className="grid gap-4">
             {isLoading
               ? Array.from({ length: 6 }).map((_, idx) => (
                   <div
                     key={idx}
-                    className="bg-neutral-800 border border-neutral-700 rounded-lg overflow-hidden animate-pulse"
+                    className=" border border-blue-900/35 rounded-lg overflow-hidden animate-pulse"
                   >
-                    <div className="relative h-32 bg-neutral-700" />
+                    <div className="relative h-32 bg-blue-900/30" />
                     <div className="p-4">
-                      <div className="h-4 bg-neutral-700 rounded w-3/4 mb-2"></div>
-                      <div className="h-3 bg-neutral-700 rounded w-full mb-2"></div>
-                      <div className="h-3 bg-neutral-700 rounded w-5/6 mb-4"></div>
+                      <div className="h-4 bg-blue-900/30 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-blue-900/30 rounded w-full mb-2"></div>
+                      <div className="h-3 bg-blue-900/30 rounded w-5/6 mb-4"></div>
                       <div className="flex gap-2 mb-3">
-                        <div className="h-5 w-16 bg-neutral-700 rounded-full"></div>
-                        <div className="h-5 w-16 bg-neutral-700 rounded-full"></div>
+                        <div className="h-5 w-16 bg-blue-900/30 rounded-full"></div>
+                        <div className="h-5 w-16 bg-blue-900/30 rounded-full"></div>
                       </div>
-                      <div className="h-8 bg-neutral-700 rounded w-full"></div>
+                      <div className="h-8 bg-blue-900/30 rounded w-full"></div>
                     </div>
                   </div>
                 ))
               : municipalitiesData.map((municipality) => (
                   <div
                     key={municipality.name}
-                    className="bg-neutral-800 border border-neutral-700 rounded-lg overflow-hidden cursor-pointer hover:border-neutral-500 transition-colors"
+                    className="bg-blue-900 border border-blue-900/35 rounded-lg overflow-hidden hover:border-neutral-500 hover:scale-105 transition-transform duration-300 cursor-pointer"
                     onClick={() => setSelectedMunicipality(municipality)}
                   >
                     <div className="relative h-32">
@@ -86,20 +86,20 @@ export default function MunicipiosPage() {
                           .map((item, index) => (
                             <span
                               key={index}
-                              className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs"
+                              className="px-2 py-1 bg-white text-neutral-700 rounded-full text-xs"
                             >
                               {item.title}
                             </span>
                           ))}
                         {(municipality.highlights?.length ?? 0) > 2 && (
-                          <span className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs">
+                          <span className="px-2 py-1 bg-white text-neutral-700 rounded-full text-xs">
                             +{(municipality.highlights?.length ?? 0) - 2} mais
                           </span>
                         )}
                       </div>
                       <Link
                         href={`/municipios/${municipality.slug}`}
-                        className="inline-flex items-center justify-center w-full px-3 py-1.5 bg-neutral-700 text-white rounded-md hover:bg-neutral-600 transition-colors text-sm"
+                        className="inline-flex items-center justify-center w-full px-3 py-1.5 bg-white text-neutral-700 rounded-md hover:bg-blue-400 transition-colors text-sm"
                       >
                         <MapPin className="w-3.5 h-3.5 mr-1.5" />
                         Ver Detalhes

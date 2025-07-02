@@ -36,14 +36,14 @@ export default async function HomePage() {
   ]);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative w-full">
+      <section className="relative w-full ">
         <HeroImage />
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-neutral-800">
+      <section className="py-12 bg-blue-900">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -60,9 +60,9 @@ export default async function HomePage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-12 ">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
             Nossos Diferenciais
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -78,7 +78,7 @@ export default async function HomePage() {
               return (
                 <div
                   key={index}
-                  className="text-center p-6 bg-neutral-800 rounded-lg shadow-md"
+                  className="text-center p-6 bg-blue-900 rounded-lg shadow-md"
                 >
                   <div className="flex justify-center mb-4">
                     <Icon className="w-12 h-12 text-white" />
@@ -95,9 +95,9 @@ export default async function HomePage() {
       </section>
 
       {/* Municipalities Section */}
-      <section className="py-12">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
             Municípios Integrados
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -112,12 +112,12 @@ export default async function HomePage() {
       </section>
 
       {/* Tourism Segments Section */}
-      <section className="py-12 bg-neutral-800">
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
             Segmentos Turísticos Atendidos
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 ">
             {tourismSegments.map((segment, index) => {
               const Icon =
                 segment.name === "Turismo Rural"
@@ -136,7 +136,7 @@ export default async function HomePage() {
               return (
                 <div
                   key={index}
-                  className="text-center p-6 bg-neutral-700 rounded-lg shadow-md"
+                  className="text-center p-6 bg-blue-900 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105"
                 >
                   <div className="flex justify-center mb-4">
                     <Icon className="w-12 h-12 text-white" />
@@ -153,7 +153,7 @@ export default async function HomePage() {
       {/* ODS Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
             Objetivos de Desenvolvimento Sustentável (ODS)
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
@@ -171,7 +171,7 @@ export default async function HomePage() {
                       />
                     </div>
                   </TooltipTrigger>
-                  <TooltipContent className="max-w-xs bg-neutral-800 text-white p-4">
+                  <TooltipContent className="max-w-xs bg-blue-900 text-white p-4">
                     <h3 className="font-bold mb-2 text-lg">{goal.title}</h3>
                     <p className="text-sm text-gray-300">{goal.description}</p>
                   </TooltipContent>

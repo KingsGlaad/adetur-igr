@@ -13,10 +13,10 @@ export function Header() {
   return (
     <header className="sticky top-0 z-80 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-16 items-center justify-between px-6">
           <Link href="/" className="flex items-center space-x-2">
             <Image src={"/logo.png"} alt="Logo ADETUR" width={32} height={32} />
-            <span className="text-xl font-bold text-white">ADETUR</span>
+            <span className="text-xl font-bold text-amber-50">ADETUR</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -27,7 +27,7 @@ export function Header() {
                 "transition-colors",
                 isActive("/")
                   ? "text-white font-medium"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-neutral-200 hover:text-white"
               )}
             >
               Início
@@ -38,7 +38,7 @@ export function Header() {
                 "transition-colors",
                 isActive("/quem-somos")
                   ? "text-white font-medium"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-neutral-200 hover:text-white"
               )}
             >
               Quem Somos
@@ -49,7 +49,7 @@ export function Header() {
                 "transition-colors",
                 isActive("/municipios")
                   ? "text-white font-medium"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-neutral-200 hover:text-white"
               )}
             >
               Municípios
@@ -60,7 +60,7 @@ export function Header() {
                 "transition-colors",
                 isActive("/login")
                   ? "text-white font-medium"
-                  : "text-neutral-400 hover:text-white"
+                  : "text-neutral-200 hover:text-white"
               )}
             >
               Entrar

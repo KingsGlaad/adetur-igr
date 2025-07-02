@@ -19,7 +19,7 @@ export default async function Page() {
     }),
   ]);
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 bg-white">
       {/* Hero Section */}
       <section className="mb-16">
         <div className="relative h-[300px] sm:h-[400px] md:h-[500px] w-full">
@@ -31,7 +31,7 @@ export default async function Page() {
           />
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
             <div className="text-center px-4">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-ne">
                 Quem Somos
               </h1>
               <p className="text-lg sm:text-xl md:text-2xl">
@@ -45,36 +45,46 @@ export default async function Page() {
 
       {/* Timeline Section */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-8">Nossa História</h2>
+        <h2 className="text-2xl font-bold mb-8 text-neutral-900">
+          Nossa História
+        </h2>
         <div className="space-y-8">
           <div className="relative pl-8 border-l-2 border-primary">
-            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary"></div>
-            <h3 className="text-xl font-semibold">2001 - Fundação</h3>
-            <p className="text-muted-foreground">
+            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-blue-900"></div>
+            <h3 className="text-xl font-semibold text-blue-900 ">
+              2001 - Fundação
+            </h3>
+            <p className="text-neutral-900">
               A ADETUR foi fundada com o objetivo de promover o desenvolvimento
               turístico da região.
             </p>
           </div>
           <div className="relative pl-8 border-l-2 border-primary">
-            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary"></div>
-            <h3 className="text-xl font-semibold">2005 - Primeira Expansão</h3>
-            <p className="text-muted-foreground">
+            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-blue-900"></div>
+            <h3 className="text-xl font-semibold text-blue-900">
+              2005 - Primeira Expansão
+            </h3>
+            <p className="text-neutral-900">
               Inclusão dos primeiros municípios associados e início das
               atividades de capacitação.
             </p>
           </div>
           <div className="relative pl-8 border-l-2 border-primary">
-            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary"></div>
-            <h3 className="text-xl font-semibold">2010 - Consolidação</h3>
-            <p className="text-muted-foreground">
+            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-blue-900"></div>
+            <h3 className="text-xl font-semibold text-blue-900">
+              2010 - Consolidação
+            </h3>
+            <p className="text-neutral-900">
               Implementação do sistema de governança regional e fortalecimento
               da marca turística.
             </p>
           </div>
           <div className="relative pl-8 border-l-2 border-primary">
-            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-primary"></div>
-            <h3 className="text-xl font-semibold">2020 - Atualidade</h3>
-            <p className="text-muted-foreground">
+            <div className="absolute left-[-9px] top-0 w-4 h-4 rounded-full bg-blue-900"></div>
+            <h3 className="text-xl font-semibold text-blue-900">
+              2020 - Atualidade
+            </h3>
+            <p className="text-neutral-900">
               Expansão para 7 municípios e desenvolvimento de projetos
               inovadores em turismo.
             </p>
@@ -84,7 +94,9 @@ export default async function Page() {
 
       {/* Municipalities Section */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-8">Municípios Integrados</h2>
+        <h2 className="text-2xl font-bold mb-8 text-neutral-900">
+          Municípios Integrados
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {municipalities.map((municipality) => (
             <MunicipalitiesCard
@@ -97,8 +109,10 @@ export default async function Page() {
 
       {/* Governance Section */}
       <section className="mb-16">
-        <h2 className="text-2xl font-bold mb-8">Estrutura de Governança</h2>
-        <div className="bg-card p-6 rounded-lg shadow-sm">
+        <h2 className="text-2xl font-bold mb-8 text-neutral-900">
+          Estrutura de Governança
+        </h2>
+        <div className="bg-blue-900 p-6 rounded-lg shadow-sm">
           <div className="space-y-6">
             {governanceStructure.map((item, index) => (
               <div key={index} className="flex items-start gap-4">
@@ -116,7 +130,7 @@ export default async function Page() {
       {/* ODS Section */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">
+          <h2 className="text-3xl font-bold text-center mb-8 text-neutral-900">
             Objetivos de Desenvolvimento Sustentável (ODS)
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">

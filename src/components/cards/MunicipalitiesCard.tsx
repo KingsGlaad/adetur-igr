@@ -25,7 +25,7 @@ export function MunicipalitiesCard({
   municipalities,
 }: MunicipalitiesCardProps) {
   return (
-    <div className="rounded-lg shadow-md overflow-hidden bg-neutral-800 transform transition-transform duration-300 hover:scale-105">
+    <div className="rounded-lg shadow-md overflow-hidden bg-blue-900 transform transition-transform duration-300 hover:scale-105">
       <div className="relative h-48">
         <Image
           src={municipalities.coatOfArms || ""}
@@ -43,7 +43,7 @@ export function MunicipalitiesCard({
           {municipalities.highlights.slice(0, 2).map((item) => (
             <span
               key={item.id}
-              className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs"
+              className="px-2 py-1 bg-white text-neutral-900 rounded-full text-xs"
             >
               {item.title}
             </span>
@@ -52,7 +52,7 @@ export function MunicipalitiesCard({
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <span className="px-2 py-1 bg-neutral-700 text-neutral-300 rounded-full text-xs cursor-pointer">
+                  <span className="px-2 py-1 bg-white text-neutral-900 rounded-full text-xs cursor-pointer">
                     +{municipalities.highlights.length - 2} mais
                   </span>
                 </TooltipTrigger>

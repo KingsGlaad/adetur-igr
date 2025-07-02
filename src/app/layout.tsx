@@ -18,8 +18,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" suppressHydrationWarning>
-      <body className={`${inter.className}`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+      <body className={`${inter.className} bg-white`}>
+        <ThemeProvider attribute="class" defaultTheme="light">
           <Toaster />
           {children}
         </ThemeProvider>
