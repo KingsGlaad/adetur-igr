@@ -124,6 +124,10 @@ model Municipality {
 model Highlight {
   id             String       @id @default(cuid())
   title          String
+  description    String?
+  image          String?
+  latitude       Float?
+  longitude      Float?
   municipalityId String
   municipality   Municipality @relation(fields: [municipalityId], references: [id])
 

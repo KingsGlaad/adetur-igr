@@ -404,8 +404,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.7.0
-   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
+   * Prisma Client JS version: 6.12.0
+   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
   export type PrismaVersion = {
     client: string
@@ -8903,13 +8903,29 @@ export namespace Prisma {
 
   export type AggregateHighlight = {
     _count: HighlightCountAggregateOutputType | null
+    _avg: HighlightAvgAggregateOutputType | null
+    _sum: HighlightSumAggregateOutputType | null
     _min: HighlightMinAggregateOutputType | null
     _max: HighlightMaxAggregateOutputType | null
+  }
+
+  export type HighlightAvgAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
+  }
+
+  export type HighlightSumAggregateOutputType = {
+    latitude: number | null
+    longitude: number | null
   }
 
   export type HighlightMinAggregateOutputType = {
     id: string | null
     title: string | null
+    description: string | null
+    image: string | null
+    latitude: number | null
+    longitude: number | null
     municipalityId: string | null
     createdAt: Date | null
   }
@@ -8917,6 +8933,10 @@ export namespace Prisma {
   export type HighlightMaxAggregateOutputType = {
     id: string | null
     title: string | null
+    description: string | null
+    image: string | null
+    latitude: number | null
+    longitude: number | null
     municipalityId: string | null
     createdAt: Date | null
   }
@@ -8924,15 +8944,33 @@ export namespace Prisma {
   export type HighlightCountAggregateOutputType = {
     id: number
     title: number
+    description: number
+    image: number
+    latitude: number
+    longitude: number
     municipalityId: number
     createdAt: number
     _all: number
   }
 
 
+  export type HighlightAvgAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
+  export type HighlightSumAggregateInputType = {
+    latitude?: true
+    longitude?: true
+  }
+
   export type HighlightMinAggregateInputType = {
     id?: true
     title?: true
+    description?: true
+    image?: true
+    latitude?: true
+    longitude?: true
     municipalityId?: true
     createdAt?: true
   }
@@ -8940,6 +8978,10 @@ export namespace Prisma {
   export type HighlightMaxAggregateInputType = {
     id?: true
     title?: true
+    description?: true
+    image?: true
+    latitude?: true
+    longitude?: true
     municipalityId?: true
     createdAt?: true
   }
@@ -8947,6 +8989,10 @@ export namespace Prisma {
   export type HighlightCountAggregateInputType = {
     id?: true
     title?: true
+    description?: true
+    image?: true
+    latitude?: true
+    longitude?: true
     municipalityId?: true
     createdAt?: true
     _all?: true
@@ -8990,6 +9036,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: HighlightAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: HighlightSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: HighlightMinAggregateInputType
@@ -9020,6 +9078,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: HighlightCountAggregateInputType | true
+    _avg?: HighlightAvgAggregateInputType
+    _sum?: HighlightSumAggregateInputType
     _min?: HighlightMinAggregateInputType
     _max?: HighlightMaxAggregateInputType
   }
@@ -9027,9 +9087,15 @@ export namespace Prisma {
   export type HighlightGroupByOutputType = {
     id: string
     title: string
+    description: string | null
+    image: string | null
+    latitude: number | null
+    longitude: number | null
     municipalityId: string
     createdAt: Date
     _count: HighlightCountAggregateOutputType | null
+    _avg: HighlightAvgAggregateOutputType | null
+    _sum: HighlightSumAggregateOutputType | null
     _min: HighlightMinAggregateOutputType | null
     _max: HighlightMaxAggregateOutputType | null
   }
@@ -9051,6 +9117,10 @@ export namespace Prisma {
   export type HighlightSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    description?: boolean
+    image?: boolean
+    latitude?: boolean
+    longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
@@ -9059,6 +9129,10 @@ export namespace Prisma {
   export type HighlightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    description?: boolean
+    image?: boolean
+    latitude?: boolean
+    longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
@@ -9067,6 +9141,10 @@ export namespace Prisma {
   export type HighlightSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
+    description?: boolean
+    image?: boolean
+    latitude?: boolean
+    longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
@@ -9075,11 +9153,15 @@ export namespace Prisma {
   export type HighlightSelectScalar = {
     id?: boolean
     title?: boolean
+    description?: boolean
+    image?: boolean
+    latitude?: boolean
+    longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
   }
 
-  export type HighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "municipalityId" | "createdAt", ExtArgs["result"]["highlight"]>
+  export type HighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image" | "latitude" | "longitude" | "municipalityId" | "createdAt", ExtArgs["result"]["highlight"]>
   export type HighlightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
   }
@@ -9098,6 +9180,10 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       title: string
+      description: string | null
+      image: string | null
+      latitude: number | null
+      longitude: number | null
       municipalityId: string
       createdAt: Date
     }, ExtArgs["result"]["highlight"]>
@@ -9526,6 +9612,10 @@ export namespace Prisma {
   interface HighlightFieldRefs {
     readonly id: FieldRef<"Highlight", 'String'>
     readonly title: FieldRef<"Highlight", 'String'>
+    readonly description: FieldRef<"Highlight", 'String'>
+    readonly image: FieldRef<"Highlight", 'String'>
+    readonly latitude: FieldRef<"Highlight", 'Float'>
+    readonly longitude: FieldRef<"Highlight", 'Float'>
     readonly municipalityId: FieldRef<"Highlight", 'String'>
     readonly createdAt: FieldRef<"Highlight", 'DateTime'>
   }
@@ -14408,6 +14498,10 @@ export namespace Prisma {
   export const HighlightScalarFieldEnum: {
     id: 'id',
     title: 'title',
+    description: 'description',
+    image: 'image',
+    latitude: 'latitude',
+    longitude: 'longitude',
     municipalityId: 'municipalityId',
     createdAt: 'createdAt'
   };
@@ -15126,6 +15220,10 @@ export namespace Prisma {
     NOT?: HighlightWhereInput | HighlightWhereInput[]
     id?: StringFilter<"Highlight"> | string
     title?: StringFilter<"Highlight"> | string
+    description?: StringNullableFilter<"Highlight"> | string | null
+    image?: StringNullableFilter<"Highlight"> | string | null
+    latitude?: FloatNullableFilter<"Highlight"> | number | null
+    longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
     createdAt?: DateTimeFilter<"Highlight"> | Date | string
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
@@ -15134,6 +15232,10 @@ export namespace Prisma {
   export type HighlightOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     municipality?: MunicipalityOrderByWithRelationInput
@@ -15145,6 +15247,10 @@ export namespace Prisma {
     OR?: HighlightWhereInput[]
     NOT?: HighlightWhereInput | HighlightWhereInput[]
     title?: StringFilter<"Highlight"> | string
+    description?: StringNullableFilter<"Highlight"> | string | null
+    image?: StringNullableFilter<"Highlight"> | string | null
+    latitude?: FloatNullableFilter<"Highlight"> | number | null
+    longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
     createdAt?: DateTimeFilter<"Highlight"> | Date | string
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
@@ -15153,11 +15259,17 @@ export namespace Prisma {
   export type HighlightOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
+    description?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    latitude?: SortOrderInput | SortOrder
+    longitude?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     _count?: HighlightCountOrderByAggregateInput
+    _avg?: HighlightAvgOrderByAggregateInput
     _max?: HighlightMaxOrderByAggregateInput
     _min?: HighlightMinOrderByAggregateInput
+    _sum?: HighlightSumOrderByAggregateInput
   }
 
   export type HighlightScalarWhereWithAggregatesInput = {
@@ -15166,6 +15278,10 @@ export namespace Prisma {
     NOT?: HighlightScalarWhereWithAggregatesInput | HighlightScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Highlight"> | string
     title?: StringWithAggregatesFilter<"Highlight"> | string
+    description?: StringNullableWithAggregatesFilter<"Highlight"> | string | null
+    image?: StringNullableWithAggregatesFilter<"Highlight"> | string | null
+    latitude?: FloatNullableWithAggregatesFilter<"Highlight"> | number | null
+    longitude?: FloatNullableWithAggregatesFilter<"Highlight"> | number | null
     municipalityId?: StringWithAggregatesFilter<"Highlight"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Highlight"> | Date | string
   }
@@ -15986,6 +16102,10 @@ export namespace Prisma {
   export type HighlightCreateInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     createdAt?: Date | string
     municipality: MunicipalityCreateNestedOneWithoutHighlightsInput
   }
@@ -15993,6 +16113,10 @@ export namespace Prisma {
   export type HighlightUncheckedCreateInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     municipalityId: string
     createdAt?: Date | string
   }
@@ -16000,6 +16124,10 @@ export namespace Prisma {
   export type HighlightUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     municipality?: MunicipalityUpdateOneRequiredWithoutHighlightsNestedInput
   }
@@ -16007,6 +16135,10 @@ export namespace Prisma {
   export type HighlightUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16014,6 +16146,10 @@ export namespace Prisma {
   export type HighlightCreateManyInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     municipalityId: string
     createdAt?: Date | string
   }
@@ -16021,12 +16157,20 @@ export namespace Prisma {
   export type HighlightUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HighlightUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16977,13 +17121,26 @@ export namespace Prisma {
   export type HighlightCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type HighlightAvgOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type HighlightMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
   }
@@ -16991,8 +17148,17 @@ export namespace Prisma {
   export type HighlightMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    latitude?: SortOrder
+    longitude?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type HighlightSumOrderByAggregateInput = {
+    latitude?: SortOrder
+    longitude?: SortOrder
   }
 
   export type AttractionCountOrderByAggregateInput = {
@@ -18629,12 +18795,20 @@ export namespace Prisma {
   export type HighlightCreateWithoutMunicipalityInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     createdAt?: Date | string
   }
 
   export type HighlightUncheckedCreateWithoutMunicipalityInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     createdAt?: Date | string
   }
 
@@ -18788,6 +18962,10 @@ export namespace Prisma {
     NOT?: HighlightScalarWhereInput | HighlightScalarWhereInput[]
     id?: StringFilter<"Highlight"> | string
     title?: StringFilter<"Highlight"> | string
+    description?: StringNullableFilter<"Highlight"> | string | null
+    image?: StringNullableFilter<"Highlight"> | string | null
+    latitude?: FloatNullableFilter<"Highlight"> | number | null
+    longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
     createdAt?: DateTimeFilter<"Highlight"> | Date | string
   }
@@ -19431,6 +19609,10 @@ export namespace Prisma {
   export type HighlightCreateManyMunicipalityInput = {
     id?: string
     title: string
+    description?: string | null
+    image?: string | null
+    latitude?: number | null
+    longitude?: number | null
     createdAt?: Date | string
   }
 
@@ -19509,18 +19691,30 @@ export namespace Prisma {
   export type HighlightUpdateWithoutMunicipalityInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HighlightUncheckedUpdateWithoutMunicipalityInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type HighlightUncheckedUpdateManyWithoutMunicipalityInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

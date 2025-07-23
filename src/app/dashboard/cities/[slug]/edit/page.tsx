@@ -10,6 +10,9 @@ export default async function EditPage({
   const slug = (await params).slug;
   const municipio = await prisma.municipality.findUnique({
     where: { slug },
+    include: {
+      highlights: true,
+    },
   });
 
   if (!municipio) {
