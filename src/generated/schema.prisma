@@ -104,28 +104,37 @@ enum Role {
 }
 
 model Municipality {
-  id          String       @id @default(cuid())
+  id          String              @id @default(cuid())
   name        String
   description String?
   coatOfArms  String?
   latitude    Float?
   longitude   Float?
-  about       String?      @db.Text
-  slug        String?      @unique
+  about       String?             @db.Text
+  slug        String?             @unique
   users       User[]
   highlights  Highlight[]
   attractions Attraction[]
   events      Event[]
   guides      Guide[]
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  images      MunicipalityImage[]
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+}
+
+model MunicipalityImage {
+  id             String       @id @default(cuid())
+  url            String
+  municipalityId String
+  municipality   Municipality @relation(fields: [municipalityId], references: [id], onDelete: Cascade)
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
 
 model Highlight {
   id             String       @id @default(cuid())
   title          String
   description    String?
-  image          String?
   latitude       Float?
   longitude      Float?
   municipalityId String
@@ -151,10 +160,20 @@ model Event {
   description    String
   date           DateTime
   image          String?
+  galleryImages  EventImage[]
   municipality   Municipality @relation(fields: [municipalityId], references: [id])
   municipalityId String
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
+}
+
+model EventImage {
+  id        String   @id @default(cuid())
+  url       String
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Guide {
@@ -162,6 +181,9 @@ model Guide {
   name           String
   phone          String
   languages      String[]
+  description    String?
+  image          String?
+  email          String?
   municipality   Municipality @relation(fields: [municipalityId], references: [id])
   municipalityId String
   createdAt      DateTime     @default(now())

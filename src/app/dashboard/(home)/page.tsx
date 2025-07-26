@@ -13,16 +13,16 @@ export default async function Dashboard() {
     redirect("/login");
   }
 
-  const [municipalities, events, attractions, guides] = await Promise.all([
+  const [municipalities, events, highlights, guides] = await Promise.all([
     prisma.municipality.findMany({
       include: {
         users: true,
-        attractions: true,
+        highlights: true,
         events: true,
         guides: true,
       },
       orderBy: {
-        createdAt: "asc",
+        name: "asc",
       },
     }),
     prisma.event.findMany({
@@ -31,7 +31,7 @@ export default async function Dashboard() {
       },
       take: 5,
     }),
-    prisma.attraction.findMany({
+    prisma.highlight.findMany({
       orderBy: {
         createdAt: "desc",
       },
@@ -59,7 +59,7 @@ export default async function Dashboard() {
     },
     {
       title: "Atrações",
-      value: attractions.length,
+      value: highlights.length,
       icon: MapPin,
       description: "Pontos turísticos cadastrados",
     },

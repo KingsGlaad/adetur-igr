@@ -13,7 +13,7 @@ interface MunicipalityListProps {
       name: string | null;
       email: string;
     }[];
-    attractions: {
+    highlights: {
       id: string;
     }[];
     events: {
@@ -47,7 +47,7 @@ export function MunicipalityList({ municipalities }: MunicipalityListProps) {
               <div className="flex-1">
                 <p className="font-medium">{municipality.name}</p>
                 <div className="flex gap-4 text-sm text-muted-foreground">
-                  <span>{municipality.attractions.length} atrações</span>
+                  <span>{municipality.highlights.length} atrações</span>
                   <span>{municipality.events.length} eventos</span>
                   <span>{municipality.guides.length} guias</span>
                 </div>

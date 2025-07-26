@@ -12,6 +12,7 @@ export default async function EditPage({
     where: { slug },
     include: {
       highlights: true,
+      images: true,
     },
   });
 

@@ -12,7 +12,6 @@ export async function POST(req: NextRequest) {
         description: data.description,
         latitude: data.latitude,
         longitude: data.longitude,
-        image: data.image,
         municipalityId: data.municipalityId,
       },
     });

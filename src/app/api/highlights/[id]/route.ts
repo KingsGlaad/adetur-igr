@@ -32,9 +32,10 @@ export async function PUT(
 ) {
   try {
     const data = await req.json();
+    const id = (await params).id;
 
     const updated = await prisma.highlight.update({
-      where: { id: params.id },
+      where: { id },
       data: {
         title: data.title,
         description: data.description,

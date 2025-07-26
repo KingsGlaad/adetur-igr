@@ -44,6 +44,11 @@ export type VerificationToken = $Result.DefaultSelection<Prisma.$VerificationTok
  */
 export type Municipality = $Result.DefaultSelection<Prisma.$MunicipalityPayload>
 /**
+ * Model MunicipalityImage
+ * 
+ */
+export type MunicipalityImage = $Result.DefaultSelection<Prisma.$MunicipalityImagePayload>
+/**
  * Model Highlight
  * 
  */
@@ -58,6 +63,11 @@ export type Attraction = $Result.DefaultSelection<Prisma.$AttractionPayload>
  * 
  */
 export type Event = $Result.DefaultSelection<Prisma.$EventPayload>
+/**
+ * Model EventImage
+ * 
+ */
+export type EventImage = $Result.DefaultSelection<Prisma.$EventImagePayload>
 /**
  * Model Guide
  * 
@@ -298,6 +308,16 @@ export class PrismaClient<
   get municipality(): Prisma.MunicipalityDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.municipalityImage`: Exposes CRUD operations for the **MunicipalityImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MunicipalityImages
+    * const municipalityImages = await prisma.municipalityImage.findMany()
+    * ```
+    */
+  get municipalityImage(): Prisma.MunicipalityImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.highlight`: Exposes CRUD operations for the **Highlight** model.
     * Example usage:
     * ```ts
@@ -326,6 +346,16 @@ export class PrismaClient<
     * ```
     */
   get event(): Prisma.EventDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.eventImage`: Exposes CRUD operations for the **EventImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EventImages
+    * const eventImages = await prisma.eventImage.findMany()
+    * ```
+    */
+  get eventImage(): Prisma.EventImageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.guide`: Exposes CRUD operations for the **Guide** model.
@@ -792,9 +822,11 @@ export namespace Prisma {
     Session: 'Session',
     VerificationToken: 'VerificationToken',
     Municipality: 'Municipality',
+    MunicipalityImage: 'MunicipalityImage',
     Highlight: 'Highlight',
     Attraction: 'Attraction',
     Event: 'Event',
+    EventImage: 'EventImage',
     Guide: 'Guide',
     Post: 'Post'
   };
@@ -815,7 +847,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "settings" | "account" | "session" | "verificationToken" | "municipality" | "highlight" | "attraction" | "event" | "guide" | "post"
+      modelProps: "user" | "settings" | "account" | "session" | "verificationToken" | "municipality" | "municipalityImage" | "highlight" | "attraction" | "event" | "eventImage" | "guide" | "post"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1263,6 +1295,80 @@ export namespace Prisma {
           }
         }
       }
+      MunicipalityImage: {
+        payload: Prisma.$MunicipalityImagePayload<ExtArgs>
+        fields: Prisma.MunicipalityImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MunicipalityImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MunicipalityImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          findFirst: {
+            args: Prisma.MunicipalityImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MunicipalityImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          findMany: {
+            args: Prisma.MunicipalityImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>[]
+          }
+          create: {
+            args: Prisma.MunicipalityImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          createMany: {
+            args: Prisma.MunicipalityImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MunicipalityImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>[]
+          }
+          delete: {
+            args: Prisma.MunicipalityImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          update: {
+            args: Prisma.MunicipalityImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.MunicipalityImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MunicipalityImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MunicipalityImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.MunicipalityImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MunicipalityImagePayload>
+          }
+          aggregate: {
+            args: Prisma.MunicipalityImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMunicipalityImage>
+          }
+          groupBy: {
+            args: Prisma.MunicipalityImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MunicipalityImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MunicipalityImageCountArgs<ExtArgs>
+            result: $Utils.Optional<MunicipalityImageCountAggregateOutputType> | number
+          }
+        }
+      }
       Highlight: {
         payload: Prisma.$HighlightPayload<ExtArgs>
         fields: Prisma.HighlightFieldRefs
@@ -1482,6 +1588,80 @@ export namespace Prisma {
           count: {
             args: Prisma.EventCountArgs<ExtArgs>
             result: $Utils.Optional<EventCountAggregateOutputType> | number
+          }
+        }
+      }
+      EventImage: {
+        payload: Prisma.$EventImagePayload<ExtArgs>
+        fields: Prisma.EventImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EventImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EventImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          findFirst: {
+            args: Prisma.EventImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EventImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          findMany: {
+            args: Prisma.EventImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>[]
+          }
+          create: {
+            args: Prisma.EventImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          createMany: {
+            args: Prisma.EventImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EventImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>[]
+          }
+          delete: {
+            args: Prisma.EventImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          update: {
+            args: Prisma.EventImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.EventImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EventImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EventImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.EventImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EventImagePayload>
+          }
+          aggregate: {
+            args: Prisma.EventImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEventImage>
+          }
+          groupBy: {
+            args: Prisma.EventImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EventImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EventImageCountArgs<ExtArgs>
+            result: $Utils.Optional<EventImageCountAggregateOutputType> | number
           }
         }
       }
@@ -1723,9 +1903,11 @@ export namespace Prisma {
     session?: SessionOmit
     verificationToken?: VerificationTokenOmit
     municipality?: MunicipalityOmit
+    municipalityImage?: MunicipalityImageOmit
     highlight?: HighlightOmit
     attraction?: AttractionOmit
     event?: EventOmit
+    eventImage?: EventImageOmit
     guide?: GuideOmit
     post?: PostOmit
   }
@@ -1876,6 +2058,7 @@ export namespace Prisma {
     attractions: number
     events: number
     guides: number
+    images: number
   }
 
   export type MunicipalityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1884,6 +2067,7 @@ export namespace Prisma {
     attractions?: boolean | MunicipalityCountOutputTypeCountAttractionsArgs
     events?: boolean | MunicipalityCountOutputTypeCountEventsArgs
     guides?: boolean | MunicipalityCountOutputTypeCountGuidesArgs
+    images?: boolean | MunicipalityCountOutputTypeCountImagesArgs
   }
 
   // Custom InputTypes
@@ -1930,6 +2114,44 @@ export namespace Prisma {
    */
   export type MunicipalityCountOutputTypeCountGuidesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GuideWhereInput
+  }
+
+  /**
+   * MunicipalityCountOutputType without action
+   */
+  export type MunicipalityCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MunicipalityImageWhereInput
+  }
+
+
+  /**
+   * Count Type EventCountOutputType
+   */
+
+  export type EventCountOutputType = {
+    galleryImages: number
+  }
+
+  export type EventCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    galleryImages?: boolean | EventCountOutputTypeCountGalleryImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * EventCountOutputType without action
+   */
+  export type EventCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventCountOutputType
+     */
+    select?: EventCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * EventCountOutputType without action
+   */
+  export type EventCountOutputTypeCountGalleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventImageWhereInput
   }
 
 
@@ -7859,6 +8081,7 @@ export namespace Prisma {
     attractions?: boolean | Municipality$attractionsArgs<ExtArgs>
     events?: boolean | Municipality$eventsArgs<ExtArgs>
     guides?: boolean | Municipality$guidesArgs<ExtArgs>
+    images?: boolean | Municipality$imagesArgs<ExtArgs>
     _count?: boolean | MunicipalityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["municipality"]>
 
@@ -7908,6 +8131,7 @@ export namespace Prisma {
     attractions?: boolean | Municipality$attractionsArgs<ExtArgs>
     events?: boolean | Municipality$eventsArgs<ExtArgs>
     guides?: boolean | Municipality$guidesArgs<ExtArgs>
+    images?: boolean | Municipality$imagesArgs<ExtArgs>
     _count?: boolean | MunicipalityCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type MunicipalityIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -7921,6 +8145,7 @@ export namespace Prisma {
       attractions: Prisma.$AttractionPayload<ExtArgs>[]
       events: Prisma.$EventPayload<ExtArgs>[]
       guides: Prisma.$GuidePayload<ExtArgs>[]
+      images: Prisma.$MunicipalityImagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -8332,6 +8557,7 @@ export namespace Prisma {
     attractions<T extends Municipality$attractionsArgs<ExtArgs> = {}>(args?: Subset<T, Municipality$attractionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     events<T extends Municipality$eventsArgs<ExtArgs> = {}>(args?: Subset<T, Municipality$eventsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     guides<T extends Municipality$guidesArgs<ExtArgs> = {}>(args?: Subset<T, Municipality$guidesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GuidePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    images<T extends Municipality$imagesArgs<ExtArgs> = {}>(args?: Subset<T, Municipality$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8879,6 +9105,30 @@ export namespace Prisma {
   }
 
   /**
+   * Municipality.images
+   */
+  export type Municipality$imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    where?: MunicipalityImageWhereInput
+    orderBy?: MunicipalityImageOrderByWithRelationInput | MunicipalityImageOrderByWithRelationInput[]
+    cursor?: MunicipalityImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MunicipalityImageScalarFieldEnum | MunicipalityImageScalarFieldEnum[]
+  }
+
+  /**
    * Municipality without action
    */
   export type MunicipalityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8894,6 +9144,1064 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: MunicipalityInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MunicipalityImage
+   */
+
+  export type AggregateMunicipalityImage = {
+    _count: MunicipalityImageCountAggregateOutputType | null
+    _min: MunicipalityImageMinAggregateOutputType | null
+    _max: MunicipalityImageMaxAggregateOutputType | null
+  }
+
+  export type MunicipalityImageMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    municipalityId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MunicipalityImageMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    municipalityId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type MunicipalityImageCountAggregateOutputType = {
+    id: number
+    url: number
+    municipalityId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type MunicipalityImageMinAggregateInputType = {
+    id?: true
+    url?: true
+    municipalityId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MunicipalityImageMaxAggregateInputType = {
+    id?: true
+    url?: true
+    municipalityId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type MunicipalityImageCountAggregateInputType = {
+    id?: true
+    url?: true
+    municipalityId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type MunicipalityImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MunicipalityImage to aggregate.
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MunicipalityImages to fetch.
+     */
+    orderBy?: MunicipalityImageOrderByWithRelationInput | MunicipalityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MunicipalityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MunicipalityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MunicipalityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MunicipalityImages
+    **/
+    _count?: true | MunicipalityImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MunicipalityImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MunicipalityImageMaxAggregateInputType
+  }
+
+  export type GetMunicipalityImageAggregateType<T extends MunicipalityImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateMunicipalityImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMunicipalityImage[P]>
+      : GetScalarType<T[P], AggregateMunicipalityImage[P]>
+  }
+
+
+
+
+  export type MunicipalityImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MunicipalityImageWhereInput
+    orderBy?: MunicipalityImageOrderByWithAggregationInput | MunicipalityImageOrderByWithAggregationInput[]
+    by: MunicipalityImageScalarFieldEnum[] | MunicipalityImageScalarFieldEnum
+    having?: MunicipalityImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MunicipalityImageCountAggregateInputType | true
+    _min?: MunicipalityImageMinAggregateInputType
+    _max?: MunicipalityImageMaxAggregateInputType
+  }
+
+  export type MunicipalityImageGroupByOutputType = {
+    id: string
+    url: string
+    municipalityId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: MunicipalityImageCountAggregateOutputType | null
+    _min: MunicipalityImageMinAggregateOutputType | null
+    _max: MunicipalityImageMaxAggregateOutputType | null
+  }
+
+  type GetMunicipalityImageGroupByPayload<T extends MunicipalityImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MunicipalityImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MunicipalityImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MunicipalityImageGroupByOutputType[P]>
+            : GetScalarType<T[P], MunicipalityImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MunicipalityImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    municipalityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["municipalityImage"]>
+
+  export type MunicipalityImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    municipalityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["municipalityImage"]>
+
+  export type MunicipalityImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    municipalityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["municipalityImage"]>
+
+  export type MunicipalityImageSelectScalar = {
+    id?: boolean
+    url?: boolean
+    municipalityId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type MunicipalityImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "municipalityId" | "createdAt" | "updatedAt", ExtArgs["result"]["municipalityImage"]>
+  export type MunicipalityImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }
+  export type MunicipalityImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }
+  export type MunicipalityImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+  }
+
+  export type $MunicipalityImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MunicipalityImage"
+    objects: {
+      municipality: Prisma.$MunicipalityPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      municipalityId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["municipalityImage"]>
+    composites: {}
+  }
+
+  type MunicipalityImageGetPayload<S extends boolean | null | undefined | MunicipalityImageDefaultArgs> = $Result.GetResult<Prisma.$MunicipalityImagePayload, S>
+
+  type MunicipalityImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MunicipalityImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MunicipalityImageCountAggregateInputType | true
+    }
+
+  export interface MunicipalityImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MunicipalityImage'], meta: { name: 'MunicipalityImage' } }
+    /**
+     * Find zero or one MunicipalityImage that matches the filter.
+     * @param {MunicipalityImageFindUniqueArgs} args - Arguments to find a MunicipalityImage
+     * @example
+     * // Get one MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MunicipalityImageFindUniqueArgs>(args: SelectSubset<T, MunicipalityImageFindUniqueArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MunicipalityImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MunicipalityImageFindUniqueOrThrowArgs} args - Arguments to find a MunicipalityImage
+     * @example
+     * // Get one MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MunicipalityImageFindUniqueOrThrowArgs>(args: SelectSubset<T, MunicipalityImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MunicipalityImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageFindFirstArgs} args - Arguments to find a MunicipalityImage
+     * @example
+     * // Get one MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MunicipalityImageFindFirstArgs>(args?: SelectSubset<T, MunicipalityImageFindFirstArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MunicipalityImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageFindFirstOrThrowArgs} args - Arguments to find a MunicipalityImage
+     * @example
+     * // Get one MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MunicipalityImageFindFirstOrThrowArgs>(args?: SelectSubset<T, MunicipalityImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MunicipalityImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MunicipalityImages
+     * const municipalityImages = await prisma.municipalityImage.findMany()
+     * 
+     * // Get first 10 MunicipalityImages
+     * const municipalityImages = await prisma.municipalityImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const municipalityImageWithIdOnly = await prisma.municipalityImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MunicipalityImageFindManyArgs>(args?: SelectSubset<T, MunicipalityImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MunicipalityImage.
+     * @param {MunicipalityImageCreateArgs} args - Arguments to create a MunicipalityImage.
+     * @example
+     * // Create one MunicipalityImage
+     * const MunicipalityImage = await prisma.municipalityImage.create({
+     *   data: {
+     *     // ... data to create a MunicipalityImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends MunicipalityImageCreateArgs>(args: SelectSubset<T, MunicipalityImageCreateArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MunicipalityImages.
+     * @param {MunicipalityImageCreateManyArgs} args - Arguments to create many MunicipalityImages.
+     * @example
+     * // Create many MunicipalityImages
+     * const municipalityImage = await prisma.municipalityImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MunicipalityImageCreateManyArgs>(args?: SelectSubset<T, MunicipalityImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MunicipalityImages and returns the data saved in the database.
+     * @param {MunicipalityImageCreateManyAndReturnArgs} args - Arguments to create many MunicipalityImages.
+     * @example
+     * // Create many MunicipalityImages
+     * const municipalityImage = await prisma.municipalityImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MunicipalityImages and only return the `id`
+     * const municipalityImageWithIdOnly = await prisma.municipalityImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MunicipalityImageCreateManyAndReturnArgs>(args?: SelectSubset<T, MunicipalityImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MunicipalityImage.
+     * @param {MunicipalityImageDeleteArgs} args - Arguments to delete one MunicipalityImage.
+     * @example
+     * // Delete one MunicipalityImage
+     * const MunicipalityImage = await prisma.municipalityImage.delete({
+     *   where: {
+     *     // ... filter to delete one MunicipalityImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MunicipalityImageDeleteArgs>(args: SelectSubset<T, MunicipalityImageDeleteArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MunicipalityImage.
+     * @param {MunicipalityImageUpdateArgs} args - Arguments to update one MunicipalityImage.
+     * @example
+     * // Update one MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MunicipalityImageUpdateArgs>(args: SelectSubset<T, MunicipalityImageUpdateArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MunicipalityImages.
+     * @param {MunicipalityImageDeleteManyArgs} args - Arguments to filter MunicipalityImages to delete.
+     * @example
+     * // Delete a few MunicipalityImages
+     * const { count } = await prisma.municipalityImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MunicipalityImageDeleteManyArgs>(args?: SelectSubset<T, MunicipalityImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MunicipalityImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MunicipalityImages
+     * const municipalityImage = await prisma.municipalityImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MunicipalityImageUpdateManyArgs>(args: SelectSubset<T, MunicipalityImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MunicipalityImages and returns the data updated in the database.
+     * @param {MunicipalityImageUpdateManyAndReturnArgs} args - Arguments to update many MunicipalityImages.
+     * @example
+     * // Update many MunicipalityImages
+     * const municipalityImage = await prisma.municipalityImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MunicipalityImages and only return the `id`
+     * const municipalityImageWithIdOnly = await prisma.municipalityImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MunicipalityImageUpdateManyAndReturnArgs>(args: SelectSubset<T, MunicipalityImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MunicipalityImage.
+     * @param {MunicipalityImageUpsertArgs} args - Arguments to update or create a MunicipalityImage.
+     * @example
+     * // Update or create a MunicipalityImage
+     * const municipalityImage = await prisma.municipalityImage.upsert({
+     *   create: {
+     *     // ... data to create a MunicipalityImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MunicipalityImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MunicipalityImageUpsertArgs>(args: SelectSubset<T, MunicipalityImageUpsertArgs<ExtArgs>>): Prisma__MunicipalityImageClient<$Result.GetResult<Prisma.$MunicipalityImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MunicipalityImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageCountArgs} args - Arguments to filter MunicipalityImages to count.
+     * @example
+     * // Count the number of MunicipalityImages
+     * const count = await prisma.municipalityImage.count({
+     *   where: {
+     *     // ... the filter for the MunicipalityImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends MunicipalityImageCountArgs>(
+      args?: Subset<T, MunicipalityImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MunicipalityImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MunicipalityImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MunicipalityImageAggregateArgs>(args: Subset<T, MunicipalityImageAggregateArgs>): Prisma.PrismaPromise<GetMunicipalityImageAggregateType<T>>
+
+    /**
+     * Group by MunicipalityImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MunicipalityImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MunicipalityImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MunicipalityImageGroupByArgs['orderBy'] }
+        : { orderBy?: MunicipalityImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MunicipalityImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMunicipalityImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MunicipalityImage model
+   */
+  readonly fields: MunicipalityImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MunicipalityImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MunicipalityImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    municipality<T extends MunicipalityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MunicipalityDefaultArgs<ExtArgs>>): Prisma__MunicipalityClient<$Result.GetResult<Prisma.$MunicipalityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MunicipalityImage model
+   */
+  interface MunicipalityImageFieldRefs {
+    readonly id: FieldRef<"MunicipalityImage", 'String'>
+    readonly url: FieldRef<"MunicipalityImage", 'String'>
+    readonly municipalityId: FieldRef<"MunicipalityImage", 'String'>
+    readonly createdAt: FieldRef<"MunicipalityImage", 'DateTime'>
+    readonly updatedAt: FieldRef<"MunicipalityImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MunicipalityImage findUnique
+   */
+  export type MunicipalityImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which MunicipalityImage to fetch.
+     */
+    where: MunicipalityImageWhereUniqueInput
+  }
+
+  /**
+   * MunicipalityImage findUniqueOrThrow
+   */
+  export type MunicipalityImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which MunicipalityImage to fetch.
+     */
+    where: MunicipalityImageWhereUniqueInput
+  }
+
+  /**
+   * MunicipalityImage findFirst
+   */
+  export type MunicipalityImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which MunicipalityImage to fetch.
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MunicipalityImages to fetch.
+     */
+    orderBy?: MunicipalityImageOrderByWithRelationInput | MunicipalityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MunicipalityImages.
+     */
+    cursor?: MunicipalityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MunicipalityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MunicipalityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MunicipalityImages.
+     */
+    distinct?: MunicipalityImageScalarFieldEnum | MunicipalityImageScalarFieldEnum[]
+  }
+
+  /**
+   * MunicipalityImage findFirstOrThrow
+   */
+  export type MunicipalityImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which MunicipalityImage to fetch.
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MunicipalityImages to fetch.
+     */
+    orderBy?: MunicipalityImageOrderByWithRelationInput | MunicipalityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MunicipalityImages.
+     */
+    cursor?: MunicipalityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MunicipalityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MunicipalityImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MunicipalityImages.
+     */
+    distinct?: MunicipalityImageScalarFieldEnum | MunicipalityImageScalarFieldEnum[]
+  }
+
+  /**
+   * MunicipalityImage findMany
+   */
+  export type MunicipalityImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter, which MunicipalityImages to fetch.
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MunicipalityImages to fetch.
+     */
+    orderBy?: MunicipalityImageOrderByWithRelationInput | MunicipalityImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MunicipalityImages.
+     */
+    cursor?: MunicipalityImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MunicipalityImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MunicipalityImages.
+     */
+    skip?: number
+    distinct?: MunicipalityImageScalarFieldEnum | MunicipalityImageScalarFieldEnum[]
+  }
+
+  /**
+   * MunicipalityImage create
+   */
+  export type MunicipalityImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MunicipalityImage.
+     */
+    data: XOR<MunicipalityImageCreateInput, MunicipalityImageUncheckedCreateInput>
+  }
+
+  /**
+   * MunicipalityImage createMany
+   */
+  export type MunicipalityImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MunicipalityImages.
+     */
+    data: MunicipalityImageCreateManyInput | MunicipalityImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MunicipalityImage createManyAndReturn
+   */
+  export type MunicipalityImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many MunicipalityImages.
+     */
+    data: MunicipalityImageCreateManyInput | MunicipalityImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MunicipalityImage update
+   */
+  export type MunicipalityImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MunicipalityImage.
+     */
+    data: XOR<MunicipalityImageUpdateInput, MunicipalityImageUncheckedUpdateInput>
+    /**
+     * Choose, which MunicipalityImage to update.
+     */
+    where: MunicipalityImageWhereUniqueInput
+  }
+
+  /**
+   * MunicipalityImage updateMany
+   */
+  export type MunicipalityImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MunicipalityImages.
+     */
+    data: XOR<MunicipalityImageUpdateManyMutationInput, MunicipalityImageUncheckedUpdateManyInput>
+    /**
+     * Filter which MunicipalityImages to update
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * Limit how many MunicipalityImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MunicipalityImage updateManyAndReturn
+   */
+  export type MunicipalityImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * The data used to update MunicipalityImages.
+     */
+    data: XOR<MunicipalityImageUpdateManyMutationInput, MunicipalityImageUncheckedUpdateManyInput>
+    /**
+     * Filter which MunicipalityImages to update
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * Limit how many MunicipalityImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MunicipalityImage upsert
+   */
+  export type MunicipalityImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MunicipalityImage to update in case it exists.
+     */
+    where: MunicipalityImageWhereUniqueInput
+    /**
+     * In case the MunicipalityImage found by the `where` argument doesn't exist, create a new MunicipalityImage with this data.
+     */
+    create: XOR<MunicipalityImageCreateInput, MunicipalityImageUncheckedCreateInput>
+    /**
+     * In case the MunicipalityImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MunicipalityImageUpdateInput, MunicipalityImageUncheckedUpdateInput>
+  }
+
+  /**
+   * MunicipalityImage delete
+   */
+  export type MunicipalityImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
+    /**
+     * Filter which MunicipalityImage to delete.
+     */
+    where: MunicipalityImageWhereUniqueInput
+  }
+
+  /**
+   * MunicipalityImage deleteMany
+   */
+  export type MunicipalityImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MunicipalityImages to delete
+     */
+    where?: MunicipalityImageWhereInput
+    /**
+     * Limit how many MunicipalityImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MunicipalityImage without action
+   */
+  export type MunicipalityImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MunicipalityImage
+     */
+    select?: MunicipalityImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MunicipalityImage
+     */
+    omit?: MunicipalityImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MunicipalityImageInclude<ExtArgs> | null
   }
 
 
@@ -8923,7 +10231,6 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
-    image: string | null
     latitude: number | null
     longitude: number | null
     municipalityId: string | null
@@ -8934,7 +10241,6 @@ export namespace Prisma {
     id: string | null
     title: string | null
     description: string | null
-    image: string | null
     latitude: number | null
     longitude: number | null
     municipalityId: string | null
@@ -8945,7 +10251,6 @@ export namespace Prisma {
     id: number
     title: number
     description: number
-    image: number
     latitude: number
     longitude: number
     municipalityId: number
@@ -8968,7 +10273,6 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    image?: true
     latitude?: true
     longitude?: true
     municipalityId?: true
@@ -8979,7 +10283,6 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    image?: true
     latitude?: true
     longitude?: true
     municipalityId?: true
@@ -8990,7 +10293,6 @@ export namespace Prisma {
     id?: true
     title?: true
     description?: true
-    image?: true
     latitude?: true
     longitude?: true
     municipalityId?: true
@@ -9088,7 +10390,6 @@ export namespace Prisma {
     id: string
     title: string
     description: string | null
-    image: string | null
     latitude: number | null
     longitude: number | null
     municipalityId: string
@@ -9118,7 +10419,6 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    image?: boolean
     latitude?: boolean
     longitude?: boolean
     municipalityId?: boolean
@@ -9130,7 +10430,6 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    image?: boolean
     latitude?: boolean
     longitude?: boolean
     municipalityId?: boolean
@@ -9142,7 +10441,6 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    image?: boolean
     latitude?: boolean
     longitude?: boolean
     municipalityId?: boolean
@@ -9154,14 +10452,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     description?: boolean
-    image?: boolean
     latitude?: boolean
     longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
   }
 
-  export type HighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "image" | "latitude" | "longitude" | "municipalityId" | "createdAt", ExtArgs["result"]["highlight"]>
+  export type HighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "latitude" | "longitude" | "municipalityId" | "createdAt", ExtArgs["result"]["highlight"]>
   export type HighlightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
   }
@@ -9181,7 +10478,6 @@ export namespace Prisma {
       id: string
       title: string
       description: string | null
-      image: string | null
       latitude: number | null
       longitude: number | null
       municipalityId: string
@@ -9613,7 +10909,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Highlight", 'String'>
     readonly title: FieldRef<"Highlight", 'String'>
     readonly description: FieldRef<"Highlight", 'String'>
-    readonly image: FieldRef<"Highlight", 'String'>
     readonly latitude: FieldRef<"Highlight", 'Float'>
     readonly longitude: FieldRef<"Highlight", 'Float'>
     readonly municipalityId: FieldRef<"Highlight", 'String'>
@@ -11304,7 +12599,9 @@ export namespace Prisma {
     municipalityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    galleryImages?: boolean | Event$galleryImagesArgs<ExtArgs>
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["event"]>
 
   export type EventSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -11344,7 +12641,9 @@ export namespace Prisma {
 
   export type EventOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "date" | "image" | "municipalityId" | "createdAt" | "updatedAt", ExtArgs["result"]["event"]>
   export type EventInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    galleryImages?: boolean | Event$galleryImagesArgs<ExtArgs>
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+    _count?: boolean | EventCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type EventIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
@@ -11356,6 +12655,7 @@ export namespace Prisma {
   export type $EventPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Event"
     objects: {
+      galleryImages: Prisma.$EventImagePayload<ExtArgs>[]
       municipality: Prisma.$MunicipalityPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -11761,6 +13061,7 @@ export namespace Prisma {
    */
   export interface Prisma__EventClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    galleryImages<T extends Event$galleryImagesArgs<ExtArgs> = {}>(args?: Subset<T, Event$galleryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     municipality<T extends MunicipalityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MunicipalityDefaultArgs<ExtArgs>>): Prisma__MunicipalityClient<$Result.GetResult<Prisma.$MunicipalityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -12195,6 +13496,30 @@ export namespace Prisma {
   }
 
   /**
+   * Event.galleryImages
+   */
+  export type Event$galleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    where?: EventImageWhereInput
+    orderBy?: EventImageOrderByWithRelationInput | EventImageOrderByWithRelationInput[]
+    cursor?: EventImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EventImageScalarFieldEnum | EventImageScalarFieldEnum[]
+  }
+
+  /**
    * Event without action
    */
   export type EventDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12214,6 +13539,1064 @@ export namespace Prisma {
 
 
   /**
+   * Model EventImage
+   */
+
+  export type AggregateEventImage = {
+    _count: EventImageCountAggregateOutputType | null
+    _min: EventImageMinAggregateOutputType | null
+    _max: EventImageMaxAggregateOutputType | null
+  }
+
+  export type EventImageMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    eventId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventImageMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    eventId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type EventImageCountAggregateOutputType = {
+    id: number
+    url: number
+    eventId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type EventImageMinAggregateInputType = {
+    id?: true
+    url?: true
+    eventId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventImageMaxAggregateInputType = {
+    id?: true
+    url?: true
+    eventId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type EventImageCountAggregateInputType = {
+    id?: true
+    url?: true
+    eventId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type EventImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EventImage to aggregate.
+     */
+    where?: EventImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventImages to fetch.
+     */
+    orderBy?: EventImageOrderByWithRelationInput | EventImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EventImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EventImages
+    **/
+    _count?: true | EventImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EventImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EventImageMaxAggregateInputType
+  }
+
+  export type GetEventImageAggregateType<T extends EventImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateEventImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEventImage[P]>
+      : GetScalarType<T[P], AggregateEventImage[P]>
+  }
+
+
+
+
+  export type EventImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EventImageWhereInput
+    orderBy?: EventImageOrderByWithAggregationInput | EventImageOrderByWithAggregationInput[]
+    by: EventImageScalarFieldEnum[] | EventImageScalarFieldEnum
+    having?: EventImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EventImageCountAggregateInputType | true
+    _min?: EventImageMinAggregateInputType
+    _max?: EventImageMaxAggregateInputType
+  }
+
+  export type EventImageGroupByOutputType = {
+    id: string
+    url: string
+    eventId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: EventImageCountAggregateOutputType | null
+    _min: EventImageMinAggregateOutputType | null
+    _max: EventImageMaxAggregateOutputType | null
+  }
+
+  type GetEventImageGroupByPayload<T extends EventImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EventImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EventImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EventImageGroupByOutputType[P]>
+            : GetScalarType<T[P], EventImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EventImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    eventId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventImage"]>
+
+  export type EventImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    eventId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventImage"]>
+
+  export type EventImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    eventId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["eventImage"]>
+
+  export type EventImageSelectScalar = {
+    id?: boolean
+    url?: boolean
+    eventId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type EventImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "eventId" | "createdAt" | "updatedAt", ExtArgs["result"]["eventImage"]>
+  export type EventImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }
+  export type EventImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }
+  export type EventImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    event?: boolean | EventDefaultArgs<ExtArgs>
+  }
+
+  export type $EventImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EventImage"
+    objects: {
+      event: Prisma.$EventPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      eventId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["eventImage"]>
+    composites: {}
+  }
+
+  type EventImageGetPayload<S extends boolean | null | undefined | EventImageDefaultArgs> = $Result.GetResult<Prisma.$EventImagePayload, S>
+
+  type EventImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EventImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EventImageCountAggregateInputType | true
+    }
+
+  export interface EventImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EventImage'], meta: { name: 'EventImage' } }
+    /**
+     * Find zero or one EventImage that matches the filter.
+     * @param {EventImageFindUniqueArgs} args - Arguments to find a EventImage
+     * @example
+     * // Get one EventImage
+     * const eventImage = await prisma.eventImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EventImageFindUniqueArgs>(args: SelectSubset<T, EventImageFindUniqueArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EventImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EventImageFindUniqueOrThrowArgs} args - Arguments to find a EventImage
+     * @example
+     * // Get one EventImage
+     * const eventImage = await prisma.eventImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EventImageFindUniqueOrThrowArgs>(args: SelectSubset<T, EventImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EventImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageFindFirstArgs} args - Arguments to find a EventImage
+     * @example
+     * // Get one EventImage
+     * const eventImage = await prisma.eventImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EventImageFindFirstArgs>(args?: SelectSubset<T, EventImageFindFirstArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EventImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageFindFirstOrThrowArgs} args - Arguments to find a EventImage
+     * @example
+     * // Get one EventImage
+     * const eventImage = await prisma.eventImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EventImageFindFirstOrThrowArgs>(args?: SelectSubset<T, EventImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EventImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EventImages
+     * const eventImages = await prisma.eventImage.findMany()
+     * 
+     * // Get first 10 EventImages
+     * const eventImages = await prisma.eventImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const eventImageWithIdOnly = await prisma.eventImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EventImageFindManyArgs>(args?: SelectSubset<T, EventImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EventImage.
+     * @param {EventImageCreateArgs} args - Arguments to create a EventImage.
+     * @example
+     * // Create one EventImage
+     * const EventImage = await prisma.eventImage.create({
+     *   data: {
+     *     // ... data to create a EventImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends EventImageCreateArgs>(args: SelectSubset<T, EventImageCreateArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EventImages.
+     * @param {EventImageCreateManyArgs} args - Arguments to create many EventImages.
+     * @example
+     * // Create many EventImages
+     * const eventImage = await prisma.eventImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EventImageCreateManyArgs>(args?: SelectSubset<T, EventImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EventImages and returns the data saved in the database.
+     * @param {EventImageCreateManyAndReturnArgs} args - Arguments to create many EventImages.
+     * @example
+     * // Create many EventImages
+     * const eventImage = await prisma.eventImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EventImages and only return the `id`
+     * const eventImageWithIdOnly = await prisma.eventImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EventImageCreateManyAndReturnArgs>(args?: SelectSubset<T, EventImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EventImage.
+     * @param {EventImageDeleteArgs} args - Arguments to delete one EventImage.
+     * @example
+     * // Delete one EventImage
+     * const EventImage = await prisma.eventImage.delete({
+     *   where: {
+     *     // ... filter to delete one EventImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EventImageDeleteArgs>(args: SelectSubset<T, EventImageDeleteArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EventImage.
+     * @param {EventImageUpdateArgs} args - Arguments to update one EventImage.
+     * @example
+     * // Update one EventImage
+     * const eventImage = await prisma.eventImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EventImageUpdateArgs>(args: SelectSubset<T, EventImageUpdateArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EventImages.
+     * @param {EventImageDeleteManyArgs} args - Arguments to filter EventImages to delete.
+     * @example
+     * // Delete a few EventImages
+     * const { count } = await prisma.eventImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EventImageDeleteManyArgs>(args?: SelectSubset<T, EventImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EventImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EventImages
+     * const eventImage = await prisma.eventImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EventImageUpdateManyArgs>(args: SelectSubset<T, EventImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EventImages and returns the data updated in the database.
+     * @param {EventImageUpdateManyAndReturnArgs} args - Arguments to update many EventImages.
+     * @example
+     * // Update many EventImages
+     * const eventImage = await prisma.eventImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EventImages and only return the `id`
+     * const eventImageWithIdOnly = await prisma.eventImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EventImageUpdateManyAndReturnArgs>(args: SelectSubset<T, EventImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EventImage.
+     * @param {EventImageUpsertArgs} args - Arguments to update or create a EventImage.
+     * @example
+     * // Update or create a EventImage
+     * const eventImage = await prisma.eventImage.upsert({
+     *   create: {
+     *     // ... data to create a EventImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EventImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EventImageUpsertArgs>(args: SelectSubset<T, EventImageUpsertArgs<ExtArgs>>): Prisma__EventImageClient<$Result.GetResult<Prisma.$EventImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EventImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageCountArgs} args - Arguments to filter EventImages to count.
+     * @example
+     * // Count the number of EventImages
+     * const count = await prisma.eventImage.count({
+     *   where: {
+     *     // ... the filter for the EventImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends EventImageCountArgs>(
+      args?: Subset<T, EventImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EventImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EventImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EventImageAggregateArgs>(args: Subset<T, EventImageAggregateArgs>): Prisma.PrismaPromise<GetEventImageAggregateType<T>>
+
+    /**
+     * Group by EventImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EventImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EventImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EventImageGroupByArgs['orderBy'] }
+        : { orderBy?: EventImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EventImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEventImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EventImage model
+   */
+  readonly fields: EventImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EventImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EventImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    event<T extends EventDefaultArgs<ExtArgs> = {}>(args?: Subset<T, EventDefaultArgs<ExtArgs>>): Prisma__EventClient<$Result.GetResult<Prisma.$EventPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EventImage model
+   */
+  interface EventImageFieldRefs {
+    readonly id: FieldRef<"EventImage", 'String'>
+    readonly url: FieldRef<"EventImage", 'String'>
+    readonly eventId: FieldRef<"EventImage", 'String'>
+    readonly createdAt: FieldRef<"EventImage", 'DateTime'>
+    readonly updatedAt: FieldRef<"EventImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EventImage findUnique
+   */
+  export type EventImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter, which EventImage to fetch.
+     */
+    where: EventImageWhereUniqueInput
+  }
+
+  /**
+   * EventImage findUniqueOrThrow
+   */
+  export type EventImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter, which EventImage to fetch.
+     */
+    where: EventImageWhereUniqueInput
+  }
+
+  /**
+   * EventImage findFirst
+   */
+  export type EventImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter, which EventImage to fetch.
+     */
+    where?: EventImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventImages to fetch.
+     */
+    orderBy?: EventImageOrderByWithRelationInput | EventImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EventImages.
+     */
+    cursor?: EventImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EventImages.
+     */
+    distinct?: EventImageScalarFieldEnum | EventImageScalarFieldEnum[]
+  }
+
+  /**
+   * EventImage findFirstOrThrow
+   */
+  export type EventImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter, which EventImage to fetch.
+     */
+    where?: EventImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventImages to fetch.
+     */
+    orderBy?: EventImageOrderByWithRelationInput | EventImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EventImages.
+     */
+    cursor?: EventImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EventImages.
+     */
+    distinct?: EventImageScalarFieldEnum | EventImageScalarFieldEnum[]
+  }
+
+  /**
+   * EventImage findMany
+   */
+  export type EventImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter, which EventImages to fetch.
+     */
+    where?: EventImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EventImages to fetch.
+     */
+    orderBy?: EventImageOrderByWithRelationInput | EventImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EventImages.
+     */
+    cursor?: EventImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EventImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EventImages.
+     */
+    skip?: number
+    distinct?: EventImageScalarFieldEnum | EventImageScalarFieldEnum[]
+  }
+
+  /**
+   * EventImage create
+   */
+  export type EventImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EventImage.
+     */
+    data: XOR<EventImageCreateInput, EventImageUncheckedCreateInput>
+  }
+
+  /**
+   * EventImage createMany
+   */
+  export type EventImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EventImages.
+     */
+    data: EventImageCreateManyInput | EventImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EventImage createManyAndReturn
+   */
+  export type EventImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many EventImages.
+     */
+    data: EventImageCreateManyInput | EventImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EventImage update
+   */
+  export type EventImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EventImage.
+     */
+    data: XOR<EventImageUpdateInput, EventImageUncheckedUpdateInput>
+    /**
+     * Choose, which EventImage to update.
+     */
+    where: EventImageWhereUniqueInput
+  }
+
+  /**
+   * EventImage updateMany
+   */
+  export type EventImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EventImages.
+     */
+    data: XOR<EventImageUpdateManyMutationInput, EventImageUncheckedUpdateManyInput>
+    /**
+     * Filter which EventImages to update
+     */
+    where?: EventImageWhereInput
+    /**
+     * Limit how many EventImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EventImage updateManyAndReturn
+   */
+  export type EventImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * The data used to update EventImages.
+     */
+    data: XOR<EventImageUpdateManyMutationInput, EventImageUncheckedUpdateManyInput>
+    /**
+     * Filter which EventImages to update
+     */
+    where?: EventImageWhereInput
+    /**
+     * Limit how many EventImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EventImage upsert
+   */
+  export type EventImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EventImage to update in case it exists.
+     */
+    where: EventImageWhereUniqueInput
+    /**
+     * In case the EventImage found by the `where` argument doesn't exist, create a new EventImage with this data.
+     */
+    create: XOR<EventImageCreateInput, EventImageUncheckedCreateInput>
+    /**
+     * In case the EventImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EventImageUpdateInput, EventImageUncheckedUpdateInput>
+  }
+
+  /**
+   * EventImage delete
+   */
+  export type EventImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+    /**
+     * Filter which EventImage to delete.
+     */
+    where: EventImageWhereUniqueInput
+  }
+
+  /**
+   * EventImage deleteMany
+   */
+  export type EventImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EventImages to delete
+     */
+    where?: EventImageWhereInput
+    /**
+     * Limit how many EventImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EventImage without action
+   */
+  export type EventImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EventImage
+     */
+    select?: EventImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EventImage
+     */
+    omit?: EventImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EventImageInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Guide
    */
 
@@ -12227,6 +14610,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     phone: string | null
+    description: string | null
+    image: string | null
+    email: string | null
     municipalityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -12236,6 +14622,9 @@ export namespace Prisma {
     id: string | null
     name: string | null
     phone: string | null
+    description: string | null
+    image: string | null
+    email: string | null
     municipalityId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -12246,6 +14635,9 @@ export namespace Prisma {
     name: number
     phone: number
     languages: number
+    description: number
+    image: number
+    email: number
     municipalityId: number
     createdAt: number
     updatedAt: number
@@ -12257,6 +14649,9 @@ export namespace Prisma {
     id?: true
     name?: true
     phone?: true
+    description?: true
+    image?: true
+    email?: true
     municipalityId?: true
     createdAt?: true
     updatedAt?: true
@@ -12266,6 +14661,9 @@ export namespace Prisma {
     id?: true
     name?: true
     phone?: true
+    description?: true
+    image?: true
+    email?: true
     municipalityId?: true
     createdAt?: true
     updatedAt?: true
@@ -12276,6 +14674,9 @@ export namespace Prisma {
     name?: true
     phone?: true
     languages?: true
+    description?: true
+    image?: true
+    email?: true
     municipalityId?: true
     createdAt?: true
     updatedAt?: true
@@ -12359,6 +14760,9 @@ export namespace Prisma {
     name: string
     phone: string
     languages: string[]
+    description: string | null
+    image: string | null
+    email: string | null
     municipalityId: string
     createdAt: Date
     updatedAt: Date
@@ -12386,6 +14790,9 @@ export namespace Prisma {
     name?: boolean
     phone?: boolean
     languages?: boolean
+    description?: boolean
+    image?: boolean
+    email?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12397,6 +14804,9 @@ export namespace Prisma {
     name?: boolean
     phone?: boolean
     languages?: boolean
+    description?: boolean
+    image?: boolean
+    email?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12408,6 +14818,9 @@ export namespace Prisma {
     name?: boolean
     phone?: boolean
     languages?: boolean
+    description?: boolean
+    image?: boolean
+    email?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -12419,12 +14832,15 @@ export namespace Prisma {
     name?: boolean
     phone?: boolean
     languages?: boolean
+    description?: boolean
+    image?: boolean
+    email?: boolean
     municipalityId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GuideOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "languages" | "municipalityId" | "createdAt" | "updatedAt", ExtArgs["result"]["guide"]>
+  export type GuideOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "phone" | "languages" | "description" | "image" | "email" | "municipalityId" | "createdAt" | "updatedAt", ExtArgs["result"]["guide"]>
   export type GuideInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
   }
@@ -12445,6 +14861,9 @@ export namespace Prisma {
       name: string
       phone: string
       languages: string[]
+      description: string | null
+      image: string | null
+      email: string | null
       municipalityId: string
       createdAt: Date
       updatedAt: Date
@@ -12876,6 +15295,9 @@ export namespace Prisma {
     readonly name: FieldRef<"Guide", 'String'>
     readonly phone: FieldRef<"Guide", 'String'>
     readonly languages: FieldRef<"Guide", 'String[]'>
+    readonly description: FieldRef<"Guide", 'String'>
+    readonly image: FieldRef<"Guide", 'String'>
+    readonly email: FieldRef<"Guide", 'String'>
     readonly municipalityId: FieldRef<"Guide", 'String'>
     readonly createdAt: FieldRef<"Guide", 'DateTime'>
     readonly updatedAt: FieldRef<"Guide", 'DateTime'>
@@ -14495,11 +16917,21 @@ export namespace Prisma {
   export type MunicipalityScalarFieldEnum = (typeof MunicipalityScalarFieldEnum)[keyof typeof MunicipalityScalarFieldEnum]
 
 
+  export const MunicipalityImageScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    municipalityId: 'municipalityId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type MunicipalityImageScalarFieldEnum = (typeof MunicipalityImageScalarFieldEnum)[keyof typeof MunicipalityImageScalarFieldEnum]
+
+
   export const HighlightScalarFieldEnum: {
     id: 'id',
     title: 'title',
     description: 'description',
-    image: 'image',
     latitude: 'latitude',
     longitude: 'longitude',
     municipalityId: 'municipalityId',
@@ -14536,11 +16968,25 @@ export namespace Prisma {
   export type EventScalarFieldEnum = (typeof EventScalarFieldEnum)[keyof typeof EventScalarFieldEnum]
 
 
+  export const EventImageScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    eventId: 'eventId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type EventImageScalarFieldEnum = (typeof EventImageScalarFieldEnum)[keyof typeof EventImageScalarFieldEnum]
+
+
   export const GuideScalarFieldEnum: {
     id: 'id',
     name: 'name',
     phone: 'phone',
     languages: 'languages',
+    description: 'description',
+    image: 'image',
+    email: 'email',
     municipalityId: 'municipalityId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -15139,6 +17585,7 @@ export namespace Prisma {
     attractions?: AttractionListRelationFilter
     events?: EventListRelationFilter
     guides?: GuideListRelationFilter
+    images?: MunicipalityImageListRelationFilter
   }
 
   export type MunicipalityOrderByWithRelationInput = {
@@ -15157,6 +17604,7 @@ export namespace Prisma {
     attractions?: AttractionOrderByRelationAggregateInput
     events?: EventOrderByRelationAggregateInput
     guides?: GuideOrderByRelationAggregateInput
+    images?: MunicipalityImageOrderByRelationAggregateInput
   }
 
   export type MunicipalityWhereUniqueInput = Prisma.AtLeast<{
@@ -15178,6 +17626,7 @@ export namespace Prisma {
     attractions?: AttractionListRelationFilter
     events?: EventListRelationFilter
     guides?: GuideListRelationFilter
+    images?: MunicipalityImageListRelationFilter
   }, "id" | "slug">
 
   export type MunicipalityOrderByWithAggregationInput = {
@@ -15214,6 +17663,61 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Municipality"> | Date | string
   }
 
+  export type MunicipalityImageWhereInput = {
+    AND?: MunicipalityImageWhereInput | MunicipalityImageWhereInput[]
+    OR?: MunicipalityImageWhereInput[]
+    NOT?: MunicipalityImageWhereInput | MunicipalityImageWhereInput[]
+    id?: StringFilter<"MunicipalityImage"> | string
+    url?: StringFilter<"MunicipalityImage"> | string
+    municipalityId?: StringFilter<"MunicipalityImage"> | string
+    createdAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+    updatedAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+    municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
+  }
+
+  export type MunicipalityImageOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    municipalityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    municipality?: MunicipalityOrderByWithRelationInput
+  }
+
+  export type MunicipalityImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MunicipalityImageWhereInput | MunicipalityImageWhereInput[]
+    OR?: MunicipalityImageWhereInput[]
+    NOT?: MunicipalityImageWhereInput | MunicipalityImageWhereInput[]
+    url?: StringFilter<"MunicipalityImage"> | string
+    municipalityId?: StringFilter<"MunicipalityImage"> | string
+    createdAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+    updatedAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+    municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
+  }, "id">
+
+  export type MunicipalityImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    municipalityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: MunicipalityImageCountOrderByAggregateInput
+    _max?: MunicipalityImageMaxOrderByAggregateInput
+    _min?: MunicipalityImageMinOrderByAggregateInput
+  }
+
+  export type MunicipalityImageScalarWhereWithAggregatesInput = {
+    AND?: MunicipalityImageScalarWhereWithAggregatesInput | MunicipalityImageScalarWhereWithAggregatesInput[]
+    OR?: MunicipalityImageScalarWhereWithAggregatesInput[]
+    NOT?: MunicipalityImageScalarWhereWithAggregatesInput | MunicipalityImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MunicipalityImage"> | string
+    url?: StringWithAggregatesFilter<"MunicipalityImage"> | string
+    municipalityId?: StringWithAggregatesFilter<"MunicipalityImage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"MunicipalityImage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"MunicipalityImage"> | Date | string
+  }
+
   export type HighlightWhereInput = {
     AND?: HighlightWhereInput | HighlightWhereInput[]
     OR?: HighlightWhereInput[]
@@ -15221,7 +17725,6 @@ export namespace Prisma {
     id?: StringFilter<"Highlight"> | string
     title?: StringFilter<"Highlight"> | string
     description?: StringNullableFilter<"Highlight"> | string | null
-    image?: StringNullableFilter<"Highlight"> | string | null
     latitude?: FloatNullableFilter<"Highlight"> | number | null
     longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
@@ -15233,7 +17736,6 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
@@ -15248,7 +17750,6 @@ export namespace Prisma {
     NOT?: HighlightWhereInput | HighlightWhereInput[]
     title?: StringFilter<"Highlight"> | string
     description?: StringNullableFilter<"Highlight"> | string | null
-    image?: StringNullableFilter<"Highlight"> | string | null
     latitude?: FloatNullableFilter<"Highlight"> | number | null
     longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
@@ -15260,7 +17761,6 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrderInput | SortOrder
-    image?: SortOrderInput | SortOrder
     latitude?: SortOrderInput | SortOrder
     longitude?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
@@ -15279,7 +17779,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Highlight"> | string
     title?: StringWithAggregatesFilter<"Highlight"> | string
     description?: StringNullableWithAggregatesFilter<"Highlight"> | string | null
-    image?: StringNullableWithAggregatesFilter<"Highlight"> | string | null
     latitude?: FloatNullableWithAggregatesFilter<"Highlight"> | number | null
     longitude?: FloatNullableWithAggregatesFilter<"Highlight"> | number | null
     municipalityId?: StringWithAggregatesFilter<"Highlight"> | string
@@ -15363,6 +17862,7 @@ export namespace Prisma {
     municipalityId?: StringFilter<"Event"> | string
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
+    galleryImages?: EventImageListRelationFilter
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
   }
 
@@ -15375,6 +17875,7 @@ export namespace Prisma {
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    galleryImages?: EventImageOrderByRelationAggregateInput
     municipality?: MunicipalityOrderByWithRelationInput
   }
 
@@ -15390,6 +17891,7 @@ export namespace Prisma {
     municipalityId?: StringFilter<"Event"> | string
     createdAt?: DateTimeFilter<"Event"> | Date | string
     updatedAt?: DateTimeFilter<"Event"> | Date | string
+    galleryImages?: EventImageListRelationFilter
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
   }, "id">
 
@@ -15421,6 +17923,61 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Event"> | Date | string
   }
 
+  export type EventImageWhereInput = {
+    AND?: EventImageWhereInput | EventImageWhereInput[]
+    OR?: EventImageWhereInput[]
+    NOT?: EventImageWhereInput | EventImageWhereInput[]
+    id?: StringFilter<"EventImage"> | string
+    url?: StringFilter<"EventImage"> | string
+    eventId?: StringFilter<"EventImage"> | string
+    createdAt?: DateTimeFilter<"EventImage"> | Date | string
+    updatedAt?: DateTimeFilter<"EventImage"> | Date | string
+    event?: XOR<EventScalarRelationFilter, EventWhereInput>
+  }
+
+  export type EventImageOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    eventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    event?: EventOrderByWithRelationInput
+  }
+
+  export type EventImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EventImageWhereInput | EventImageWhereInput[]
+    OR?: EventImageWhereInput[]
+    NOT?: EventImageWhereInput | EventImageWhereInput[]
+    url?: StringFilter<"EventImage"> | string
+    eventId?: StringFilter<"EventImage"> | string
+    createdAt?: DateTimeFilter<"EventImage"> | Date | string
+    updatedAt?: DateTimeFilter<"EventImage"> | Date | string
+    event?: XOR<EventScalarRelationFilter, EventWhereInput>
+  }, "id">
+
+  export type EventImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    eventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: EventImageCountOrderByAggregateInput
+    _max?: EventImageMaxOrderByAggregateInput
+    _min?: EventImageMinOrderByAggregateInput
+  }
+
+  export type EventImageScalarWhereWithAggregatesInput = {
+    AND?: EventImageScalarWhereWithAggregatesInput | EventImageScalarWhereWithAggregatesInput[]
+    OR?: EventImageScalarWhereWithAggregatesInput[]
+    NOT?: EventImageScalarWhereWithAggregatesInput | EventImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EventImage"> | string
+    url?: StringWithAggregatesFilter<"EventImage"> | string
+    eventId?: StringWithAggregatesFilter<"EventImage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"EventImage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"EventImage"> | Date | string
+  }
+
   export type GuideWhereInput = {
     AND?: GuideWhereInput | GuideWhereInput[]
     OR?: GuideWhereInput[]
@@ -15429,6 +17986,9 @@ export namespace Prisma {
     name?: StringFilter<"Guide"> | string
     phone?: StringFilter<"Guide"> | string
     languages?: StringNullableListFilter<"Guide">
+    description?: StringNullableFilter<"Guide"> | string | null
+    image?: StringNullableFilter<"Guide"> | string | null
+    email?: StringNullableFilter<"Guide"> | string | null
     municipalityId?: StringFilter<"Guide"> | string
     createdAt?: DateTimeFilter<"Guide"> | Date | string
     updatedAt?: DateTimeFilter<"Guide"> | Date | string
@@ -15440,6 +18000,9 @@ export namespace Prisma {
     name?: SortOrder
     phone?: SortOrder
     languages?: SortOrder
+    description?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15454,6 +18017,9 @@ export namespace Prisma {
     name?: StringFilter<"Guide"> | string
     phone?: StringFilter<"Guide"> | string
     languages?: StringNullableListFilter<"Guide">
+    description?: StringNullableFilter<"Guide"> | string | null
+    image?: StringNullableFilter<"Guide"> | string | null
+    email?: StringNullableFilter<"Guide"> | string | null
     municipalityId?: StringFilter<"Guide"> | string
     createdAt?: DateTimeFilter<"Guide"> | Date | string
     updatedAt?: DateTimeFilter<"Guide"> | Date | string
@@ -15465,6 +18031,9 @@ export namespace Prisma {
     name?: SortOrder
     phone?: SortOrder
     languages?: SortOrder
+    description?: SortOrderInput | SortOrder
+    image?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -15481,6 +18050,9 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"Guide"> | string
     phone?: StringWithAggregatesFilter<"Guide"> | string
     languages?: StringNullableListFilter<"Guide">
+    description?: StringNullableWithAggregatesFilter<"Guide"> | string | null
+    image?: StringNullableWithAggregatesFilter<"Guide"> | string | null
+    email?: StringNullableWithAggregatesFilter<"Guide"> | string | null
     municipalityId?: StringWithAggregatesFilter<"Guide"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Guide"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Guide"> | Date | string
@@ -16004,6 +18576,7 @@ export namespace Prisma {
     attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
     events?: EventCreateNestedManyWithoutMunicipalityInput
     guides?: GuideCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateInput = {
@@ -16022,6 +18595,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
     events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
     guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUpdateInput = {
@@ -16040,6 +18614,7 @@ export namespace Prisma {
     attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
     events?: EventUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateInput = {
@@ -16058,6 +18633,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityCreateManyInput = {
@@ -16099,11 +18675,65 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type MunicipalityImageCreateInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    municipality: MunicipalityCreateNestedOneWithoutImagesInput
+  }
+
+  export type MunicipalityImageUncheckedCreateInput = {
+    id?: string
+    url: string
+    municipalityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MunicipalityImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    municipality?: MunicipalityUpdateOneRequiredWithoutImagesNestedInput
+  }
+
+  export type MunicipalityImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    municipalityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MunicipalityImageCreateManyInput = {
+    id?: string
+    url: string
+    municipalityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MunicipalityImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MunicipalityImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    municipalityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type HighlightCreateInput = {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
@@ -16114,7 +18744,6 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     municipalityId: string
@@ -16125,7 +18754,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16136,7 +18764,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
@@ -16147,7 +18774,6 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     municipalityId: string
@@ -16158,7 +18784,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16168,7 +18793,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
@@ -16252,6 +18876,7 @@ export namespace Prisma {
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    galleryImages?: EventImageCreateNestedManyWithoutEventInput
     municipality: MunicipalityCreateNestedOneWithoutEventsInput
   }
 
@@ -16264,6 +18889,7 @@ export namespace Prisma {
     municipalityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
+    galleryImages?: EventImageUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type EventUpdateInput = {
@@ -16274,6 +18900,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: EventImageUpdateManyWithoutEventNestedInput
     municipality?: MunicipalityUpdateOneRequiredWithoutEventsNestedInput
   }
 
@@ -16286,6 +18913,7 @@ export namespace Prisma {
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: EventImageUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type EventCreateManyInput = {
@@ -16320,11 +18948,69 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type EventImageCreateInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    event: EventCreateNestedOneWithoutGalleryImagesInput
+  }
+
+  export type EventImageUncheckedCreateInput = {
+    id?: string
+    url: string
+    eventId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    event?: EventUpdateOneRequiredWithoutGalleryImagesNestedInput
+  }
+
+  export type EventImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventImageCreateManyInput = {
+    id?: string
+    url: string
+    eventId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    eventId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type GuideCreateInput = {
     id?: string
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     municipality: MunicipalityCreateNestedOneWithoutGuidesInput
@@ -16335,6 +19021,9 @@ export namespace Prisma {
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
     municipalityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16345,6 +19034,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     municipality?: MunicipalityUpdateOneRequiredWithoutGuidesNestedInput
@@ -16355,6 +19047,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16365,6 +19060,9 @@ export namespace Prisma {
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
     municipalityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16375,6 +19073,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -16384,6 +19085,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17028,6 +19732,12 @@ export namespace Prisma {
     none?: GuideWhereInput
   }
 
+  export type MunicipalityImageListRelationFilter = {
+    every?: MunicipalityImageWhereInput
+    some?: MunicipalityImageWhereInput
+    none?: MunicipalityImageWhereInput
+  }
+
   export type UserOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -17045,6 +19755,10 @@ export namespace Prisma {
   }
 
   export type GuideOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MunicipalityImageOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -17118,11 +19832,34 @@ export namespace Prisma {
     isNot?: MunicipalityWhereInput
   }
 
+  export type MunicipalityImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    municipalityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MunicipalityImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    municipalityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type MunicipalityImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    municipalityId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type HighlightCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    image?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     municipalityId?: SortOrder
@@ -17138,7 +19875,6 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    image?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     municipalityId?: SortOrder
@@ -17149,7 +19885,6 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     description?: SortOrder
-    image?: SortOrder
     latitude?: SortOrder
     longitude?: SortOrder
     municipalityId?: SortOrder
@@ -17191,6 +19926,16 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EventImageListRelationFilter = {
+    every?: EventImageWhereInput
+    some?: EventImageWhereInput
+    none?: EventImageWhereInput
+  }
+
+  export type EventImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type EventCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -17224,6 +19969,35 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EventScalarRelationFilter = {
+    is?: EventWhereInput
+    isNot?: EventWhereInput
+  }
+
+  export type EventImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    eventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    eventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type EventImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    eventId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
   export type StringNullableListFilter<$PrismaModel = never> = {
     equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
     has?: string | StringFieldRefInput<$PrismaModel> | null
@@ -17237,6 +20011,9 @@ export namespace Prisma {
     name?: SortOrder
     phone?: SortOrder
     languages?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    email?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17246,6 +20023,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     phone?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    email?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17255,6 +20035,9 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     phone?: SortOrder
+    description?: SortOrder
+    image?: SortOrder
+    email?: SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -17601,6 +20384,13 @@ export namespace Prisma {
     connect?: GuideWhereUniqueInput | GuideWhereUniqueInput[]
   }
 
+  export type MunicipalityImageCreateNestedManyWithoutMunicipalityInput = {
+    create?: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput> | MunicipalityImageCreateWithoutMunicipalityInput[] | MunicipalityImageUncheckedCreateWithoutMunicipalityInput[]
+    connectOrCreate?: MunicipalityImageCreateOrConnectWithoutMunicipalityInput | MunicipalityImageCreateOrConnectWithoutMunicipalityInput[]
+    createMany?: MunicipalityImageCreateManyMunicipalityInputEnvelope
+    connect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+  }
+
   export type UserUncheckedCreateNestedManyWithoutMunicipalityInput = {
     create?: XOR<UserCreateWithoutMunicipalityInput, UserUncheckedCreateWithoutMunicipalityInput> | UserCreateWithoutMunicipalityInput[] | UserUncheckedCreateWithoutMunicipalityInput[]
     connectOrCreate?: UserCreateOrConnectWithoutMunicipalityInput | UserCreateOrConnectWithoutMunicipalityInput[]
@@ -17634,6 +20424,13 @@ export namespace Prisma {
     connectOrCreate?: GuideCreateOrConnectWithoutMunicipalityInput | GuideCreateOrConnectWithoutMunicipalityInput[]
     createMany?: GuideCreateManyMunicipalityInputEnvelope
     connect?: GuideWhereUniqueInput | GuideWhereUniqueInput[]
+  }
+
+  export type MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput = {
+    create?: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput> | MunicipalityImageCreateWithoutMunicipalityInput[] | MunicipalityImageUncheckedCreateWithoutMunicipalityInput[]
+    connectOrCreate?: MunicipalityImageCreateOrConnectWithoutMunicipalityInput | MunicipalityImageCreateOrConnectWithoutMunicipalityInput[]
+    createMany?: MunicipalityImageCreateManyMunicipalityInputEnvelope
+    connect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -17714,6 +20511,20 @@ export namespace Prisma {
     deleteMany?: GuideScalarWhereInput | GuideScalarWhereInput[]
   }
 
+  export type MunicipalityImageUpdateManyWithoutMunicipalityNestedInput = {
+    create?: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput> | MunicipalityImageCreateWithoutMunicipalityInput[] | MunicipalityImageUncheckedCreateWithoutMunicipalityInput[]
+    connectOrCreate?: MunicipalityImageCreateOrConnectWithoutMunicipalityInput | MunicipalityImageCreateOrConnectWithoutMunicipalityInput[]
+    upsert?: MunicipalityImageUpsertWithWhereUniqueWithoutMunicipalityInput | MunicipalityImageUpsertWithWhereUniqueWithoutMunicipalityInput[]
+    createMany?: MunicipalityImageCreateManyMunicipalityInputEnvelope
+    set?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    disconnect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    delete?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    connect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    update?: MunicipalityImageUpdateWithWhereUniqueWithoutMunicipalityInput | MunicipalityImageUpdateWithWhereUniqueWithoutMunicipalityInput[]
+    updateMany?: MunicipalityImageUpdateManyWithWhereWithoutMunicipalityInput | MunicipalityImageUpdateManyWithWhereWithoutMunicipalityInput[]
+    deleteMany?: MunicipalityImageScalarWhereInput | MunicipalityImageScalarWhereInput[]
+  }
+
   export type UserUncheckedUpdateManyWithoutMunicipalityNestedInput = {
     create?: XOR<UserCreateWithoutMunicipalityInput, UserUncheckedCreateWithoutMunicipalityInput> | UserCreateWithoutMunicipalityInput[] | UserUncheckedCreateWithoutMunicipalityInput[]
     connectOrCreate?: UserCreateOrConnectWithoutMunicipalityInput | UserCreateOrConnectWithoutMunicipalityInput[]
@@ -17784,6 +20595,34 @@ export namespace Prisma {
     deleteMany?: GuideScalarWhereInput | GuideScalarWhereInput[]
   }
 
+  export type MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput = {
+    create?: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput> | MunicipalityImageCreateWithoutMunicipalityInput[] | MunicipalityImageUncheckedCreateWithoutMunicipalityInput[]
+    connectOrCreate?: MunicipalityImageCreateOrConnectWithoutMunicipalityInput | MunicipalityImageCreateOrConnectWithoutMunicipalityInput[]
+    upsert?: MunicipalityImageUpsertWithWhereUniqueWithoutMunicipalityInput | MunicipalityImageUpsertWithWhereUniqueWithoutMunicipalityInput[]
+    createMany?: MunicipalityImageCreateManyMunicipalityInputEnvelope
+    set?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    disconnect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    delete?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    connect?: MunicipalityImageWhereUniqueInput | MunicipalityImageWhereUniqueInput[]
+    update?: MunicipalityImageUpdateWithWhereUniqueWithoutMunicipalityInput | MunicipalityImageUpdateWithWhereUniqueWithoutMunicipalityInput[]
+    updateMany?: MunicipalityImageUpdateManyWithWhereWithoutMunicipalityInput | MunicipalityImageUpdateManyWithWhereWithoutMunicipalityInput[]
+    deleteMany?: MunicipalityImageScalarWhereInput | MunicipalityImageScalarWhereInput[]
+  }
+
+  export type MunicipalityCreateNestedOneWithoutImagesInput = {
+    create?: XOR<MunicipalityCreateWithoutImagesInput, MunicipalityUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: MunicipalityCreateOrConnectWithoutImagesInput
+    connect?: MunicipalityWhereUniqueInput
+  }
+
+  export type MunicipalityUpdateOneRequiredWithoutImagesNestedInput = {
+    create?: XOR<MunicipalityCreateWithoutImagesInput, MunicipalityUncheckedCreateWithoutImagesInput>
+    connectOrCreate?: MunicipalityCreateOrConnectWithoutImagesInput
+    upsert?: MunicipalityUpsertWithoutImagesInput
+    connect?: MunicipalityWhereUniqueInput
+    update?: XOR<XOR<MunicipalityUpdateToOneWithWhereWithoutImagesInput, MunicipalityUpdateWithoutImagesInput>, MunicipalityUncheckedUpdateWithoutImagesInput>
+  }
+
   export type MunicipalityCreateNestedOneWithoutHighlightsInput = {
     create?: XOR<MunicipalityCreateWithoutHighlightsInput, MunicipalityUncheckedCreateWithoutHighlightsInput>
     connectOrCreate?: MunicipalityCreateOrConnectWithoutHighlightsInput
@@ -17812,10 +20651,38 @@ export namespace Prisma {
     update?: XOR<XOR<MunicipalityUpdateToOneWithWhereWithoutAttractionsInput, MunicipalityUpdateWithoutAttractionsInput>, MunicipalityUncheckedUpdateWithoutAttractionsInput>
   }
 
+  export type EventImageCreateNestedManyWithoutEventInput = {
+    create?: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput> | EventImageCreateWithoutEventInput[] | EventImageUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: EventImageCreateOrConnectWithoutEventInput | EventImageCreateOrConnectWithoutEventInput[]
+    createMany?: EventImageCreateManyEventInputEnvelope
+    connect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+  }
+
   export type MunicipalityCreateNestedOneWithoutEventsInput = {
     create?: XOR<MunicipalityCreateWithoutEventsInput, MunicipalityUncheckedCreateWithoutEventsInput>
     connectOrCreate?: MunicipalityCreateOrConnectWithoutEventsInput
     connect?: MunicipalityWhereUniqueInput
+  }
+
+  export type EventImageUncheckedCreateNestedManyWithoutEventInput = {
+    create?: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput> | EventImageCreateWithoutEventInput[] | EventImageUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: EventImageCreateOrConnectWithoutEventInput | EventImageCreateOrConnectWithoutEventInput[]
+    createMany?: EventImageCreateManyEventInputEnvelope
+    connect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+  }
+
+  export type EventImageUpdateManyWithoutEventNestedInput = {
+    create?: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput> | EventImageCreateWithoutEventInput[] | EventImageUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: EventImageCreateOrConnectWithoutEventInput | EventImageCreateOrConnectWithoutEventInput[]
+    upsert?: EventImageUpsertWithWhereUniqueWithoutEventInput | EventImageUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: EventImageCreateManyEventInputEnvelope
+    set?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    disconnect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    delete?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    connect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    update?: EventImageUpdateWithWhereUniqueWithoutEventInput | EventImageUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: EventImageUpdateManyWithWhereWithoutEventInput | EventImageUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: EventImageScalarWhereInput | EventImageScalarWhereInput[]
   }
 
   export type MunicipalityUpdateOneRequiredWithoutEventsNestedInput = {
@@ -17824,6 +20691,34 @@ export namespace Prisma {
     upsert?: MunicipalityUpsertWithoutEventsInput
     connect?: MunicipalityWhereUniqueInput
     update?: XOR<XOR<MunicipalityUpdateToOneWithWhereWithoutEventsInput, MunicipalityUpdateWithoutEventsInput>, MunicipalityUncheckedUpdateWithoutEventsInput>
+  }
+
+  export type EventImageUncheckedUpdateManyWithoutEventNestedInput = {
+    create?: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput> | EventImageCreateWithoutEventInput[] | EventImageUncheckedCreateWithoutEventInput[]
+    connectOrCreate?: EventImageCreateOrConnectWithoutEventInput | EventImageCreateOrConnectWithoutEventInput[]
+    upsert?: EventImageUpsertWithWhereUniqueWithoutEventInput | EventImageUpsertWithWhereUniqueWithoutEventInput[]
+    createMany?: EventImageCreateManyEventInputEnvelope
+    set?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    disconnect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    delete?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    connect?: EventImageWhereUniqueInput | EventImageWhereUniqueInput[]
+    update?: EventImageUpdateWithWhereUniqueWithoutEventInput | EventImageUpdateWithWhereUniqueWithoutEventInput[]
+    updateMany?: EventImageUpdateManyWithWhereWithoutEventInput | EventImageUpdateManyWithWhereWithoutEventInput[]
+    deleteMany?: EventImageScalarWhereInput | EventImageScalarWhereInput[]
+  }
+
+  export type EventCreateNestedOneWithoutGalleryImagesInput = {
+    create?: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
+    connectOrCreate?: EventCreateOrConnectWithoutGalleryImagesInput
+    connect?: EventWhereUniqueInput
+  }
+
+  export type EventUpdateOneRequiredWithoutGalleryImagesNestedInput = {
+    create?: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
+    connectOrCreate?: EventCreateOrConnectWithoutGalleryImagesInput
+    upsert?: EventUpsertWithoutGalleryImagesInput
+    connect?: EventWhereUniqueInput
+    update?: XOR<XOR<EventUpdateToOneWithWhereWithoutGalleryImagesInput, EventUpdateWithoutGalleryImagesInput>, EventUncheckedUpdateWithoutGalleryImagesInput>
   }
 
   export type GuideCreatelanguagesInput = {
@@ -18233,6 +21128,7 @@ export namespace Prisma {
     attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
     events?: EventCreateNestedManyWithoutMunicipalityInput
     guides?: GuideCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateWithoutUsersInput = {
@@ -18250,6 +21146,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
     events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
     guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityCreateOrConnectWithoutUsersInput = {
@@ -18414,6 +21311,7 @@ export namespace Prisma {
     attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
     events?: EventUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateWithoutUsersInput = {
@@ -18431,6 +21329,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type PostUpsertWithWhereUniqueWithoutAuthorInput = {
@@ -18796,7 +21695,6 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
@@ -18806,7 +21704,6 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
@@ -18858,6 +21755,7 @@ export namespace Prisma {
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    galleryImages?: EventImageCreateNestedManyWithoutEventInput
   }
 
   export type EventUncheckedCreateWithoutMunicipalityInput = {
@@ -18868,6 +21766,7 @@ export namespace Prisma {
     image?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    galleryImages?: EventImageUncheckedCreateNestedManyWithoutEventInput
   }
 
   export type EventCreateOrConnectWithoutMunicipalityInput = {
@@ -18885,6 +21784,9 @@ export namespace Prisma {
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18894,6 +21796,9 @@ export namespace Prisma {
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18905,6 +21810,30 @@ export namespace Prisma {
 
   export type GuideCreateManyMunicipalityInputEnvelope = {
     data: GuideCreateManyMunicipalityInput | GuideCreateManyMunicipalityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MunicipalityImageCreateWithoutMunicipalityInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MunicipalityImageUncheckedCreateWithoutMunicipalityInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MunicipalityImageCreateOrConnectWithoutMunicipalityInput = {
+    where: MunicipalityImageWhereUniqueInput
+    create: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput>
+  }
+
+  export type MunicipalityImageCreateManyMunicipalityInputEnvelope = {
+    data: MunicipalityImageCreateManyMunicipalityInput | MunicipalityImageCreateManyMunicipalityInput[]
     skipDuplicates?: boolean
   }
 
@@ -18963,7 +21892,6 @@ export namespace Prisma {
     id?: StringFilter<"Highlight"> | string
     title?: StringFilter<"Highlight"> | string
     description?: StringNullableFilter<"Highlight"> | string | null
-    image?: StringNullableFilter<"Highlight"> | string | null
     latitude?: FloatNullableFilter<"Highlight"> | number | null
     longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
@@ -19053,9 +21981,127 @@ export namespace Prisma {
     name?: StringFilter<"Guide"> | string
     phone?: StringFilter<"Guide"> | string
     languages?: StringNullableListFilter<"Guide">
+    description?: StringNullableFilter<"Guide"> | string | null
+    image?: StringNullableFilter<"Guide"> | string | null
+    email?: StringNullableFilter<"Guide"> | string | null
     municipalityId?: StringFilter<"Guide"> | string
     createdAt?: DateTimeFilter<"Guide"> | Date | string
     updatedAt?: DateTimeFilter<"Guide"> | Date | string
+  }
+
+  export type MunicipalityImageUpsertWithWhereUniqueWithoutMunicipalityInput = {
+    where: MunicipalityImageWhereUniqueInput
+    update: XOR<MunicipalityImageUpdateWithoutMunicipalityInput, MunicipalityImageUncheckedUpdateWithoutMunicipalityInput>
+    create: XOR<MunicipalityImageCreateWithoutMunicipalityInput, MunicipalityImageUncheckedCreateWithoutMunicipalityInput>
+  }
+
+  export type MunicipalityImageUpdateWithWhereUniqueWithoutMunicipalityInput = {
+    where: MunicipalityImageWhereUniqueInput
+    data: XOR<MunicipalityImageUpdateWithoutMunicipalityInput, MunicipalityImageUncheckedUpdateWithoutMunicipalityInput>
+  }
+
+  export type MunicipalityImageUpdateManyWithWhereWithoutMunicipalityInput = {
+    where: MunicipalityImageScalarWhereInput
+    data: XOR<MunicipalityImageUpdateManyMutationInput, MunicipalityImageUncheckedUpdateManyWithoutMunicipalityInput>
+  }
+
+  export type MunicipalityImageScalarWhereInput = {
+    AND?: MunicipalityImageScalarWhereInput | MunicipalityImageScalarWhereInput[]
+    OR?: MunicipalityImageScalarWhereInput[]
+    NOT?: MunicipalityImageScalarWhereInput | MunicipalityImageScalarWhereInput[]
+    id?: StringFilter<"MunicipalityImage"> | string
+    url?: StringFilter<"MunicipalityImage"> | string
+    municipalityId?: StringFilter<"MunicipalityImage"> | string
+    createdAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+    updatedAt?: DateTimeFilter<"MunicipalityImage"> | Date | string
+  }
+
+  export type MunicipalityCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    description?: string | null
+    coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
+    slug?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserCreateNestedManyWithoutMunicipalityInput
+    highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
+    attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
+    events?: EventCreateNestedManyWithoutMunicipalityInput
+    guides?: GuideCreateNestedManyWithoutMunicipalityInput
+  }
+
+  export type MunicipalityUncheckedCreateWithoutImagesInput = {
+    id?: string
+    name: string
+    description?: string | null
+    coatOfArms?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    about?: string | null
+    slug?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
+    highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
+    attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
+    events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
+    guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+  }
+
+  export type MunicipalityCreateOrConnectWithoutImagesInput = {
+    where: MunicipalityWhereUniqueInput
+    create: XOR<MunicipalityCreateWithoutImagesInput, MunicipalityUncheckedCreateWithoutImagesInput>
+  }
+
+  export type MunicipalityUpsertWithoutImagesInput = {
+    update: XOR<MunicipalityUpdateWithoutImagesInput, MunicipalityUncheckedUpdateWithoutImagesInput>
+    create: XOR<MunicipalityCreateWithoutImagesInput, MunicipalityUncheckedCreateWithoutImagesInput>
+    where?: MunicipalityWhereInput
+  }
+
+  export type MunicipalityUpdateToOneWithWhereWithoutImagesInput = {
+    where?: MunicipalityWhereInput
+    data: XOR<MunicipalityUpdateWithoutImagesInput, MunicipalityUncheckedUpdateWithoutImagesInput>
+  }
+
+  export type MunicipalityUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUpdateManyWithoutMunicipalityNestedInput
+    highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
+    attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
+    events?: EventUpdateManyWithoutMunicipalityNestedInput
+    guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+  }
+
+  export type MunicipalityUncheckedUpdateWithoutImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coatOfArms?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    about?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
+    highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
+    attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
+    events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
+    guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityCreateWithoutHighlightsInput = {
@@ -19073,6 +22119,7 @@ export namespace Prisma {
     attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
     events?: EventCreateNestedManyWithoutMunicipalityInput
     guides?: GuideCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateWithoutHighlightsInput = {
@@ -19090,6 +22137,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
     events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
     guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityCreateOrConnectWithoutHighlightsInput = {
@@ -19123,6 +22171,7 @@ export namespace Prisma {
     attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
     events?: EventUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateWithoutHighlightsInput = {
@@ -19140,6 +22189,7 @@ export namespace Prisma {
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityCreateWithoutAttractionsInput = {
@@ -19157,6 +22207,7 @@ export namespace Prisma {
     highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
     events?: EventCreateNestedManyWithoutMunicipalityInput
     guides?: GuideCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateWithoutAttractionsInput = {
@@ -19174,6 +22225,7 @@ export namespace Prisma {
     highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
     events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
     guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityCreateOrConnectWithoutAttractionsInput = {
@@ -19207,6 +22259,7 @@ export namespace Prisma {
     highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
     events?: EventUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateWithoutAttractionsInput = {
@@ -19224,6 +22277,31 @@ export namespace Prisma {
     highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
+  }
+
+  export type EventImageCreateWithoutEventInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventImageUncheckedCreateWithoutEventInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventImageCreateOrConnectWithoutEventInput = {
+    where: EventImageWhereUniqueInput
+    create: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput>
+  }
+
+  export type EventImageCreateManyEventInputEnvelope = {
+    data: EventImageCreateManyEventInput | EventImageCreateManyEventInput[]
+    skipDuplicates?: boolean
   }
 
   export type MunicipalityCreateWithoutEventsInput = {
@@ -19241,6 +22319,7 @@ export namespace Prisma {
     highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
     attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
     guides?: GuideCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateWithoutEventsInput = {
@@ -19258,11 +22337,39 @@ export namespace Prisma {
     highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
     attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
     guides?: GuideUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityCreateOrConnectWithoutEventsInput = {
     where: MunicipalityWhereUniqueInput
     create: XOR<MunicipalityCreateWithoutEventsInput, MunicipalityUncheckedCreateWithoutEventsInput>
+  }
+
+  export type EventImageUpsertWithWhereUniqueWithoutEventInput = {
+    where: EventImageWhereUniqueInput
+    update: XOR<EventImageUpdateWithoutEventInput, EventImageUncheckedUpdateWithoutEventInput>
+    create: XOR<EventImageCreateWithoutEventInput, EventImageUncheckedCreateWithoutEventInput>
+  }
+
+  export type EventImageUpdateWithWhereUniqueWithoutEventInput = {
+    where: EventImageWhereUniqueInput
+    data: XOR<EventImageUpdateWithoutEventInput, EventImageUncheckedUpdateWithoutEventInput>
+  }
+
+  export type EventImageUpdateManyWithWhereWithoutEventInput = {
+    where: EventImageScalarWhereInput
+    data: XOR<EventImageUpdateManyMutationInput, EventImageUncheckedUpdateManyWithoutEventInput>
+  }
+
+  export type EventImageScalarWhereInput = {
+    AND?: EventImageScalarWhereInput | EventImageScalarWhereInput[]
+    OR?: EventImageScalarWhereInput[]
+    NOT?: EventImageScalarWhereInput | EventImageScalarWhereInput[]
+    id?: StringFilter<"EventImage"> | string
+    url?: StringFilter<"EventImage"> | string
+    eventId?: StringFilter<"EventImage"> | string
+    createdAt?: DateTimeFilter<"EventImage"> | Date | string
+    updatedAt?: DateTimeFilter<"EventImage"> | Date | string
   }
 
   export type MunicipalityUpsertWithoutEventsInput = {
@@ -19291,6 +22398,7 @@ export namespace Prisma {
     highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
     attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateWithoutEventsInput = {
@@ -19308,6 +22416,67 @@ export namespace Prisma {
     highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
+  }
+
+  export type EventCreateWithoutGalleryImagesInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    municipality: MunicipalityCreateNestedOneWithoutEventsInput
+  }
+
+  export type EventUncheckedCreateWithoutGalleryImagesInput = {
+    id?: string
+    title: string
+    description: string
+    date: Date | string
+    image?: string | null
+    municipalityId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventCreateOrConnectWithoutGalleryImagesInput = {
+    where: EventWhereUniqueInput
+    create: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
+  }
+
+  export type EventUpsertWithoutGalleryImagesInput = {
+    update: XOR<EventUpdateWithoutGalleryImagesInput, EventUncheckedUpdateWithoutGalleryImagesInput>
+    create: XOR<EventCreateWithoutGalleryImagesInput, EventUncheckedCreateWithoutGalleryImagesInput>
+    where?: EventWhereInput
+  }
+
+  export type EventUpdateToOneWithWhereWithoutGalleryImagesInput = {
+    where?: EventWhereInput
+    data: XOR<EventUpdateWithoutGalleryImagesInput, EventUncheckedUpdateWithoutGalleryImagesInput>
+  }
+
+  export type EventUpdateWithoutGalleryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    municipality?: MunicipalityUpdateOneRequiredWithoutEventsNestedInput
+  }
+
+  export type EventUncheckedUpdateWithoutGalleryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    municipalityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MunicipalityCreateWithoutGuidesInput = {
@@ -19325,6 +22494,7 @@ export namespace Prisma {
     highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
     attractions?: AttractionCreateNestedManyWithoutMunicipalityInput
     events?: EventCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityUncheckedCreateWithoutGuidesInput = {
@@ -19342,6 +22512,7 @@ export namespace Prisma {
     highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
     attractions?: AttractionUncheckedCreateNestedManyWithoutMunicipalityInput
     events?: EventUncheckedCreateNestedManyWithoutMunicipalityInput
+    images?: MunicipalityImageUncheckedCreateNestedManyWithoutMunicipalityInput
   }
 
   export type MunicipalityCreateOrConnectWithoutGuidesInput = {
@@ -19375,6 +22546,7 @@ export namespace Prisma {
     highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
     attractions?: AttractionUpdateManyWithoutMunicipalityNestedInput
     events?: EventUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type MunicipalityUncheckedUpdateWithoutGuidesInput = {
@@ -19392,6 +22564,7 @@ export namespace Prisma {
     highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
+    images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
   }
 
   export type UserCreateWithoutPostsInput = {
@@ -19610,7 +22783,6 @@ export namespace Prisma {
     id?: string
     title: string
     description?: string | null
-    image?: string | null
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
@@ -19640,6 +22812,16 @@ export namespace Prisma {
     name: string
     phone: string
     languages?: GuideCreatelanguagesInput | string[]
+    description?: string | null
+    image?: string | null
+    email?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MunicipalityImageCreateManyMunicipalityInput = {
+    id?: string
+    url: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -19692,7 +22874,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19702,7 +22883,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19712,7 +22892,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -19753,6 +22932,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: EventImageUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateWithoutMunicipalityInput = {
@@ -19763,6 +22943,7 @@ export namespace Prisma {
     image?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: EventImageUncheckedUpdateManyWithoutEventNestedInput
   }
 
   export type EventUncheckedUpdateManyWithoutMunicipalityInput = {
@@ -19780,6 +22961,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19789,6 +22973,9 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -19798,6 +22985,58 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     languages?: GuideUpdatelanguagesInput | string[]
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MunicipalityImageUpdateWithoutMunicipalityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MunicipalityImageUncheckedUpdateWithoutMunicipalityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MunicipalityImageUncheckedUpdateManyWithoutMunicipalityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventImageCreateManyEventInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type EventImageUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventImageUncheckedUpdateWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EventImageUncheckedUpdateManyWithoutEventInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

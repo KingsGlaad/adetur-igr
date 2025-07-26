@@ -3,6 +3,7 @@ import { MapPin } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import MunicipioMap from "./_components/MunicipioMap";
 import { notFound } from "next/navigation";
+import { PublicImageGallery } from "./_components/PublicImageGallery";
 
 export default async function MunicipioPage({
   params,
@@ -16,6 +17,11 @@ export default async function MunicipioPage({
     },
     include: {
       highlights: true,
+      images: {
+        orderBy: {
+          createdAt: "desc",
+        },
+      },
     },
   });
 
@@ -23,16 +29,20 @@ export default async function MunicipioPage({
     return notFound();
   }
 
+  const galleryImageUrls = (municipality.images || []).map((img) => img.url);
+
+  const displayImages = [municipality.coatOfArms, ...galleryImageUrls].filter(
+    (url): url is string => !!url
+  );
+
   return (
     <div className="max-w-6xl mx-auto py-10 px-4 text-neutral-900">
       {/* GALERIA */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2 h-[400px] md:h-[500px] rounded-lg overflow-hidden mb-8  shadow-lg">
-        <div className="relative col-span-1 md:col-span-2 h-full ">
-          <Image
-            src={municipality.coatOfArms || "/placeholder.jpg"}
-            alt={municipality.name}
-            fill
-            className="object-cover"
+        <div className="mb-8">
+          <PublicImageGallery
+            images={displayImages}
+            municipalityName={municipality.name}
           />
         </div>
       </div>

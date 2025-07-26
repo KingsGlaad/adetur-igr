@@ -193,11 +193,18 @@ exports.Prisma.MunicipalityScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.MunicipalityImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  municipalityId: 'municipalityId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.HighlightScalarFieldEnum = {
   id: 'id',
   title: 'title',
   description: 'description',
-  image: 'image',
   latitude: 'latitude',
   longitude: 'longitude',
   municipalityId: 'municipalityId',
@@ -225,11 +232,22 @@ exports.Prisma.EventScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.EventImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  eventId: 'eventId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.GuideScalarFieldEnum = {
   id: 'id',
   name: 'name',
   phone: 'phone',
   languages: 'languages',
+  description: 'description',
+  image: 'image',
+  email: 'email',
   municipalityId: 'municipalityId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -294,9 +312,11 @@ exports.Prisma.ModelName = {
   Session: 'Session',
   VerificationToken: 'VerificationToken',
   Municipality: 'Municipality',
+  MunicipalityImage: 'MunicipalityImage',
   Highlight: 'Highlight',
   Attraction: 'Attraction',
   Event: 'Event',
+  EventImage: 'EventImage',
   Guide: 'Guide',
   Post: 'Post'
 };
