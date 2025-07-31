@@ -1,96 +1,93 @@
+"use client";
+
+import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { CoordinateInput } from "./CoordinateInput";
-import { ImageGallery } from "./ImageGallery";
-import { Highlight } from "@/types/highligth";
+import { HighlightWithImages } from "../../_hooks/useHighlights";
+
+export const highlightSchema = z.object({
+  title: z.string().min(1, "O título é obrigatório."),
+  description: z.string().optional(),
+  latitude: z.number({ invalid_type_error: "Latitude inválida" }).optional(),
+  longitude: z.number({ invalid_type_error: "Longitude inválido" }).optional(),
+});
+
+export type HighlightFormValues = z.infer<typeof highlightSchema>;
 
 interface HighlightFormProps {
-  formData: Partial<Highlight>;
-  onChange: (data: Partial<Highlight>) => void;
-  validationErrors: { [key: string]: string };
-  images?: string[];
-  onImageAdd?: (files: FileList) => void;
-  onImageRemove?: (url: string) => void;
-  uploadProgress?: number;
-  showImageGallery?: boolean;
-  className?: string;
+  onSubmit: (data: HighlightFormValues) => void;
+  highlight?: HighlightWithImages | null;
+  children: React.ReactNode;
 }
 
 export function HighlightForm({
-  formData,
-  onChange,
-  validationErrors,
-  images = [],
-  onImageAdd,
-  onImageRemove,
-  uploadProgress,
-  showImageGallery = true,
-  className = "",
+  onSubmit,
+  highlight,
+  children,
 }: HighlightFormProps) {
+  const form = useForm<HighlightFormValues>({
+    resolver: zodResolver(highlightSchema),
+    defaultValues: {
+      title: highlight?.title || "",
+      description: highlight?.description || "",
+      latitude: highlight?.latitude ?? undefined,
+      longitude: highlight?.longitude ?? undefined,
+    },
+  });
+
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = form;
+
   return (
-    <div className={`space-y-4 ${className}`}>
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div>
-        <Label className={validationErrors.title ? "text-red-500" : ""}>
-          Título *
-        </Label>
-        <Input
-          value={formData.title || ""}
-          onChange={(e) => onChange({ ...formData, title: e.target.value })}
-          placeholder="Nome do destaque turístico"
-          className={validationErrors.title ? "border-red-500" : ""}
-        />
-        {validationErrors.title && (
-          <p className="text-red-500 text-sm mt-1">{validationErrors.title}</p>
+        <Label>Título do Destaque</Label>
+        <Input {...register("title")} />
+        {errors.title && (
+          <p className="text-sm text-red-500 mt-1">{errors.title.message}</p>
         )}
       </div>
-
       <div>
-        <Label className={validationErrors.description ? "text-red-500" : ""}>
-          Descrição
-        </Label>
-        <Textarea
-          value={formData.description || ""}
-          onChange={(e) =>
-            onChange({ ...formData, description: e.target.value })
-          }
-          placeholder="Descreva o destaque turístico..."
-          className={validationErrors.description ? "border-red-500" : ""}
-          rows={3}
-        />
-        {validationErrors.description && (
-          <p className="text-red-500 text-sm mt-1">
-            {validationErrors.description}
-          </p>
-        )}
+        <Label>Descrição</Label>
+        <Textarea {...register("description")} />
       </div>
-
       <div className="grid grid-cols-2 gap-4">
-        <CoordinateInput
-          label="Latitude *"
-          value={formData.latitude}
-          onChange={(value) => onChange({ ...formData, latitude: value })}
-          placeholder="-21.3456"
-          error={validationErrors.latitude}
+        <Controller
+          name="latitude"
+          control={control}
+          render={({ field }) => (
+            <CoordinateInput
+              label="Latitude"
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="-21.3456"
+              error={errors.latitude?.message}
+            />
+          )}
         />
-        <CoordinateInput
-          label="Longitude *"
-          value={formData.longitude}
-          onChange={(value) => onChange({ ...formData, longitude: value })}
-          placeholder="-47.1234"
-          error={validationErrors.longitude}
+        <Controller
+          name="longitude"
+          control={control}
+          render={({ field }) => (
+            <CoordinateInput
+              label="Longitude"
+              value={field.value}
+              onChange={field.onChange}
+              placeholder="-47.1234"
+              error={errors.longitude?.message}
+            />
+          )}
         />
       </div>
-
-      {showImageGallery && onImageAdd && onImageRemove && (
-        <ImageGallery
-          highlightId={formData.id || "new"}
-          images={images}
-          onAdd={onImageAdd}
-          onRemove={onImageRemove}
-          uploadProgress={uploadProgress}
-        />
-      )}
-    </div>
+      {children}
+    </form>
   );
 }

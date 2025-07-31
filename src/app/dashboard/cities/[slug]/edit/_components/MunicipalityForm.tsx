@@ -70,6 +70,7 @@ export function MunicipalityForm({ municipio }: MunicipalityFormProps) {
       {/* DADOS DO MUNICÍPIO */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <Input type="hidden" {...register("id", { value: municipio.id })} />
+
         <div>
           <Label>Nome</Label>
           <Input {...register("name")} />

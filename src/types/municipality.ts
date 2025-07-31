@@ -20,5 +20,6 @@ export type MunicipalityRefined = {
   createdAt: Date;
   latitude?: number | null;
   longitude?: number | null;
+  ibgeCode?: string | null;
   highlights?: { title: string; id: string }[] | null;
 };

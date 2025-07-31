@@ -189,6 +189,7 @@ exports.Prisma.MunicipalityScalarFieldEnum = {
   longitude: 'longitude',
   about: 'about',
   slug: 'slug',
+  ibgeCode: 'ibgeCode',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -209,6 +210,14 @@ exports.Prisma.HighlightScalarFieldEnum = {
   longitude: 'longitude',
   municipalityId: 'municipalityId',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.HighlightImageScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  highlightId: 'highlightId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.AttractionScalarFieldEnum = {
@@ -314,6 +323,7 @@ exports.Prisma.ModelName = {
   Municipality: 'Municipality',
   MunicipalityImage: 'MunicipalityImage',
   Highlight: 'Highlight',
+  HighlightImage: 'HighlightImage',
   Attraction: 'Attraction',
   Event: 'Event',
   EventImage: 'EventImage',

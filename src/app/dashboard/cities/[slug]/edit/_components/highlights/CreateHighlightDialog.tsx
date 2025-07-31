@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -7,16 +5,15 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-// ... (outras importações)
-import { Highlight } from "@/types/highligth";
-import { Loader2 } from "lucide-react";
-import { HighlightForm } from "./HighlightForm";
+import { HighlightForm, HighlightFormValues } from "./HighlightForm";
+import { ImageGallery } from "./ImageGallery";
+import { Button } from "@/components/ui/button";
+import { useEffect, useState } from "react";
 
-// FIX: As props foram atualizadas para controlar o diálogo externamente
 interface CreateHighlightDialogProps {
   open: boolean;
   onOpenChange: (isOpen: boolean) => void;
-  onCreate: (highlight: Partial<Highlight>, images: File[]) => Promise<void>;
+  onCreate: (data: HighlightFormValues, files: File[]) => Promise<void>;
   isCreating: boolean;
 }
 
@@ -26,74 +23,58 @@ export function CreateHighlightDialog({
   onCreate,
   isCreating,
 }: CreateHighlightDialogProps) {
-  const [formData, setFormData] = useState<Partial<Highlight>>({});
-  const [filesToUpload, setFilesToUpload] = useState<File[]>([]);
-  const [previewUrls, setPreviewUrls] = useState<string[]>([]);
-  const [validationErrors, setValidationErrors] = useState<{
-    [key: string]: string;
-  }>({});
-
-  useEffect(() => {
-    const newUrls = filesToUpload.map((file) => URL.createObjectURL(file));
-    setPreviewUrls(newUrls);
-    return () => newUrls.forEach((url) => URL.revokeObjectURL(url));
-  }, [filesToUpload]);
+  const [files, setFiles] = useState<File[]>([]);
+  const [previews, setPreviews] = useState<string[]>([]);
 
   useEffect(() => {
     if (!open) {
-      setFormData({});
-      setFilesToUpload([]);
-      setPreviewUrls([]);
-      setValidationErrors({});
+      setFiles([]);
+      setPreviews([]);
     }
   }, [open]);
 
-  const handleImageAdd = (newFiles: FileList) => {
-    setFilesToUpload((prevFiles) => [...prevFiles, ...Array.from(newFiles)]);
-  };
+  useEffect(() => {
+    const objectUrls = files.map((file) => URL.createObjectURL(file));
+    setPreviews(objectUrls);
+    return () => objectUrls.forEach((url) => URL.revokeObjectURL(url));
+  }, [files]);
 
-  const handleImageRemove = (urlToRemove: string) => {
-    const indexToRemove = previewUrls.indexOf(urlToRemove);
-    if (indexToRemove > -1) {
-      setFilesToUpload((prevFiles) =>
-        prevFiles.filter((_, i) => i !== indexToRemove)
-      );
-    }
-  };
-
-  const handleSubmit = async () => {
-    try {
-      await onCreate(formData, filesToUpload);
-      onOpenChange(false);
-    } catch (error) {
-      console.error("Falha ao criar destaque:", error);
-    }
+  const handleFormSubmit = async (data: HighlightFormValues) => {
+    await onCreate(data, files);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent>
         <DialogHeader>
-          <DialogTitle>Criar Novo Destaque</DialogTitle>
+          <DialogTitle>Adicionar Novo Destaque</DialogTitle>
         </DialogHeader>
-        <HighlightForm
-          formData={formData}
-          onChange={setFormData}
-          validationErrors={validationErrors}
-          images={previewUrls}
-          onImageAdd={handleImageAdd}
-          onImageRemove={handleImageRemove}
-          showImageGallery={true}
-        />
-        <DialogFooter>
-          <Button variant="outline" onClick={() => onOpenChange(false)}>
-            Cancelar
-          </Button>
-          <Button onClick={handleSubmit} disabled={isCreating}>
-            {isCreating && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Criar Destaque
-          </Button>
-        </DialogFooter>
+        <HighlightForm onSubmit={handleFormSubmit}>
+          <ImageGallery
+            existingImages={[]}
+            newImagePreviews={previews}
+            onAddImages={(newFiles) =>
+              setFiles((prev) => [...prev, ...newFiles])
+            }
+            onRemoveNewImage={(index) =>
+              setFiles((prev) => prev.filter((_, i) => i !== index))
+            }
+            onRemoveExistingImage={() => {}}
+            isUploading={isCreating}
+          />
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="ghost"
+              onClick={() => onOpenChange(false)}
+            >
+              Cancelar
+            </Button>
+            <Button type="submit" disabled={isCreating}>
+              {isCreating ? "Criando..." : "Criar Destaque"}
+            </Button>
+          </DialogFooter>
+        </HighlightForm>
       </DialogContent>
     </Dialog>
   );

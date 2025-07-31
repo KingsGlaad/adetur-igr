@@ -112,6 +112,7 @@ model Municipality {
   longitude   Float?
   about       String?      @db.Text
   slug        String?      @unique
+  ibgeCode    String?      @unique
   users       User[]
   highlights  Highlight[]
   attractions Attraction[]
@@ -138,9 +139,19 @@ model Highlight {
   latitude       Float?
   longitude      Float?
   municipalityId String
+  galleryImages  HighlightImage[]
   municipality   Municipality @relation(fields: [municipalityId], references: [id])
 
   createdAt DateTime @default(now())
+}
+
+model HighlightImage {
+  id          String    @id @default(cuid())
+  url         String
+  highlightId String
+  highlight   Highlight @relation(fields: [highlightId], references: [id], onDelete: Cascade)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Attraction {

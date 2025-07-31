@@ -1,16 +1,17 @@
+// src/app/cities/[slug]/edit/_components/MunicipalityHighlights.tsx
+
 "use client";
 
 import { useState } from "react";
-import { Loader2, Plus } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Plus, Loader2 } from "lucide-react";
 
-import { DialogStates, Highlight } from "@/types/highligth";
-import { useHighlights } from "@/hooks/useHighlights";
-
-import { HighlightCard } from "./highlights/HighlightCard";
+import { useHighlights, HighlightWithImages } from "../_hooks/useHighlights";
 import { CreateHighlightDialog } from "./highlights/CreateHighlightDialog";
 import { EditHighlightDialog } from "./highlights/EditHighlightDialog";
 import { DeleteHighlightDialog } from "./highlights/DeleteHighlightDialog";
-import { Button } from "@/components/ui/button";
+import { HighlightCard } from "./highlights/HighlightCard";
+import { HighlightFormValues } from "./highlights/HighlightForm";
 
 interface MunicipalityHighlightsProps {
   municipalityId: string;
@@ -19,118 +20,106 @@ interface MunicipalityHighlightsProps {
 export function MunicipalityHighlights({
   municipalityId,
 }: MunicipalityHighlightsProps) {
+  // FIX: Corrigido para desestruturar todas as funções necessárias do hook
   const {
     highlights,
-    images,
     isLoading,
     isSubmitting,
-    createHighlight,
-    updateHighlight,
+    processHighlightData, // Adicionada a função que faltava
     deleteHighlight,
-    removeImage,
-    uploadImages,
+    removeHighlightImage, // Corrigido o nome da função (era removeImage)
   } = useHighlights(municipalityId);
 
-  const [dialogs, setDialogs] = useState<DialogStates>({
-    create: { open: false },
-    edit: { open: false, highlight: null },
-    delete: { open: false, highlightId: null },
-  });
+  // Estados para controlar os diálogos
+  const [isCreateOpen, setIsCreateOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
 
-  const handleCloseDialogs = () => {
-    setDialogs({
-      create: { open: false },
-      edit: { open: false, highlight: null },
-      delete: { open: false, highlightId: null },
-    });
+  const [selectedHighlight, setSelectedHighlight] =
+    useState<HighlightWithImages | null>(null);
+
+  const handleOpenEdit = (highlight: HighlightWithImages) => {
+    setSelectedHighlight(highlight);
+    setIsEditOpen(true);
+  };
+
+  const handleOpenDelete = (highlight: HighlightWithImages) => {
+    setSelectedHighlight(highlight);
+    setIsDeleteOpen(true);
   };
 
   const handleConfirmDelete = async () => {
-    if (dialogs.delete.highlightId) {
-      await deleteHighlight(dialogs.delete.highlightId);
-      handleCloseDialogs();
-    }
+    if (!selectedHighlight) return;
+    await deleteHighlight(selectedHighlight.id);
+    setIsDeleteOpen(false);
   };
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center p-8">
-        <Loader2 className="h-8 w-8 animate-spin text-gray-500" />
-      </div>
-    );
-  }
+  // FIX: Esta função agora chama corretamente a `processHighlightData` do hook
+  const handleCreate = async (data: HighlightFormValues, files: File[]) => {
+    await processHighlightData(data, files, null);
+    setIsCreateOpen(false);
+  };
+
+  // FIX: Esta função agora chama corretamente a `processHighlightData` do hook
+  const handleUpdate = async (data: HighlightFormValues, files: File[]) => {
+    if (!selectedHighlight) return;
+    await processHighlightData(data, files, selectedHighlight);
+    setIsEditOpen(false);
+  };
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold">Destaques Turísticos</h3>
-
-        <Button
-          type="button"
-          onClick={() =>
-            setDialogs((prev) => ({ ...prev, create: { open: true } }))
-          }
-        >
+        <Button type="button" onClick={() => setIsCreateOpen(true)}>
           <Plus className="mr-2 h-4 w-4" />
-          Novo Destaque
+          Adicionar Destaque
         </Button>
       </div>
 
-      {highlights.length > 0 ? (
+      {isLoading ? (
+        <div className="flex items-center gap-2 text-muted-foreground">
+          <Loader2 className="h-4 w-4 animate-spin" />
+          <span>A carregar destaques...</span>
+        </div>
+      ) : Array.isArray(highlights) && highlights.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {highlights.map((highlight) => (
             <HighlightCard
               key={highlight.id}
               highlight={highlight}
-              images={images[highlight.id!] || []}
-              onEdit={() =>
-                setDialogs({ ...dialogs, edit: { open: true, highlight } })
-              }
-              onDelete={() =>
-                setDialogs({
-                  ...dialogs,
-                  delete: { open: true, highlightId: highlight.id! },
-                })
-              }
-              isUpdating={
-                isSubmitting && dialogs.edit.highlight?.id === highlight.id
-              }
-              isDeleting={
-                isSubmitting && dialogs.delete.highlightId === highlight.id
-              }
+              onEdit={() => handleOpenEdit(highlight)}
+              onDelete={() => handleOpenDelete(highlight)}
             />
           ))}
         </div>
       ) : (
-        <div className="text-center py-8 border-2 border-dashed border-gray-300 rounded-lg">
-          <p className="text-gray-500">Nenhum destaque cadastrado.</p>
-        </div>
+        <p className="text-sm text-muted-foreground">
+          Nenhum destaque registado.
+        </p>
       )}
 
-      {/* --- DIÁLOGOS --- */}
+      {/* Diálogos */}
       <CreateHighlightDialog
-        open={dialogs.create.open}
-        onOpenChange={(isOpen: boolean) =>
-          setDialogs((prev) => ({ ...prev, create: { open: isOpen } }))
-        }
-        onCreate={createHighlight}
+        open={isCreateOpen}
+        onOpenChange={setIsCreateOpen}
+        onCreate={handleCreate}
         isCreating={isSubmitting}
       />
 
       <EditHighlightDialog
-        dialogState={dialogs.edit}
-        onClose={handleCloseDialogs}
-        onUpdate={updateHighlight}
-        onImageRemove={removeImage}
-        images={
-          dialogs.edit.highlight ? images[dialogs.edit.highlight.id!] || [] : []
-        }
+        open={isEditOpen}
+        onOpenChange={setIsEditOpen}
+        highlight={selectedHighlight}
+        onUpdate={handleUpdate}
+        // FIX: Passa a função com o nome correto para o diálogo de edição
+        onImageRemove={removeHighlightImage}
         isUpdating={isSubmitting}
       />
 
       <DeleteHighlightDialog
-        dialogState={dialogs.delete}
-        onClose={handleCloseDialogs}
+        open={isDeleteOpen}
+        onOpenChange={setIsDeleteOpen}
         onConfirm={handleConfirmDelete}
         isDeleting={isSubmitting}
       />

@@ -8,44 +8,40 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { AlertCircle, Loader2 } from "lucide-react";
-import { DialogStates } from "@/types/highligth";
+import { Loader2 } from "lucide-react";
 
 interface DeleteHighlightDialogProps {
-  dialogState: DialogStates["delete"];
-  onClose: () => void;
-  onConfirm: () => Promise<void>;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onConfirm: () => void;
   isDeleting: boolean;
 }
 
 export function DeleteHighlightDialog({
-  dialogState,
-  onClose,
+  open,
+  onOpenChange,
   onConfirm,
   isDeleting,
 }: DeleteHighlightDialogProps) {
   return (
-    <AlertDialog open={dialogState.open} onOpenChange={onClose}>
+    <AlertDialog open={open} onOpenChange={onOpenChange}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle className="flex items-center gap-2">
-            <AlertCircle className="h-5 w-5 text-red-500" />
-            Confirmar Exclusão
-          </AlertDialogTitle>
+          <AlertDialogTitle>Tem a certeza?</AlertDialogTitle>
           <AlertDialogDescription>
-            Esta ação não pode ser desfeita. O destaque turístico e todas as
-            suas imagens serão permanentemente removidos do sistema.
+            Esta ação não pode ser desfeita. O destaque e todas as suas imagens
+            serão removidos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={onClose}>Cancelar</AlertDialogCancel>
+          <AlertDialogCancel>Cancelar</AlertDialogCancel>
           <AlertDialogAction
             onClick={onConfirm}
-            className="bg-red-500 hover:bg-red-600"
             disabled={isDeleting}
+            className="bg-red-600 hover:bg-red-700"
           >
             {isDeleting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-            Excluir Destaque
+            Confirmar
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>

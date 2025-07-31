@@ -1,8 +1,10 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 interface PublicImageGalleryProps {
   images: string[];
@@ -13,97 +15,102 @@ export function PublicImageGallery({
   images,
   municipalityName,
 }: PublicImageGalleryProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  // Se não houver imagens, mostra um placeholder.
   if (!images || images.length === 0) {
     return (
-      <div className="aspect-video w-full flex items-center justify-center bg-slate-200 rounded-lg">
+      <div className="aspect-[16/10] w-full flex items-center justify-center bg-slate-200 rounded-lg">
         <span className="text-slate-500">Nenhuma imagem disponível</span>
       </div>
     );
   }
 
-  // Função para ir para a imagem anterior
-  const goToPrevious = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
+  const openLightbox = (index: number) => {
+    setSelectedImageIndex(index);
+    setIsLightboxOpen(true);
   };
 
-  // Função para ir para a próxima imagem
-  const goToNext = () => {
-    const isLastSlide = currentIndex === images.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
+  const changeImage = (direction: "next" | "prev") => {
+    const newIndex =
+      direction === "next"
+        ? (selectedImageIndex + 1) % images.length
+        : (selectedImageIndex - 1 + images.length) % images.length;
+    setSelectedImageIndex(newIndex);
   };
 
-  // Efeito para trocar de imagem automaticamente a cada 5 segundos
-  useEffect(() => {
-    // Só ativa o temporizador se houver mais de uma imagem
-    if (images.length > 1) {
-      const timer = setTimeout(goToNext, 5000);
-      // Limpa o temporizador quando o componente é desmontado ou o índice muda
-      return () => clearTimeout(timer);
-    }
-  }, [currentIndex, images.length]);
+  const [mainImage, ...thumbnailImages] = images;
 
   return (
-    <div className="relative w-full h-[400px] md:h-[500px] rounded-lg overflow-hidden shadow-lg group">
-      {/* Container para as imagens com transição */}
-      <div className="w-full h-full">
-        {images.map((image, index) => (
+    <div>
+      <div className="grid grid-cols-4 grid-rows-2 gap-2 h-[450px]">
+        {/* Imagem Principal */}
+        <div
+          className="col-span-4 sm:col-span-3 row-span-2 relative rounded-lg overflow-hidden cursor-pointer group"
+          onClick={() => openLightbox(0)}
+        >
+          <Image
+            src={mainImage}
+            alt={`Imagem principal de ${municipalityName}`}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+        </div>
+
+        {/* Miniaturas */}
+        {thumbnailImages.slice(0, 2).map((image, index) => (
           <div
             key={index}
-            className="absolute top-0 left-0 w-full h-full transition-opacity duration-1000 ease-in-out"
-            style={{ opacity: index === currentIndex ? 1 : 0 }}
+            className="hidden sm:block relative rounded-lg overflow-hidden cursor-pointer group"
+            onClick={() => openLightbox(index + 1)}
           >
             <Image
               src={image}
-              alt={`Imagem ${index + 1} de ${municipalityName}`}
+              alt={`Miniatura ${index + 1} de ${municipalityName}`}
               fill
-              className="object-cover"
-              priority={index === 0} // Carrega a primeira imagem com prioridade
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
+            {index === 1 && images.length > 3 && (
+              <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+                <span className="text-white text-2xl font-bold">
+                  +{images.length - 3}
+                </span>
+              </div>
+            )}
           </div>
         ))}
       </div>
 
-      {/* Controlos de Navegação (Setas) - Visíveis apenas com mais de uma imagem */}
-      {images.length > 1 && (
-        <>
-          <button
-            onClick={goToPrevious}
-            className="absolute top-1/2 left-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
-            aria-label="Imagem anterior"
+      {/* Lightbox Dialog */}
+      <Dialog open={isLightboxOpen} onOpenChange={setIsLightboxOpen}>
+        <DialogContent className="max-w-4xl max-h-[90vh] p-0 bg-transparent border-none shadow-none">
+          <Image
+            src={images[selectedImageIndex]}
+            alt={`Imagem ${selectedImageIndex + 1} de ${municipalityName}`}
+            width={1600}
+            height={900}
+            className="w-full h-full object-contain"
+          />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 bg-black/30 hover:bg-black/50 text-white"
+            onClick={() => changeImage("prev")}
           >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute top-1/2 right-4 -translate-y-1/2 bg-black/30 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 hover:bg-black/50"
-            aria-label="Próxima imagem"
+            <ChevronLeft />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full h-10 w-10 bg-black/30 hover:bg-black/50 text-white"
+            onClick={() => changeImage("next")}
           >
-            <ChevronRight size={24} />
-          </button>
-        </>
-      )}
-
-      {/* Indicadores de Navegação (Pontos) - Visíveis apenas com mais de uma imagem */}
-      {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {images.map((_, slideIndex) => (
-            <button
-              key={slideIndex}
-              onClick={() => setCurrentIndex(slideIndex)}
-              className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                currentIndex === slideIndex ? "bg-white w-4" : "bg-white/50"
-              }`}
-              aria-label={`Ir para a imagem ${slideIndex + 1}`}
-            ></button>
-          ))}
-        </div>
-      )}
+            <ChevronRight />
+          </Button>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

@@ -1,40 +1,36 @@
 import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
-) {
+/**
+ * Busca o código do IBGE para um dado nome de município.
+ */
+async function fetchIbgeCode(municipalityName: string): Promise<string | null> {
   try {
-    const slug = (await params).slug;
-    const municipalities = await prisma.municipality.findMany({
-      where: {
-        slug,
-      },
-      include: {
-        highlights: {
-          select: {
-            title: true,
-          },
-        },
-      },
-      orderBy: {
-        name: "asc",
-      },
-    });
-    return NextResponse.json(municipalities);
+    const response = await fetch(
+      `https://servicodados.ibge.gov.br/api/v1/localidades/municipios/${encodeURI(
+        municipalityName
+      )}`
+    );
+    const data = await response.json();
+    // A API pode retornar múltiplos resultados se o nome for ambíguo, pegamos o primeiro.
+    return data[0]?.id || null;
   } catch (error) {
-    console.error("Erro ao buscar municípios:", error);
-    return NextResponse.json({ error: "Erro interno" }, { status: 500 });
+    console.error("Falha ao buscar código do IBGE:", error);
+    return null;
   }
 }
 
 export async function PUT(
   req: NextRequest,
-  { params }: { params: Promise<{ slug: string }> }
+  { params }: { params: { slug: string } }
 ) {
   const data = await req.json();
   const slug = (await params).slug;
+
+  // Busca automaticamente o código do IBGE com base no nome do município
+  const ibgeCode = await fetchIbgeCode(data.name);
+
+  console.error("Código do IBGE:", ibgeCode);
 
   const municipio = await prisma.municipality.update({
     where: { slug },
@@ -45,6 +41,7 @@ export async function PUT(
       latitude: data.latitude,
       longitude: data.longitude,
       coatOfArms: data.coatOfArms,
+      ibgeCode: ibgeCode, // Salva o código do IBGE na base de dados
     },
   });
 

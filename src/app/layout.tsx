@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/providers/theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "ADETUR - Associação de Desenvolvimento do Turismo",
+  title: "ADETUR - Agência de Desenvolvimento Turístico - Alta Mogiana",
   description: "Sistema de Gestão de Informações Turísticas da Região",
 };
 

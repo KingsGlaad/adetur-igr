@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+// src/app/cities/[slug]/edit/_components/highlights/HighlightCard.tsx
+
 import {
   Card,
   CardContent,
@@ -8,106 +8,64 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Edit2,
-  Trash2,
-  MapPin,
-  Image as ImageIcon,
-  Loader2,
-} from "lucide-react";
-import { Highlight } from "@/types/highligth";
+import { HighlightWithImages } from "../../_hooks/useHighlights";
+import { Edit2, Trash2, MapPin, ImageIcon } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface HighlightCardProps {
-  highlight: Highlight;
-  images: string[];
+  highlight: HighlightWithImages;
   onEdit: () => void;
   onDelete: () => void;
-  isUpdating?: boolean;
-  isDeleting?: boolean;
 }
 
 export function HighlightCard({
   highlight,
-  images,
   onEdit,
   onDelete,
-  isUpdating = false,
-  isDeleting = false,
 }: HighlightCardProps) {
+  // Garante que `galleryImages` é sempre um array e obtém a primeira imagem.
+  const galleryImages = Array.isArray(highlight.galleryImages)
+    ? highlight.galleryImages
+    : [];
+  const coverImage = galleryImages[0]?.url || "/images/no-image.jpeg";
+
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-      <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <CardTitle className="text-lg line-clamp-2">
-              {highlight.title}
-            </CardTitle>
-            {highlight.description && (
-              <CardDescription className="line-clamp-2 mt-1">
-                {highlight.description}
-              </CardDescription>
-            )}
-          </div>
-        </div>
-      </CardHeader>
+    <Card className="flex flex-col overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
+      <div className="relative w-full aspect-[16/10]">
+        <Image
+          src={coverImage}
+          alt={`Imagem de ${highlight.title}`}
+          fill
+          className="object-cover"
+        />
+      </div>
 
-      <CardContent className="space-y-3">
-        {highlight.latitude && highlight.longitude && (
-          <div className="flex items-center gap-2 text-sm text-gray-600">
-            <MapPin size={14} />
-            <span>
-              {highlight.latitude.toFixed(6)}, {highlight.longitude.toFixed(6)}
-            </span>
-          </div>
-        )}
+      <div className="p-4 flex flex-col flex-grow">
+        <CardTitle className="text-lg">{highlight.title}</CardTitle>
+        <CardDescription className="mt-1 text-sm line-clamp-2 h-10">
+          {highlight.description}
+        </CardDescription>
 
-        {images.length > 0 && (
-          <div>
-            <div className="flex items-center gap-2 mb-2">
-              <ImageIcon size={14} />
-              <Badge variant="secondary" className="text-xs">
-                {images.length} imagem(ns)
-              </Badge>
+        <div className="flex-grow mt-4 space-y-2">
+          {highlight.latitude && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <MapPin className="h-3 w-3" />
+              <span>Coordenadas Definidas</span>
             </div>
-            <div className="grid grid-cols-3 gap-1">
-              {images.slice(0, 3).map((url, index) => (
-                <div
-                  key={index}
-                  className="aspect-square relative overflow-hidden rounded"
-                >
-                  <img
-                    src={url}
-                    alt={`${highlight.title} ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  {index === 2 && images.length > 3 && (
-                    <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                      <span className="text-white text-xs font-medium">
-                        +{images.length - 3}
-                      </span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-      </CardContent>
-
-      <CardFooter className="flex justify-between pt-3">
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          onClick={onEdit}
-          disabled={isUpdating || isDeleting}
-        >
-          {isUpdating ? (
-            <Loader2 className="mr-2 h-3 w-3 animate-spin" />
-          ) : (
-            <Edit2 className="mr-2 h-3 w-3" />
           )}
+          {galleryImages.length > 0 && (
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <ImageIcon className="h-3 w-3" />
+              <span>{galleryImages.length} imagem(ns)</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <CardFooter className="flex justify-end gap-2 bg-slate-50 p-2 border-t">
+        <Button type="button" variant="outline" size="sm" onClick={onEdit}>
+          <Edit2 className="mr-2 h-4 w-4" />
           Editar
         </Button>
         <Button
@@ -115,13 +73,8 @@ export function HighlightCard({
           variant="destructive"
           size="sm"
           onClick={onDelete}
-          disabled={isUpdating || isDeleting}
         >
-          {isDeleting ? (
-            <Loader2 className="mr-2 h-3 w-3 animate-spin" />
-          ) : (
-            <Trash2 className="mr-2 h-3 w-3" />
-          )}
+          <Trash2 className="mr-2 h-4 w-4" />
           Remover
         </Button>
       </CardFooter>

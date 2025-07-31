@@ -54,6 +54,11 @@ export type MunicipalityImage = $Result.DefaultSelection<Prisma.$MunicipalityIma
  */
 export type Highlight = $Result.DefaultSelection<Prisma.$HighlightPayload>
 /**
+ * Model HighlightImage
+ * 
+ */
+export type HighlightImage = $Result.DefaultSelection<Prisma.$HighlightImagePayload>
+/**
  * Model Attraction
  * 
  */
@@ -326,6 +331,16 @@ export class PrismaClient<
     * ```
     */
   get highlight(): Prisma.HighlightDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.highlightImage`: Exposes CRUD operations for the **HighlightImage** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more HighlightImages
+    * const highlightImages = await prisma.highlightImage.findMany()
+    * ```
+    */
+  get highlightImage(): Prisma.HighlightImageDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.attraction`: Exposes CRUD operations for the **Attraction** model.
@@ -824,6 +839,7 @@ export namespace Prisma {
     Municipality: 'Municipality',
     MunicipalityImage: 'MunicipalityImage',
     Highlight: 'Highlight',
+    HighlightImage: 'HighlightImage',
     Attraction: 'Attraction',
     Event: 'Event',
     EventImage: 'EventImage',
@@ -847,7 +863,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "settings" | "account" | "session" | "verificationToken" | "municipality" | "municipalityImage" | "highlight" | "attraction" | "event" | "eventImage" | "guide" | "post"
+      modelProps: "user" | "settings" | "account" | "session" | "verificationToken" | "municipality" | "municipalityImage" | "highlight" | "highlightImage" | "attraction" | "event" | "eventImage" | "guide" | "post"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1443,6 +1459,80 @@ export namespace Prisma {
           }
         }
       }
+      HighlightImage: {
+        payload: Prisma.$HighlightImagePayload<ExtArgs>
+        fields: Prisma.HighlightImageFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.HighlightImageFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.HighlightImageFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          findFirst: {
+            args: Prisma.HighlightImageFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.HighlightImageFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          findMany: {
+            args: Prisma.HighlightImageFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>[]
+          }
+          create: {
+            args: Prisma.HighlightImageCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          createMany: {
+            args: Prisma.HighlightImageCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.HighlightImageCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>[]
+          }
+          delete: {
+            args: Prisma.HighlightImageDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          update: {
+            args: Prisma.HighlightImageUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          deleteMany: {
+            args: Prisma.HighlightImageDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.HighlightImageUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.HighlightImageUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>[]
+          }
+          upsert: {
+            args: Prisma.HighlightImageUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$HighlightImagePayload>
+          }
+          aggregate: {
+            args: Prisma.HighlightImageAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateHighlightImage>
+          }
+          groupBy: {
+            args: Prisma.HighlightImageGroupByArgs<ExtArgs>
+            result: $Utils.Optional<HighlightImageGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.HighlightImageCountArgs<ExtArgs>
+            result: $Utils.Optional<HighlightImageCountAggregateOutputType> | number
+          }
+        }
+      }
       Attraction: {
         payload: Prisma.$AttractionPayload<ExtArgs>
         fields: Prisma.AttractionFieldRefs
@@ -1905,6 +1995,7 @@ export namespace Prisma {
     municipality?: MunicipalityOmit
     municipalityImage?: MunicipalityImageOmit
     highlight?: HighlightOmit
+    highlightImage?: HighlightImageOmit
     attraction?: AttractionOmit
     event?: EventOmit
     eventImage?: EventImageOmit
@@ -2121,6 +2212,37 @@ export namespace Prisma {
    */
   export type MunicipalityCountOutputTypeCountImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MunicipalityImageWhereInput
+  }
+
+
+  /**
+   * Count Type HighlightCountOutputType
+   */
+
+  export type HighlightCountOutputType = {
+    galleryImages: number
+  }
+
+  export type HighlightCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    galleryImages?: boolean | HighlightCountOutputTypeCountGalleryImagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * HighlightCountOutputType without action
+   */
+  export type HighlightCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightCountOutputType
+     */
+    select?: HighlightCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * HighlightCountOutputType without action
+   */
+  export type HighlightCountOutputTypeCountGalleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HighlightImageWhereInput
   }
 
 
@@ -7865,6 +7987,7 @@ export namespace Prisma {
     longitude: number | null
     about: string | null
     slug: string | null
+    ibgeCode: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7878,6 +8001,7 @@ export namespace Prisma {
     longitude: number | null
     about: string | null
     slug: string | null
+    ibgeCode: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -7891,6 +8015,7 @@ export namespace Prisma {
     longitude: number
     about: number
     slug: number
+    ibgeCode: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -7916,6 +8041,7 @@ export namespace Prisma {
     longitude?: true
     about?: true
     slug?: true
+    ibgeCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7929,6 +8055,7 @@ export namespace Prisma {
     longitude?: true
     about?: true
     slug?: true
+    ibgeCode?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -7942,6 +8069,7 @@ export namespace Prisma {
     longitude?: true
     about?: true
     slug?: true
+    ibgeCode?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -8042,6 +8170,7 @@ export namespace Prisma {
     longitude: number | null
     about: string | null
     slug: string | null
+    ibgeCode: string | null
     createdAt: Date
     updatedAt: Date
     _count: MunicipalityCountAggregateOutputType | null
@@ -8074,6 +8203,7 @@ export namespace Prisma {
     longitude?: boolean
     about?: boolean
     slug?: boolean
+    ibgeCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     users?: boolean | Municipality$usersArgs<ExtArgs>
@@ -8094,6 +8224,7 @@ export namespace Prisma {
     longitude?: boolean
     about?: boolean
     slug?: boolean
+    ibgeCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["municipality"]>
@@ -8107,6 +8238,7 @@ export namespace Prisma {
     longitude?: boolean
     about?: boolean
     slug?: boolean
+    ibgeCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["municipality"]>
@@ -8120,11 +8252,12 @@ export namespace Prisma {
     longitude?: boolean
     about?: boolean
     slug?: boolean
+    ibgeCode?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type MunicipalityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "coatOfArms" | "latitude" | "longitude" | "about" | "slug" | "createdAt" | "updatedAt", ExtArgs["result"]["municipality"]>
+  export type MunicipalityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "coatOfArms" | "latitude" | "longitude" | "about" | "slug" | "ibgeCode" | "createdAt" | "updatedAt", ExtArgs["result"]["municipality"]>
   export type MunicipalityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     users?: boolean | Municipality$usersArgs<ExtArgs>
     highlights?: boolean | Municipality$highlightsArgs<ExtArgs>
@@ -8156,6 +8289,7 @@ export namespace Prisma {
       longitude: number | null
       about: string | null
       slug: string | null
+      ibgeCode: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["municipality"]>
@@ -8595,6 +8729,7 @@ export namespace Prisma {
     readonly longitude: FieldRef<"Municipality", 'Float'>
     readonly about: FieldRef<"Municipality", 'String'>
     readonly slug: FieldRef<"Municipality", 'String'>
+    readonly ibgeCode: FieldRef<"Municipality", 'String'>
     readonly createdAt: FieldRef<"Municipality", 'DateTime'>
     readonly updatedAt: FieldRef<"Municipality", 'DateTime'>
   }
@@ -10423,7 +10558,9 @@ export namespace Prisma {
     longitude?: boolean
     municipalityId?: boolean
     createdAt?: boolean
+    galleryImages?: boolean | Highlight$galleryImagesArgs<ExtArgs>
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+    _count?: boolean | HighlightCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["highlight"]>
 
   export type HighlightSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -10460,7 +10597,9 @@ export namespace Prisma {
 
   export type HighlightOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "description" | "latitude" | "longitude" | "municipalityId" | "createdAt", ExtArgs["result"]["highlight"]>
   export type HighlightInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    galleryImages?: boolean | Highlight$galleryImagesArgs<ExtArgs>
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
+    _count?: boolean | HighlightCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type HighlightIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     municipality?: boolean | MunicipalityDefaultArgs<ExtArgs>
@@ -10472,6 +10611,7 @@ export namespace Prisma {
   export type $HighlightPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Highlight"
     objects: {
+      galleryImages: Prisma.$HighlightImagePayload<ExtArgs>[]
       municipality: Prisma.$MunicipalityPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -10876,6 +11016,7 @@ export namespace Prisma {
    */
   export interface Prisma__HighlightClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    galleryImages<T extends Highlight$galleryImagesArgs<ExtArgs> = {}>(args?: Subset<T, Highlight$galleryImagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     municipality<T extends MunicipalityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MunicipalityDefaultArgs<ExtArgs>>): Prisma__MunicipalityClient<$Result.GetResult<Prisma.$MunicipalityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -11309,6 +11450,30 @@ export namespace Prisma {
   }
 
   /**
+   * Highlight.galleryImages
+   */
+  export type Highlight$galleryImagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    where?: HighlightImageWhereInput
+    orderBy?: HighlightImageOrderByWithRelationInput | HighlightImageOrderByWithRelationInput[]
+    cursor?: HighlightImageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: HighlightImageScalarFieldEnum | HighlightImageScalarFieldEnum[]
+  }
+
+  /**
    * Highlight without action
    */
   export type HighlightDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11324,6 +11489,1064 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: HighlightInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model HighlightImage
+   */
+
+  export type AggregateHighlightImage = {
+    _count: HighlightImageCountAggregateOutputType | null
+    _min: HighlightImageMinAggregateOutputType | null
+    _max: HighlightImageMaxAggregateOutputType | null
+  }
+
+  export type HighlightImageMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    highlightId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HighlightImageMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    highlightId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type HighlightImageCountAggregateOutputType = {
+    id: number
+    url: number
+    highlightId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type HighlightImageMinAggregateInputType = {
+    id?: true
+    url?: true
+    highlightId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HighlightImageMaxAggregateInputType = {
+    id?: true
+    url?: true
+    highlightId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type HighlightImageCountAggregateInputType = {
+    id?: true
+    url?: true
+    highlightId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type HighlightImageAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HighlightImage to aggregate.
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightImages to fetch.
+     */
+    orderBy?: HighlightImageOrderByWithRelationInput | HighlightImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: HighlightImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned HighlightImages
+    **/
+    _count?: true | HighlightImageCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: HighlightImageMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: HighlightImageMaxAggregateInputType
+  }
+
+  export type GetHighlightImageAggregateType<T extends HighlightImageAggregateArgs> = {
+        [P in keyof T & keyof AggregateHighlightImage]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateHighlightImage[P]>
+      : GetScalarType<T[P], AggregateHighlightImage[P]>
+  }
+
+
+
+
+  export type HighlightImageGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: HighlightImageWhereInput
+    orderBy?: HighlightImageOrderByWithAggregationInput | HighlightImageOrderByWithAggregationInput[]
+    by: HighlightImageScalarFieldEnum[] | HighlightImageScalarFieldEnum
+    having?: HighlightImageScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: HighlightImageCountAggregateInputType | true
+    _min?: HighlightImageMinAggregateInputType
+    _max?: HighlightImageMaxAggregateInputType
+  }
+
+  export type HighlightImageGroupByOutputType = {
+    id: string
+    url: string
+    highlightId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: HighlightImageCountAggregateOutputType | null
+    _min: HighlightImageMinAggregateOutputType | null
+    _max: HighlightImageMaxAggregateOutputType | null
+  }
+
+  type GetHighlightImageGroupByPayload<T extends HighlightImageGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<HighlightImageGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof HighlightImageGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], HighlightImageGroupByOutputType[P]>
+            : GetScalarType<T[P], HighlightImageGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type HighlightImageSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    highlightId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["highlightImage"]>
+
+  export type HighlightImageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    highlightId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["highlightImage"]>
+
+  export type HighlightImageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    highlightId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["highlightImage"]>
+
+  export type HighlightImageSelectScalar = {
+    id?: boolean
+    url?: boolean
+    highlightId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type HighlightImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "highlightId" | "createdAt" | "updatedAt", ExtArgs["result"]["highlightImage"]>
+  export type HighlightImageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }
+  export type HighlightImageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }
+  export type HighlightImageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    highlight?: boolean | HighlightDefaultArgs<ExtArgs>
+  }
+
+  export type $HighlightImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "HighlightImage"
+    objects: {
+      highlight: Prisma.$HighlightPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      highlightId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["highlightImage"]>
+    composites: {}
+  }
+
+  type HighlightImageGetPayload<S extends boolean | null | undefined | HighlightImageDefaultArgs> = $Result.GetResult<Prisma.$HighlightImagePayload, S>
+
+  type HighlightImageCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<HighlightImageFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: HighlightImageCountAggregateInputType | true
+    }
+
+  export interface HighlightImageDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['HighlightImage'], meta: { name: 'HighlightImage' } }
+    /**
+     * Find zero or one HighlightImage that matches the filter.
+     * @param {HighlightImageFindUniqueArgs} args - Arguments to find a HighlightImage
+     * @example
+     * // Get one HighlightImage
+     * const highlightImage = await prisma.highlightImage.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends HighlightImageFindUniqueArgs>(args: SelectSubset<T, HighlightImageFindUniqueArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one HighlightImage that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {HighlightImageFindUniqueOrThrowArgs} args - Arguments to find a HighlightImage
+     * @example
+     * // Get one HighlightImage
+     * const highlightImage = await prisma.highlightImage.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends HighlightImageFindUniqueOrThrowArgs>(args: SelectSubset<T, HighlightImageFindUniqueOrThrowArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HighlightImage that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageFindFirstArgs} args - Arguments to find a HighlightImage
+     * @example
+     * // Get one HighlightImage
+     * const highlightImage = await prisma.highlightImage.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends HighlightImageFindFirstArgs>(args?: SelectSubset<T, HighlightImageFindFirstArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first HighlightImage that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageFindFirstOrThrowArgs} args - Arguments to find a HighlightImage
+     * @example
+     * // Get one HighlightImage
+     * const highlightImage = await prisma.highlightImage.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends HighlightImageFindFirstOrThrowArgs>(args?: SelectSubset<T, HighlightImageFindFirstOrThrowArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more HighlightImages that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all HighlightImages
+     * const highlightImages = await prisma.highlightImage.findMany()
+     * 
+     * // Get first 10 HighlightImages
+     * const highlightImages = await prisma.highlightImage.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const highlightImageWithIdOnly = await prisma.highlightImage.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends HighlightImageFindManyArgs>(args?: SelectSubset<T, HighlightImageFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a HighlightImage.
+     * @param {HighlightImageCreateArgs} args - Arguments to create a HighlightImage.
+     * @example
+     * // Create one HighlightImage
+     * const HighlightImage = await prisma.highlightImage.create({
+     *   data: {
+     *     // ... data to create a HighlightImage
+     *   }
+     * })
+     * 
+     */
+    create<T extends HighlightImageCreateArgs>(args: SelectSubset<T, HighlightImageCreateArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many HighlightImages.
+     * @param {HighlightImageCreateManyArgs} args - Arguments to create many HighlightImages.
+     * @example
+     * // Create many HighlightImages
+     * const highlightImage = await prisma.highlightImage.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends HighlightImageCreateManyArgs>(args?: SelectSubset<T, HighlightImageCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many HighlightImages and returns the data saved in the database.
+     * @param {HighlightImageCreateManyAndReturnArgs} args - Arguments to create many HighlightImages.
+     * @example
+     * // Create many HighlightImages
+     * const highlightImage = await prisma.highlightImage.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many HighlightImages and only return the `id`
+     * const highlightImageWithIdOnly = await prisma.highlightImage.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends HighlightImageCreateManyAndReturnArgs>(args?: SelectSubset<T, HighlightImageCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a HighlightImage.
+     * @param {HighlightImageDeleteArgs} args - Arguments to delete one HighlightImage.
+     * @example
+     * // Delete one HighlightImage
+     * const HighlightImage = await prisma.highlightImage.delete({
+     *   where: {
+     *     // ... filter to delete one HighlightImage
+     *   }
+     * })
+     * 
+     */
+    delete<T extends HighlightImageDeleteArgs>(args: SelectSubset<T, HighlightImageDeleteArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one HighlightImage.
+     * @param {HighlightImageUpdateArgs} args - Arguments to update one HighlightImage.
+     * @example
+     * // Update one HighlightImage
+     * const highlightImage = await prisma.highlightImage.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends HighlightImageUpdateArgs>(args: SelectSubset<T, HighlightImageUpdateArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more HighlightImages.
+     * @param {HighlightImageDeleteManyArgs} args - Arguments to filter HighlightImages to delete.
+     * @example
+     * // Delete a few HighlightImages
+     * const { count } = await prisma.highlightImage.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends HighlightImageDeleteManyArgs>(args?: SelectSubset<T, HighlightImageDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HighlightImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many HighlightImages
+     * const highlightImage = await prisma.highlightImage.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends HighlightImageUpdateManyArgs>(args: SelectSubset<T, HighlightImageUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more HighlightImages and returns the data updated in the database.
+     * @param {HighlightImageUpdateManyAndReturnArgs} args - Arguments to update many HighlightImages.
+     * @example
+     * // Update many HighlightImages
+     * const highlightImage = await prisma.highlightImage.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more HighlightImages and only return the `id`
+     * const highlightImageWithIdOnly = await prisma.highlightImage.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends HighlightImageUpdateManyAndReturnArgs>(args: SelectSubset<T, HighlightImageUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one HighlightImage.
+     * @param {HighlightImageUpsertArgs} args - Arguments to update or create a HighlightImage.
+     * @example
+     * // Update or create a HighlightImage
+     * const highlightImage = await prisma.highlightImage.upsert({
+     *   create: {
+     *     // ... data to create a HighlightImage
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the HighlightImage we want to update
+     *   }
+     * })
+     */
+    upsert<T extends HighlightImageUpsertArgs>(args: SelectSubset<T, HighlightImageUpsertArgs<ExtArgs>>): Prisma__HighlightImageClient<$Result.GetResult<Prisma.$HighlightImagePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of HighlightImages.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageCountArgs} args - Arguments to filter HighlightImages to count.
+     * @example
+     * // Count the number of HighlightImages
+     * const count = await prisma.highlightImage.count({
+     *   where: {
+     *     // ... the filter for the HighlightImages we want to count
+     *   }
+     * })
+    **/
+    count<T extends HighlightImageCountArgs>(
+      args?: Subset<T, HighlightImageCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], HighlightImageCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a HighlightImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends HighlightImageAggregateArgs>(args: Subset<T, HighlightImageAggregateArgs>): Prisma.PrismaPromise<GetHighlightImageAggregateType<T>>
+
+    /**
+     * Group by HighlightImage.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {HighlightImageGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends HighlightImageGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: HighlightImageGroupByArgs['orderBy'] }
+        : { orderBy?: HighlightImageGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, HighlightImageGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetHighlightImageGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the HighlightImage model
+   */
+  readonly fields: HighlightImageFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for HighlightImage.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__HighlightImageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    highlight<T extends HighlightDefaultArgs<ExtArgs> = {}>(args?: Subset<T, HighlightDefaultArgs<ExtArgs>>): Prisma__HighlightClient<$Result.GetResult<Prisma.$HighlightPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the HighlightImage model
+   */
+  interface HighlightImageFieldRefs {
+    readonly id: FieldRef<"HighlightImage", 'String'>
+    readonly url: FieldRef<"HighlightImage", 'String'>
+    readonly highlightId: FieldRef<"HighlightImage", 'String'>
+    readonly createdAt: FieldRef<"HighlightImage", 'DateTime'>
+    readonly updatedAt: FieldRef<"HighlightImage", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * HighlightImage findUnique
+   */
+  export type HighlightImageFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightImage to fetch.
+     */
+    where: HighlightImageWhereUniqueInput
+  }
+
+  /**
+   * HighlightImage findUniqueOrThrow
+   */
+  export type HighlightImageFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightImage to fetch.
+     */
+    where: HighlightImageWhereUniqueInput
+  }
+
+  /**
+   * HighlightImage findFirst
+   */
+  export type HighlightImageFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightImage to fetch.
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightImages to fetch.
+     */
+    orderBy?: HighlightImageOrderByWithRelationInput | HighlightImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HighlightImages.
+     */
+    cursor?: HighlightImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HighlightImages.
+     */
+    distinct?: HighlightImageScalarFieldEnum | HighlightImageScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightImage findFirstOrThrow
+   */
+  export type HighlightImageFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightImage to fetch.
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightImages to fetch.
+     */
+    orderBy?: HighlightImageOrderByWithRelationInput | HighlightImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for HighlightImages.
+     */
+    cursor?: HighlightImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightImages.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of HighlightImages.
+     */
+    distinct?: HighlightImageScalarFieldEnum | HighlightImageScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightImage findMany
+   */
+  export type HighlightImageFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter, which HighlightImages to fetch.
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of HighlightImages to fetch.
+     */
+    orderBy?: HighlightImageOrderByWithRelationInput | HighlightImageOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing HighlightImages.
+     */
+    cursor?: HighlightImageWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` HighlightImages from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` HighlightImages.
+     */
+    skip?: number
+    distinct?: HighlightImageScalarFieldEnum | HighlightImageScalarFieldEnum[]
+  }
+
+  /**
+   * HighlightImage create
+   */
+  export type HighlightImageCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * The data needed to create a HighlightImage.
+     */
+    data: XOR<HighlightImageCreateInput, HighlightImageUncheckedCreateInput>
+  }
+
+  /**
+   * HighlightImage createMany
+   */
+  export type HighlightImageCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many HighlightImages.
+     */
+    data: HighlightImageCreateManyInput | HighlightImageCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * HighlightImage createManyAndReturn
+   */
+  export type HighlightImageCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * The data used to create many HighlightImages.
+     */
+    data: HighlightImageCreateManyInput | HighlightImageCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HighlightImage update
+   */
+  export type HighlightImageUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * The data needed to update a HighlightImage.
+     */
+    data: XOR<HighlightImageUpdateInput, HighlightImageUncheckedUpdateInput>
+    /**
+     * Choose, which HighlightImage to update.
+     */
+    where: HighlightImageWhereUniqueInput
+  }
+
+  /**
+   * HighlightImage updateMany
+   */
+  export type HighlightImageUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update HighlightImages.
+     */
+    data: XOR<HighlightImageUpdateManyMutationInput, HighlightImageUncheckedUpdateManyInput>
+    /**
+     * Filter which HighlightImages to update
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * Limit how many HighlightImages to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * HighlightImage updateManyAndReturn
+   */
+  export type HighlightImageUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * The data used to update HighlightImages.
+     */
+    data: XOR<HighlightImageUpdateManyMutationInput, HighlightImageUncheckedUpdateManyInput>
+    /**
+     * Filter which HighlightImages to update
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * Limit how many HighlightImages to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * HighlightImage upsert
+   */
+  export type HighlightImageUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * The filter to search for the HighlightImage to update in case it exists.
+     */
+    where: HighlightImageWhereUniqueInput
+    /**
+     * In case the HighlightImage found by the `where` argument doesn't exist, create a new HighlightImage with this data.
+     */
+    create: XOR<HighlightImageCreateInput, HighlightImageUncheckedCreateInput>
+    /**
+     * In case the HighlightImage was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<HighlightImageUpdateInput, HighlightImageUncheckedUpdateInput>
+  }
+
+  /**
+   * HighlightImage delete
+   */
+  export type HighlightImageDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
+    /**
+     * Filter which HighlightImage to delete.
+     */
+    where: HighlightImageWhereUniqueInput
+  }
+
+  /**
+   * HighlightImage deleteMany
+   */
+  export type HighlightImageDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which HighlightImages to delete
+     */
+    where?: HighlightImageWhereInput
+    /**
+     * Limit how many HighlightImages to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * HighlightImage without action
+   */
+  export type HighlightImageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the HighlightImage
+     */
+    select?: HighlightImageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the HighlightImage
+     */
+    omit?: HighlightImageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: HighlightImageInclude<ExtArgs> | null
   }
 
 
@@ -16910,6 +18133,7 @@ export namespace Prisma {
     longitude: 'longitude',
     about: 'about',
     slug: 'slug',
+    ibgeCode: 'ibgeCode',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -16939,6 +18163,17 @@ export namespace Prisma {
   };
 
   export type HighlightScalarFieldEnum = (typeof HighlightScalarFieldEnum)[keyof typeof HighlightScalarFieldEnum]
+
+
+  export const HighlightImageScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    highlightId: 'highlightId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type HighlightImageScalarFieldEnum = (typeof HighlightImageScalarFieldEnum)[keyof typeof HighlightImageScalarFieldEnum]
 
 
   export const AttractionScalarFieldEnum: {
@@ -17578,6 +18813,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"Municipality"> | number | null
     about?: StringNullableFilter<"Municipality"> | string | null
     slug?: StringNullableFilter<"Municipality"> | string | null
+    ibgeCode?: StringNullableFilter<"Municipality"> | string | null
     createdAt?: DateTimeFilter<"Municipality"> | Date | string
     updatedAt?: DateTimeFilter<"Municipality"> | Date | string
     users?: UserListRelationFilter
@@ -17597,6 +18833,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     about?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
+    ibgeCode?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     users?: UserOrderByRelationAggregateInput
@@ -17610,6 +18847,7 @@ export namespace Prisma {
   export type MunicipalityWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     slug?: string
+    ibgeCode?: string
     AND?: MunicipalityWhereInput | MunicipalityWhereInput[]
     OR?: MunicipalityWhereInput[]
     NOT?: MunicipalityWhereInput | MunicipalityWhereInput[]
@@ -17627,7 +18865,7 @@ export namespace Prisma {
     events?: EventListRelationFilter
     guides?: GuideListRelationFilter
     images?: MunicipalityImageListRelationFilter
-  }, "id" | "slug">
+  }, "id" | "slug" | "ibgeCode">
 
   export type MunicipalityOrderByWithAggregationInput = {
     id?: SortOrder
@@ -17638,6 +18876,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     about?: SortOrderInput | SortOrder
     slug?: SortOrderInput | SortOrder
+    ibgeCode?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: MunicipalityCountOrderByAggregateInput
@@ -17659,6 +18898,7 @@ export namespace Prisma {
     longitude?: FloatNullableWithAggregatesFilter<"Municipality"> | number | null
     about?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
     slug?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
+    ibgeCode?: StringNullableWithAggregatesFilter<"Municipality"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Municipality"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Municipality"> | Date | string
   }
@@ -17729,6 +18969,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
     createdAt?: DateTimeFilter<"Highlight"> | Date | string
+    galleryImages?: HighlightImageListRelationFilter
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
   }
 
@@ -17740,6 +18981,7 @@ export namespace Prisma {
     longitude?: SortOrderInput | SortOrder
     municipalityId?: SortOrder
     createdAt?: SortOrder
+    galleryImages?: HighlightImageOrderByRelationAggregateInput
     municipality?: MunicipalityOrderByWithRelationInput
   }
 
@@ -17754,6 +18996,7 @@ export namespace Prisma {
     longitude?: FloatNullableFilter<"Highlight"> | number | null
     municipalityId?: StringFilter<"Highlight"> | string
     createdAt?: DateTimeFilter<"Highlight"> | Date | string
+    galleryImages?: HighlightImageListRelationFilter
     municipality?: XOR<MunicipalityScalarRelationFilter, MunicipalityWhereInput>
   }, "id">
 
@@ -17783,6 +19026,61 @@ export namespace Prisma {
     longitude?: FloatNullableWithAggregatesFilter<"Highlight"> | number | null
     municipalityId?: StringWithAggregatesFilter<"Highlight"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Highlight"> | Date | string
+  }
+
+  export type HighlightImageWhereInput = {
+    AND?: HighlightImageWhereInput | HighlightImageWhereInput[]
+    OR?: HighlightImageWhereInput[]
+    NOT?: HighlightImageWhereInput | HighlightImageWhereInput[]
+    id?: StringFilter<"HighlightImage"> | string
+    url?: StringFilter<"HighlightImage"> | string
+    highlightId?: StringFilter<"HighlightImage"> | string
+    createdAt?: DateTimeFilter<"HighlightImage"> | Date | string
+    updatedAt?: DateTimeFilter<"HighlightImage"> | Date | string
+    highlight?: XOR<HighlightScalarRelationFilter, HighlightWhereInput>
+  }
+
+  export type HighlightImageOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    highlightId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    highlight?: HighlightOrderByWithRelationInput
+  }
+
+  export type HighlightImageWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: HighlightImageWhereInput | HighlightImageWhereInput[]
+    OR?: HighlightImageWhereInput[]
+    NOT?: HighlightImageWhereInput | HighlightImageWhereInput[]
+    url?: StringFilter<"HighlightImage"> | string
+    highlightId?: StringFilter<"HighlightImage"> | string
+    createdAt?: DateTimeFilter<"HighlightImage"> | Date | string
+    updatedAt?: DateTimeFilter<"HighlightImage"> | Date | string
+    highlight?: XOR<HighlightScalarRelationFilter, HighlightWhereInput>
+  }, "id">
+
+  export type HighlightImageOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    highlightId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: HighlightImageCountOrderByAggregateInput
+    _max?: HighlightImageMaxOrderByAggregateInput
+    _min?: HighlightImageMinOrderByAggregateInput
+  }
+
+  export type HighlightImageScalarWhereWithAggregatesInput = {
+    AND?: HighlightImageScalarWhereWithAggregatesInput | HighlightImageScalarWhereWithAggregatesInput[]
+    OR?: HighlightImageScalarWhereWithAggregatesInput[]
+    NOT?: HighlightImageScalarWhereWithAggregatesInput | HighlightImageScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"HighlightImage"> | string
+    url?: StringWithAggregatesFilter<"HighlightImage"> | string
+    highlightId?: StringWithAggregatesFilter<"HighlightImage"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"HighlightImage"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"HighlightImage"> | Date | string
   }
 
   export type AttractionWhereInput = {
@@ -18569,6 +19867,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -18588,6 +19887,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -18607,6 +19907,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -18626,6 +19927,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -18645,6 +19947,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -18658,6 +19961,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18671,6 +19975,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -18737,6 +20042,7 @@ export namespace Prisma {
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
+    galleryImages?: HighlightImageCreateNestedManyWithoutHighlightInput
     municipality: MunicipalityCreateNestedOneWithoutHighlightsInput
   }
 
@@ -18748,6 +20054,7 @@ export namespace Prisma {
     longitude?: number | null
     municipalityId: string
     createdAt?: Date | string
+    galleryImages?: HighlightImageUncheckedCreateNestedManyWithoutHighlightInput
   }
 
   export type HighlightUpdateInput = {
@@ -18757,6 +20064,7 @@ export namespace Prisma {
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: HighlightImageUpdateManyWithoutHighlightNestedInput
     municipality?: MunicipalityUpdateOneRequiredWithoutHighlightsNestedInput
   }
 
@@ -18768,6 +20076,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: HighlightImageUncheckedUpdateManyWithoutHighlightNestedInput
   }
 
   export type HighlightCreateManyInput = {
@@ -18797,6 +20106,61 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     municipalityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageCreateInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    highlight: HighlightCreateNestedOneWithoutGalleryImagesInput
+  }
+
+  export type HighlightImageUncheckedCreateInput = {
+    id?: string
+    url: string
+    highlightId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HighlightImageUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    highlight?: HighlightUpdateOneRequiredWithoutGalleryImagesNestedInput
+  }
+
+  export type HighlightImageUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    highlightId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageCreateManyInput = {
+    id?: string
+    url: string
+    highlightId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HighlightImageUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    highlightId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AttractionCreateInput = {
@@ -19771,6 +21135,7 @@ export namespace Prisma {
     longitude?: SortOrder
     about?: SortOrder
     slug?: SortOrder
+    ibgeCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19789,6 +21154,7 @@ export namespace Prisma {
     longitude?: SortOrder
     about?: SortOrder
     slug?: SortOrder
+    ibgeCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19802,6 +21168,7 @@ export namespace Prisma {
     longitude?: SortOrder
     about?: SortOrder
     slug?: SortOrder
+    ibgeCode?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -19856,6 +21223,16 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type HighlightImageListRelationFilter = {
+    every?: HighlightImageWhereInput
+    some?: HighlightImageWhereInput
+    none?: HighlightImageWhereInput
+  }
+
+  export type HighlightImageOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type HighlightCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
@@ -19894,6 +21271,35 @@ export namespace Prisma {
   export type HighlightSumOrderByAggregateInput = {
     latitude?: SortOrder
     longitude?: SortOrder
+  }
+
+  export type HighlightScalarRelationFilter = {
+    is?: HighlightWhereInput
+    isNot?: HighlightWhereInput
+  }
+
+  export type HighlightImageCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    highlightId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HighlightImageMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    highlightId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type HighlightImageMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    highlightId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type AttractionCountOrderByAggregateInput = {
@@ -20623,10 +22029,38 @@ export namespace Prisma {
     update?: XOR<XOR<MunicipalityUpdateToOneWithWhereWithoutImagesInput, MunicipalityUpdateWithoutImagesInput>, MunicipalityUncheckedUpdateWithoutImagesInput>
   }
 
+  export type HighlightImageCreateNestedManyWithoutHighlightInput = {
+    create?: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput> | HighlightImageCreateWithoutHighlightInput[] | HighlightImageUncheckedCreateWithoutHighlightInput[]
+    connectOrCreate?: HighlightImageCreateOrConnectWithoutHighlightInput | HighlightImageCreateOrConnectWithoutHighlightInput[]
+    createMany?: HighlightImageCreateManyHighlightInputEnvelope
+    connect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+  }
+
   export type MunicipalityCreateNestedOneWithoutHighlightsInput = {
     create?: XOR<MunicipalityCreateWithoutHighlightsInput, MunicipalityUncheckedCreateWithoutHighlightsInput>
     connectOrCreate?: MunicipalityCreateOrConnectWithoutHighlightsInput
     connect?: MunicipalityWhereUniqueInput
+  }
+
+  export type HighlightImageUncheckedCreateNestedManyWithoutHighlightInput = {
+    create?: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput> | HighlightImageCreateWithoutHighlightInput[] | HighlightImageUncheckedCreateWithoutHighlightInput[]
+    connectOrCreate?: HighlightImageCreateOrConnectWithoutHighlightInput | HighlightImageCreateOrConnectWithoutHighlightInput[]
+    createMany?: HighlightImageCreateManyHighlightInputEnvelope
+    connect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+  }
+
+  export type HighlightImageUpdateManyWithoutHighlightNestedInput = {
+    create?: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput> | HighlightImageCreateWithoutHighlightInput[] | HighlightImageUncheckedCreateWithoutHighlightInput[]
+    connectOrCreate?: HighlightImageCreateOrConnectWithoutHighlightInput | HighlightImageCreateOrConnectWithoutHighlightInput[]
+    upsert?: HighlightImageUpsertWithWhereUniqueWithoutHighlightInput | HighlightImageUpsertWithWhereUniqueWithoutHighlightInput[]
+    createMany?: HighlightImageCreateManyHighlightInputEnvelope
+    set?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    disconnect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    delete?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    connect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    update?: HighlightImageUpdateWithWhereUniqueWithoutHighlightInput | HighlightImageUpdateWithWhereUniqueWithoutHighlightInput[]
+    updateMany?: HighlightImageUpdateManyWithWhereWithoutHighlightInput | HighlightImageUpdateManyWithWhereWithoutHighlightInput[]
+    deleteMany?: HighlightImageScalarWhereInput | HighlightImageScalarWhereInput[]
   }
 
   export type MunicipalityUpdateOneRequiredWithoutHighlightsNestedInput = {
@@ -20635,6 +22069,34 @@ export namespace Prisma {
     upsert?: MunicipalityUpsertWithoutHighlightsInput
     connect?: MunicipalityWhereUniqueInput
     update?: XOR<XOR<MunicipalityUpdateToOneWithWhereWithoutHighlightsInput, MunicipalityUpdateWithoutHighlightsInput>, MunicipalityUncheckedUpdateWithoutHighlightsInput>
+  }
+
+  export type HighlightImageUncheckedUpdateManyWithoutHighlightNestedInput = {
+    create?: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput> | HighlightImageCreateWithoutHighlightInput[] | HighlightImageUncheckedCreateWithoutHighlightInput[]
+    connectOrCreate?: HighlightImageCreateOrConnectWithoutHighlightInput | HighlightImageCreateOrConnectWithoutHighlightInput[]
+    upsert?: HighlightImageUpsertWithWhereUniqueWithoutHighlightInput | HighlightImageUpsertWithWhereUniqueWithoutHighlightInput[]
+    createMany?: HighlightImageCreateManyHighlightInputEnvelope
+    set?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    disconnect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    delete?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    connect?: HighlightImageWhereUniqueInput | HighlightImageWhereUniqueInput[]
+    update?: HighlightImageUpdateWithWhereUniqueWithoutHighlightInput | HighlightImageUpdateWithWhereUniqueWithoutHighlightInput[]
+    updateMany?: HighlightImageUpdateManyWithWhereWithoutHighlightInput | HighlightImageUpdateManyWithWhereWithoutHighlightInput[]
+    deleteMany?: HighlightImageScalarWhereInput | HighlightImageScalarWhereInput[]
+  }
+
+  export type HighlightCreateNestedOneWithoutGalleryImagesInput = {
+    create?: XOR<HighlightCreateWithoutGalleryImagesInput, HighlightUncheckedCreateWithoutGalleryImagesInput>
+    connectOrCreate?: HighlightCreateOrConnectWithoutGalleryImagesInput
+    connect?: HighlightWhereUniqueInput
+  }
+
+  export type HighlightUpdateOneRequiredWithoutGalleryImagesNestedInput = {
+    create?: XOR<HighlightCreateWithoutGalleryImagesInput, HighlightUncheckedCreateWithoutGalleryImagesInput>
+    connectOrCreate?: HighlightCreateOrConnectWithoutGalleryImagesInput
+    upsert?: HighlightUpsertWithoutGalleryImagesInput
+    connect?: HighlightWhereUniqueInput
+    update?: XOR<XOR<HighlightUpdateToOneWithWhereWithoutGalleryImagesInput, HighlightUpdateWithoutGalleryImagesInput>, HighlightUncheckedUpdateWithoutGalleryImagesInput>
   }
 
   export type MunicipalityCreateNestedOneWithoutAttractionsInput = {
@@ -21122,6 +22584,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highlights?: HighlightCreateNestedManyWithoutMunicipalityInput
@@ -21140,6 +22603,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     highlights?: HighlightUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -21305,6 +22769,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highlights?: HighlightUpdateManyWithoutMunicipalityNestedInput
@@ -21323,6 +22788,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     highlights?: HighlightUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -21698,6 +23164,7 @@ export namespace Prisma {
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
+    galleryImages?: HighlightImageCreateNestedManyWithoutHighlightInput
   }
 
   export type HighlightUncheckedCreateWithoutMunicipalityInput = {
@@ -21707,6 +23174,7 @@ export namespace Prisma {
     latitude?: number | null
     longitude?: number | null
     createdAt?: Date | string
+    galleryImages?: HighlightImageUncheckedCreateNestedManyWithoutHighlightInput
   }
 
   export type HighlightCreateOrConnectWithoutMunicipalityInput = {
@@ -22025,6 +23493,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -22043,6 +23512,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -22077,6 +23547,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -22095,6 +23566,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -22102,6 +23574,30 @@ export namespace Prisma {
     attractions?: AttractionUncheckedUpdateManyWithoutMunicipalityNestedInput
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
+  }
+
+  export type HighlightImageCreateWithoutHighlightInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HighlightImageUncheckedCreateWithoutHighlightInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HighlightImageCreateOrConnectWithoutHighlightInput = {
+    where: HighlightImageWhereUniqueInput
+    create: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput>
+  }
+
+  export type HighlightImageCreateManyHighlightInputEnvelope = {
+    data: HighlightImageCreateManyHighlightInput | HighlightImageCreateManyHighlightInput[]
+    skipDuplicates?: boolean
   }
 
   export type MunicipalityCreateWithoutHighlightsInput = {
@@ -22113,6 +23609,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -22131,6 +23628,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -22143,6 +23641,33 @@ export namespace Prisma {
   export type MunicipalityCreateOrConnectWithoutHighlightsInput = {
     where: MunicipalityWhereUniqueInput
     create: XOR<MunicipalityCreateWithoutHighlightsInput, MunicipalityUncheckedCreateWithoutHighlightsInput>
+  }
+
+  export type HighlightImageUpsertWithWhereUniqueWithoutHighlightInput = {
+    where: HighlightImageWhereUniqueInput
+    update: XOR<HighlightImageUpdateWithoutHighlightInput, HighlightImageUncheckedUpdateWithoutHighlightInput>
+    create: XOR<HighlightImageCreateWithoutHighlightInput, HighlightImageUncheckedCreateWithoutHighlightInput>
+  }
+
+  export type HighlightImageUpdateWithWhereUniqueWithoutHighlightInput = {
+    where: HighlightImageWhereUniqueInput
+    data: XOR<HighlightImageUpdateWithoutHighlightInput, HighlightImageUncheckedUpdateWithoutHighlightInput>
+  }
+
+  export type HighlightImageUpdateManyWithWhereWithoutHighlightInput = {
+    where: HighlightImageScalarWhereInput
+    data: XOR<HighlightImageUpdateManyMutationInput, HighlightImageUncheckedUpdateManyWithoutHighlightInput>
+  }
+
+  export type HighlightImageScalarWhereInput = {
+    AND?: HighlightImageScalarWhereInput | HighlightImageScalarWhereInput[]
+    OR?: HighlightImageScalarWhereInput[]
+    NOT?: HighlightImageScalarWhereInput | HighlightImageScalarWhereInput[]
+    id?: StringFilter<"HighlightImage"> | string
+    url?: StringFilter<"HighlightImage"> | string
+    highlightId?: StringFilter<"HighlightImage"> | string
+    createdAt?: DateTimeFilter<"HighlightImage"> | Date | string
+    updatedAt?: DateTimeFilter<"HighlightImage"> | Date | string
   }
 
   export type MunicipalityUpsertWithoutHighlightsInput = {
@@ -22165,6 +23690,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -22183,6 +23709,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -22190,6 +23717,62 @@ export namespace Prisma {
     events?: EventUncheckedUpdateManyWithoutMunicipalityNestedInput
     guides?: GuideUncheckedUpdateManyWithoutMunicipalityNestedInput
     images?: MunicipalityImageUncheckedUpdateManyWithoutMunicipalityNestedInput
+  }
+
+  export type HighlightCreateWithoutGalleryImagesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    createdAt?: Date | string
+    municipality: MunicipalityCreateNestedOneWithoutHighlightsInput
+  }
+
+  export type HighlightUncheckedCreateWithoutGalleryImagesInput = {
+    id?: string
+    title: string
+    description?: string | null
+    latitude?: number | null
+    longitude?: number | null
+    municipalityId: string
+    createdAt?: Date | string
+  }
+
+  export type HighlightCreateOrConnectWithoutGalleryImagesInput = {
+    where: HighlightWhereUniqueInput
+    create: XOR<HighlightCreateWithoutGalleryImagesInput, HighlightUncheckedCreateWithoutGalleryImagesInput>
+  }
+
+  export type HighlightUpsertWithoutGalleryImagesInput = {
+    update: XOR<HighlightUpdateWithoutGalleryImagesInput, HighlightUncheckedUpdateWithoutGalleryImagesInput>
+    create: XOR<HighlightCreateWithoutGalleryImagesInput, HighlightUncheckedCreateWithoutGalleryImagesInput>
+    where?: HighlightWhereInput
+  }
+
+  export type HighlightUpdateToOneWithWhereWithoutGalleryImagesInput = {
+    where?: HighlightWhereInput
+    data: XOR<HighlightUpdateWithoutGalleryImagesInput, HighlightUncheckedUpdateWithoutGalleryImagesInput>
+  }
+
+  export type HighlightUpdateWithoutGalleryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    municipality?: MunicipalityUpdateOneRequiredWithoutHighlightsNestedInput
+  }
+
+  export type HighlightUncheckedUpdateWithoutGalleryImagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    latitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    longitude?: NullableFloatFieldUpdateOperationsInput | number | null
+    municipalityId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MunicipalityCreateWithoutAttractionsInput = {
@@ -22201,6 +23784,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -22219,6 +23803,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -22253,6 +23838,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -22271,6 +23857,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -22313,6 +23900,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -22331,6 +23919,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -22392,6 +23981,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -22410,6 +24000,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -22488,6 +24079,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserCreateNestedManyWithoutMunicipalityInput
@@ -22506,6 +24098,7 @@ export namespace Prisma {
     longitude?: number | null
     about?: string | null
     slug?: string | null
+    ibgeCode?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     users?: UserUncheckedCreateNestedManyWithoutMunicipalityInput
@@ -22540,6 +24133,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUpdateManyWithoutMunicipalityNestedInput
@@ -22558,6 +24152,7 @@ export namespace Prisma {
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     about?: NullableStringFieldUpdateOperationsInput | string | null
     slug?: NullableStringFieldUpdateOperationsInput | string | null
+    ibgeCode?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     users?: UserUncheckedUpdateManyWithoutMunicipalityNestedInput
@@ -22877,6 +24472,7 @@ export namespace Prisma {
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: HighlightImageUpdateManyWithoutHighlightNestedInput
   }
 
   export type HighlightUncheckedUpdateWithoutMunicipalityInput = {
@@ -22886,6 +24482,7 @@ export namespace Prisma {
     latitude?: NullableFloatFieldUpdateOperationsInput | number | null
     longitude?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    galleryImages?: HighlightImageUncheckedUpdateManyWithoutHighlightNestedInput
   }
 
   export type HighlightUncheckedUpdateManyWithoutMunicipalityInput = {
@@ -23007,6 +24604,34 @@ export namespace Prisma {
   }
 
   export type MunicipalityImageUncheckedUpdateManyWithoutMunicipalityInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageCreateManyHighlightInput = {
+    id?: string
+    url: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type HighlightImageUpdateWithoutHighlightInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageUncheckedUpdateWithoutHighlightInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type HighlightImageUncheckedUpdateManyWithoutHighlightInput = {
     id?: StringFieldUpdateOperationsInput | string
     url?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
